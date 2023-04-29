@@ -29,15 +29,15 @@ namespace LudumDare53.Boxes
                 return;
             }
 
-            var torwardPosition =
+            var towardPosition =
                 Vector3.MoveTowards(
                     transform.position,
                     _endPoint.position,
                     _speed * Time.fixedDeltaTime
                 );
-            transform.position = torwardPosition;
+            transform.position = towardPosition;
             if (Vector3.MoveTowards(
-                    torwardPosition,
+                    towardPosition,
                     _endPoint.position,
                     _speed * Time.fixedDeltaTime
                 )
