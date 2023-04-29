@@ -8,34 +8,21 @@ namespace LudumDare53.Truck
     public class Truck : MonoBehaviour
     {
         [SerializeField] private Collider2D _cargoCollider;
-        [SerializeField] private float _moveSpeed;
-        [SerializeField] protected float _moveDistance = 50f;
         [SerializeField] protected float _moveDuration = 5f;
 
         private bool _isFull = false;
         private float _occupiedArea = 0f;
         private float _maxArea;
-        private List<GameObject> _boxes = new List<GameObject>();
-
-        public UnityEvent TruckFull;
+        private List<GameObject> _boxes = new();
+        /// <summary>
+        /// Event that is triggered when the truck is full.
+        /// </summary>
+        public UnityEvent<Truck> TruckFull;
 
         private void Start()
         {
             _maxArea = _cargoCollider.bounds.size.x * _cargoCollider.bounds.size.y;
         }
-
-
-
-        //public void MoveOut()
-        //{
-
-        //    Move(transform.position.x - _moveDistance);
-        //}
-
-        //public void MoveIn()
-        //{
-        //    Move(transform.position.x + _moveDistance);
-        //}
 
         public void MoveTo(float distance)
         {
@@ -54,7 +41,7 @@ namespace LudumDare53.Truck
 
                 if (_isFull)
                 {
-                    TruckFull.Invoke();
+                    TruckFull.Invoke(this);
                     Debug.Log("Cargo is full");
                 }
                 Debug.Log($"boxArea {boxArea}");
