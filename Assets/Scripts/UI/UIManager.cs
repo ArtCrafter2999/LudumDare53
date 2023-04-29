@@ -1,44 +1,62 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using LudumDare53.UI;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+namespace LudumDare53.Leveling
 {
-    [SerializeField] private GameObject pauseScreen;
-    [SerializeField] private GameObject youAreFiredScreen;
-    [SerializeField] private GameObject theDayIsOverScreen;
-
-
-    public void Pause()
+    public class UIManager : MonoBehaviour
     {
-        pauseScreen.SetActive(true);
-        PauseManager.SetPause();
-    }
-
-    public void Resume()
-    {
-        pauseScreen.SetActive(false);
-        PauseManager.SetResume();
-    }
-
-    public void YouAreFired()
-    {
-        youAreFiredScreen.SetActive(true);
-    }
-
-    public void TheDayIsOver()
-    {
-        theDayIsOverScreen.SetActive(true);
-    }
-
-    public void NextDay()
-    {
-        
-    }
-
-    public void TryAgain()
-    {
-        
+        [Header("Screens")]
+        [SerializeField] private GameObject pauseScreen;
+        [SerializeField] private GameObject youAreFiredScreen;
+        [SerializeField] private GameObject dayIsOverScreen;
+        [Header("Other")]
+        [SerializeField] private LevelTimer timer;
+    
+    
+        private void Start()
+        {
+            timer.timePassed.AddListener(DayIsOver);
+        }
+    
+        public void Pause()
+        {
+            pauseScreen.SetActive(true);
+            PauseManager.SetPause();
+        }
+    
+        public void Resume()
+        {
+            pauseScreen.SetActive(false);
+            PauseManager.SetResume();
+        }
+    
+        public void YouAreFired()
+        {
+            youAreFiredScreen.SetActive(true);
+            PauseManager.SetPause();
+        }
+    
+        public void DayIsOver()
+        {
+            dayIsOverScreen.SetActive(true);
+            PauseManager.SetPause();
+        }
+    
+        public void NextDay()
+        {
+            
+        }
+    
+        public void TryAgain()
+        {
+            
+        }
+    
+        public void Menu()
+        {
+            
+        }
     }
 }

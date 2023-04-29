@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2319382874704237996}
   - component: {fileID: 2319382874704237993}
   - component: {fileID: 2319382874704237992}
+  - component: {fileID: -658342998617269885}
   m_Layer: 0
   m_Name: TestBox
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   fragilityLevel: 0
-  onDamage:
+  damaged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &2319382874704237996
@@ -177,3 +178,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-658342998617269885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269e579f0d34456cabe9a0a08109a5e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

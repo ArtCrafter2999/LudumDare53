@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LudumDare53.Leveling;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -23,6 +24,7 @@ namespace LudumDare53.Boxes
             while (gameObject.activeSelf)
             {
                 yield return new WaitForSeconds(period);
+                if (PauseManager.IsPaused) yield return new WaitWhile(() => PauseManager.IsPaused);
                 if(boxesPool.Count == 0) continue;
                 var obj = Instantiate(boxesPool[Random.Range(0, boxesPool.Count)], startPoint.position, Quaternion.identity);
                 var boxOnConveyor = obj.AddComponent<BoxOnConveyor>();
