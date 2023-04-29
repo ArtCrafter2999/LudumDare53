@@ -1,17 +1,14 @@
 ﻿using UnityEngine;
 using SimpleHeirs;
-using static UnityEngine.GridBrushBase;
 
 namespace LudumDare53.Interactions
 {
-
     public class RigidbodyDragger : MonoBehaviour
     {
         [SerializeField] private HeirsProvider<IMouseDragEventsProvider> _mouseDragEventsProvider;
         [SerializeField] private HeirsProvider<IMousePressingEventsProvider> _mousePressingEventsProvider;
         [Min(0)]
-        [SerializeField] private Vector2 _minMaxMoveSpeed = new Vector2(2, 10);
-        [SerializeField] private float _lookAtGroundForce = 3f;
+        [SerializeField] private float _moveSpeed;
         [SerializeField] private Rigidbody2D _pointer;
 
         private Camera _camera;
@@ -19,6 +16,7 @@ namespace LudumDare53.Interactions
         private IMousePressingEventsProvider _mousePressingEventsProviderValue;
         private float _previousGravityScale;
         private CollisionDetectionMode2D _previousCollisionDetectionMode;
+        private Vector2 _initialOffset;
         private DraggableObject _draggableObject;
 
         protected void OnEnable()
@@ -47,6 +45,7 @@ namespace LudumDare53.Interactions
             var draggableObject = hit.collider?.GetComponent<DraggableObject>();
             if (draggableObject != null)
             {
+                draggableObject.Rigidbody2D.velocity = Vector2.zero;
                 SetTarget(draggableObject, point);
             }
         }
@@ -57,26 +56,14 @@ namespace LudumDare53.Interactions
             if (rigidbody != null)
             {
                 Vector2 targetPosition = _draggableObject.transform
-                    .TransformPoint(_draggableObject.SpringJoint2D.anchor);
+                    .TransformPoint(_initialOffset);
 
                 Vector2 targetDirection = point - targetPosition;
+                
+                rigidbody.velocity = targetDirection.normalized * Mathf.Min(
+                    _moveSpeed, 
+                    targetDirection.magnitude / Time.fixedDeltaTime);
 
-                float maxMag 
-                    = Mathf.Min(_minMaxMoveSpeed.y, targetDirection.magnitude / Time.fixedDeltaTime);
-
-                float minMag = _minMaxMoveSpeed.x;
-
-                float magnitude = rigidbody.velocity.magnitude;
-                if (maxMag <= minMag)
-                {
-                    magnitude = Mathf.Min(maxMag, magnitude);  
-                }
-                else
-                {
-                    magnitude = Mathf.Clamp(magnitude, minMag, maxMag);  
-                }
-                rigidbody.velocity = targetDirection.normalized * magnitude;
-                //AddTorque(_draggableObject, targetPosition);
                 _pointer.transform.position = point;
             }
         }
@@ -86,48 +73,23 @@ namespace LudumDare53.Interactions
             ResetTarget();
         }
 
-        private void AddTorque(DraggableObject draggableObject, Vector2 targetPosition)
-        {
-            Vector2 pointToRotateAround = targetPosition;
-            Vector2 pointOnObject = transform.position;
-
-            Vector2 spriteDirection = (draggableObject.transform.TransformPoint(
-                -draggableObject.SpringJoint2D.anchor) - draggableObject.transform.position).normalized;
-
-            //var anchor = draggableObject.SpringJoint2D.anchor;
-            //Debug.DrawRay(
-            //    draggableObject.transform.TransformPoint(new Vector3(anchor.x, anchor.y)),
-            //    spriteDirection, Color.red, 2f);
-            //float sign = Vector2.Dot(spriteDirection, Physics.gravity) < 0 ? -1f : 1f;
-            float sign = Vector2.Dot(spriteDirection, Physics.gravity) < 0 ? -1f : 1f;
-            float angleFactor = Vector2.Angle(spriteDirection, Physics.gravity);
-            Debug.Log(sign);
-            float rotationTorque = _lookAtGroundForce * sign * Time.fixedDeltaTime;
-            draggableObject.Rigidbody2D.AddTorque(rotationTorque);
-        }
-
         private void SetTarget(DraggableObject draggableObject, Vector2 worldHitPoint)
         {
             _draggableObject = draggableObject;
             _pointer.transform.position = worldHitPoint;
             _previousGravityScale = draggableObject.Rigidbody2D.gravityScale;
             _previousCollisionDetectionMode = draggableObject.Rigidbody2D.collisionDetectionMode;
-
-            draggableObject.SpringJoint2D.enabled = true;
-            draggableObject.SpringJoint2D.connectedBody = _pointer;
-            draggableObject.SpringJoint2D.anchor = draggableObject.transform
-                .InverseTransformPoint(worldHitPoint);
+            _initialOffset = draggableObject.transform.InverseTransformPoint(worldHitPoint);
 
             draggableObject.Rigidbody2D.gravityScale = 0;
             draggableObject.Rigidbody2D.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+            draggableObject.Rigidbody2D.isKinematic = false;
         }
 
         private void ResetTarget()
         {
             if (_draggableObject != null)
             {
-                _draggableObject.SpringJoint2D.enabled = false;
-                _draggableObject.SpringJoint2D.connectedBody = null;
                 _draggableObject.Rigidbody2D.gravityScale = _previousGravityScale;
                 _draggableObject.Rigidbody2D.collisionDetectionMode = _previousCollisionDetectionMode;
             }
