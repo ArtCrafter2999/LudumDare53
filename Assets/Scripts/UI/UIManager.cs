@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LudumDare53.Leveling;
 using UnityEngine;
 
-namespace LudumDare53.Leveling
+namespace LudumDare53.UI
 {
     public class UIManager : MonoBehaviour
     {
