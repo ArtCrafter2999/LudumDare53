@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using LudumDare53.Leveling;
@@ -8,15 +7,15 @@ namespace LudumDare53.Boxes
 {
     public class BoxOnConveyor : MonoBehaviour
     {
+        private Rigidbody2D _rb2d;
         private Transform _endPoint;
         private float _speed;
-        private Rigidbody2D _rb2d;
         private Vector2 _inertia;
         private bool _toDetach;
 
         public void Start()
         {
-            _rb2d = GetComponent<Rigidbody2D>();
+            _rb2d = GetComponentInChildren<Rigidbody2D>();
             _rb2d.bodyType = RigidbodyType2D.Kinematic;
         }
 
@@ -26,7 +25,7 @@ namespace LudumDare53.Boxes
             if (_toDetach)
             {
                 _rb2d.AddForce(_inertia * _speed, ForceMode2D.Impulse);
-                enabled = false;
+                Destroy(gameObject);
                 return;
             }
 
@@ -50,6 +49,7 @@ namespace LudumDare53.Boxes
             if (PauseManager.IsPaused) return;
             _rb2d.bodyType = RigidbodyType2D.Dynamic;
             _toDetach = true;
+            _rb2d.transform.parent = transform.parent;
         }
 
         public void Init(Transform endPoint, float speed)

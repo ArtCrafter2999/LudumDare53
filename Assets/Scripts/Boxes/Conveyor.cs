@@ -10,24 +10,37 @@ namespace LudumDare53.Boxes
 {
     public class Conveyor : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> boxesPool; 
-        [SerializeField] private Transform startPoint; 
+        [SerializeField] private List<GameObject> boxesPool;
+        [SerializeField] private Transform startPoint;
         [SerializeField] private Transform endPoint;
         [SerializeField] private float speed;
         [SerializeField] private float period;
+
         private void Start()
         {
             StartCoroutine(BoxGeneration());
         }
+
         private IEnumerator BoxGeneration()
         {
             while (gameObject.activeSelf)
             {
                 yield return new WaitForSeconds(period);
                 if (PauseManager.IsPaused) yield return new WaitWhile(() => PauseManager.IsPaused);
-                if(boxesPool.Count == 0) continue;
-                var obj = Instantiate(boxesPool[Random.Range(0, boxesPool.Count)], startPoint.position, Quaternion.identity);
-                var boxOnConveyor = obj.AddComponent<BoxOnConveyor>();
+                if (boxesPool.Count == 0) continue;
+                var wrap = new GameObject { transform = { position = startPoint.position } };
+                var randomIndex = Random.Range(0, boxesPool.Count);
+                var obj = Instantiate(
+                    boxesPool[randomIndex],
+                    wrap.transform.position,
+                    Quaternion.identity,
+                    wrap.transform
+                );
+                var halfOfHeight = obj
+                    .GetComponent<Collider2D>()
+                    .bounds.size.y / 2;
+                obj.transform.localPosition = Vector3.up * halfOfHeight;
+                var boxOnConveyor = wrap.AddComponent<BoxOnConveyor>();
                 boxOnConveyor.Init(endPoint, speed);
             }
         }

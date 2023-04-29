@@ -11,7 +11,7 @@ namespace LudumDare53.Boxes
         [SerializeField]
         public float maxHealth;
         [SerializeField]
-        private float fragilityLevel;
+        private float durabilityLevel;
         public UnityEvent<float> damaged;
     
         private float _health;
@@ -24,7 +24,7 @@ namespace LudumDare53.Boxes
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.relativeVelocity.magnitude >= fragilityLevel)
+            if (col.relativeVelocity.magnitude >= durabilityLevel)
             {
                 _health = Mathf.Clamp(_health - col.relativeVelocity.magnitude, 0, maxHealth);
                 damaged.Invoke(InterpolatedHealth);
