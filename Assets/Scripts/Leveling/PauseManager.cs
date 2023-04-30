@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace LudumDare53.Leveling
 {
@@ -19,11 +20,11 @@ namespace LudumDare53.Leveling
                 else SetResume();
             } 
         }
-        public static event Action Pause;
-        public static event Action Resume;
+        public static UnityEvent Pause = new();
+        public static UnityEvent Resume = new();
         public static void SetPause()
         {
-            Pause?.Invoke();
+            Pause.Invoke();
             _isPaused = true;
         }
         public static void SetResume()

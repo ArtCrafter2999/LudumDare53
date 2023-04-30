@@ -28,6 +28,8 @@ namespace LudumDare53.Boxes
             GetComponent<Collider2D>().enabled = false;
             GetComponent<DraggableObject>().enabled = false;
             GetComponent<Rigidbody2D>().isKinematic = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().angularVelocity = 0;
             disappeared.AddListener(() => Destroy(gameObject));
             GetComponent<SpriteRenderer>().DOFade(0, 5).OnComplete(disappeared.Invoke);
         }

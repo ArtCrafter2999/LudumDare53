@@ -104,7 +104,7 @@ Rigidbody2D:
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
+  m_UseAutoMass: 1
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
@@ -157,6 +157,9 @@ MonoBehaviour:
   damaged:
     m_PersistentCalls:
       m_Calls: []
+  crushed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2319382874704237996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +186,9 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: d6f3ee1be1d7b3545b76d22cb6336015, type: 3}
   - minDamage: 0
     sprite: {fileID: 21300000, guid: 9abb32cd7362295469db3a15f51f21b6, type: 3}
+  disappeared:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-658342998617269885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,12 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 356fe4981b2f489d80892d7967dd19d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2313308118414210443}
-  markersSprites:
-  - {fileID: 21300000, guid: 3ab759b1bc07258438887e9703254800, type: 3}
-  - {fileID: 21300000, guid: 47a1ed74564fc24429624a5ced984fea, type: 3}
-  - {fileID: 21300000, guid: 5794c7591d70c2a4d92019e59cf4887c, type: 3}
-  - {fileID: 21300000, guid: c215e240c85cc7d42ac6c527308f2ec2, type: 3}
+  type: 
 --- !u!114 &-4953074515186879165
 MonoBehaviour:
   m_ObjectHideFlags: 0

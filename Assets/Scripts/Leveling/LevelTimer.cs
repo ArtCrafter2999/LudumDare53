@@ -12,7 +12,7 @@ namespace LudumDare53.Leveling
 
         public UnityEvent timePassed;
 
-        private float _timer;
+        public float _timer;
         private void Start()
         {
             _timer = maxTime;
