@@ -1195,11 +1195,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e122a4348673ac42836d296c9cb3aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxesPool: []
-  width: 17
-  endPoint: {fileID: 968676309}
-  speed: 2
-  period: 2
+  boxesPool:
+  - {fileID: 2319382874704237987, guid: 500f96d42343dac458476323217cbc7b, type: 3}
+  startPoint: {fileID: 1365833137}
+  endPoint: {fileID: 1213625142}
 --- !u!4 &968676309
 Transform:
   m_ObjectHideFlags: 0

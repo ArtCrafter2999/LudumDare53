@@ -10,15 +10,54 @@ namespace LudumDare53.Boxes
 {
     public class Conveyor : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> boxesPool;
-        [SerializeField] private float width;
+        [Header("Form")]
         [SerializeField] private Transform endPoint;
+        [SerializeField] private float width;
+        [Header("Boxes")]
+        [SerializeField] private List<GameObject> ordinaryBoxes;
+        [SerializeField] private List<GameObject> coloredBoxes;
+
         private Vector2 StartPos => endPoint.position + Vector3.right * width;
-        [SerializeField] private float speed;
-        [SerializeField] private float period;
+        private float speed;
+        private float period;
+        private float coloredBoxChance;
 
         private void Start()
         {
+            switch (DifficultyManager.Difficulty) //TODO: Прописати значення для різних рівнів складності
+            {
+                default:
+                case 0:
+                    coloredBoxChance = 0f;
+                    speed = 1;
+                    period = 10;
+                    break;
+                case 1:
+                    coloredBoxChance = 0.1f;
+                    speed = 1;
+                    period = 10;
+                    break;
+                case 2:
+                    coloredBoxChance = 0.1f;
+                    speed = 1;
+                    period = 10;
+                    break;
+                case 3:
+                    coloredBoxChance = 0.1f;
+                    speed = 1;
+                    period = 10;
+                    break;
+                case 4:
+                    coloredBoxChance = 0.1f;
+                    speed = 1;
+                    period = 10;
+                    break;
+                case 5: 
+                    coloredBoxChance = 0.1f;
+                    speed = 1;
+                    period = 10;
+                    break;
+            }
             StartCoroutine(BoxGeneration());
         }
 
@@ -35,15 +74,21 @@ namespace LudumDare53.Boxes
                 }
                 seconds = period;
                 
-                if (boxesPool.Count == 0) continue;
-                var randomIndex = Random.Range(0, boxesPool.Count);
+                if (ordinaryBoxes.Count == 0 && coloredBoxes.Count == 0) continue;
                 var obj = Instantiate(
-                    boxesPool[randomIndex],
+                    RandomizeBox(),
                     StartPos,
                     Quaternion.identity
                 );
                 obj.GetComponent<BoxOnConveyor>().Init(StartPos, endPoint.position, speed);
             }
+        }
+
+        private GameObject RandomizeBox()
+        {
+            return Random.value > coloredBoxChance ?
+                ordinaryBoxes[Random.Range(0, ordinaryBoxes.Count)] :
+                coloredBoxes[Random.Range(0, coloredBoxes.Count)];
         }
 
         private void OnDrawGizmos()
