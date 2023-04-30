@@ -11,8 +11,8 @@ namespace LudumDare53.Leveling
         public void Start()
         {
             _animator = GetComponent<Animator>();
-            PauseManager.Pause.AddListener(OnPause);
-            PauseManager.Resume.AddListener(OnResume);
+            PauseManager.Pause += OnPause;
+            PauseManager.Resume += OnResume;
         }
 
         private void OnPause()
