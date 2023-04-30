@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SimpleHeirs;
+using System;
 
 namespace LudumDare53.Interactions
 {
@@ -28,16 +29,39 @@ namespace LudumDare53.Interactions
             _mouseDragEventsProviderValue = _mouseDragEventsProvider.GetValue();
             _mousePressingEventsProviderValue = _mousePressingEventsProvider.GetValue();
 
-            _mousePressingEventsProviderValue.MouseDown += MouseDown;
             _mouseDragEventsProviderValue.Dragged += Drag;
-            _mousePressingEventsProviderValue.MouseUp += MouseUp;
+            _mouseDragEventsProviderValue.DraggingStarted += OnDraggingStarted;
+            _mouseDragEventsProviderValue.DraggingStopped += OnDraggingStopped;
+            _mousePressingEventsProviderValue.MouseDown += MouseDown;
         }
 
         protected void OnDisable()
         {
             _mouseDragEventsProviderValue.DraggingStarted -= MouseDown;
             _mouseDragEventsProviderValue.Dragged -= Drag;
-            _mouseDragEventsProviderValue.DraggingStopped -= MouseUp;
+        }
+
+        private void OnDraggingStopped(Vector2 point)
+        {
+            if (_draggableObject != null)
+            {
+                Vector2 direction = GetTargetDirection(point);
+                float magnitude = Mathf.Min(
+                    GetSpeed(_draggableObject.Rigidbody2D), 
+                    direction.magnitude);
+
+                _draggableObject.Rigidbody2D.velocity = direction.normalized * magnitude;
+                _draggableObject.StopDragging();
+                ResetTarget();
+            }
+        }
+
+        private void OnDraggingStarted(Vector2 obj)
+        {
+            if(_draggableObject != null )
+            {
+                _draggableObject.StartDragging();
+            }
         }
 
         private void MouseDown(Vector2 point)
@@ -57,23 +81,28 @@ namespace LudumDare53.Interactions
             Rigidbody2D rigidbody = _draggableObject?.Rigidbody2D;
             if (rigidbody != null)
             {
-                _draggableObject.StartDragging();
-                Vector2 targetPosition = _draggableObject.transform
-                    .TransformPoint(_initialOffset);
+                Vector2 targetDirection = GetTargetDirection(point);
 
-                Vector2 targetDirection = point - targetPosition;
-                
                 rigidbody.velocity = targetDirection.normalized * Mathf.Min(
-                    _moveSpeed / (rigidbody.mass * _massFactor), 
+                    GetSpeed(rigidbody),
                     targetDirection.magnitude / Time.fixedDeltaTime);
 
                 _pointer.transform.position = point;
             }
         }
 
-        private void MouseUp(Vector2 point)
+        private float GetSpeed(Rigidbody2D rigidbody)
         {
-            ResetTarget();
+            return _moveSpeed / (rigidbody.mass * _massFactor);
+        }
+
+        private Vector2 GetTargetDirection(Vector2 point)
+        {
+            Vector2 targetPosition = _draggableObject.transform
+                                .TransformPoint(_initialOffset);
+
+            Vector2 targetDirection = point - targetPosition;
+            return targetDirection;
         }
 
         private void SetTarget(DraggableObject draggableObject, Vector2 worldHitPoint)
