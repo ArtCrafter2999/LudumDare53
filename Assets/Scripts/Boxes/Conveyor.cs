@@ -11,8 +11,9 @@ namespace LudumDare53.Boxes
     public class Conveyor : MonoBehaviour
     {
         [SerializeField] private List<GameObject> boxesPool;
-        [SerializeField] private Transform startPoint;
+        [SerializeField] private float width;
         [SerializeField] private Transform endPoint;
+        private Vector2 StartPos => endPoint.position + Vector3.right * width;
         [SerializeField] private float speed;
         [SerializeField] private float period;
 
@@ -35,27 +36,20 @@ namespace LudumDare53.Boxes
                 seconds = period;
                 
                 if (boxesPool.Count == 0) continue;
-                var wrap = new GameObject { transform = { position = startPoint.position } };
                 var randomIndex = Random.Range(0, boxesPool.Count);
                 var obj = Instantiate(
                     boxesPool[randomIndex],
-                    wrap.transform.position,
-                    Quaternion.identity,
-                    wrap.transform
+                    StartPos,
+                    Quaternion.identity
                 );
-                var halfOfHeight = obj
-                    .GetComponent<Collider2D>()
-                    .bounds.size.y / 2;
-                obj.transform.localPosition = Vector3.up * halfOfHeight;
-                var boxOnConveyor = wrap.AddComponent<BoxOnConveyor>();
-                boxOnConveyor.Init(wrap.transform, endPoint, speed);
+                obj.GetComponent<BoxOnConveyor>().Init(StartPos, endPoint.position, speed);
             }
         }
 
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(startPoint.position, endPoint.position);
+            Gizmos.DrawLine(StartPos, endPoint.position);
         }
     }
 }
