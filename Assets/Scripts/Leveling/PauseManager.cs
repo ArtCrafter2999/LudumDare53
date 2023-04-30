@@ -9,7 +9,7 @@ namespace LudumDare53.Leveling
 {
     public static class PauseManager
     {
-        private static bool _isPaused;
+        private static bool _isPaused = true;
         public static bool IsPaused
         {
             get => _isPaused;

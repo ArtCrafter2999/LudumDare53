@@ -15,6 +15,8 @@ namespace LudumDare53.Leveling
             _rb2d = GetComponent<Rigidbody2D>();
             PauseManager.Pause += OnPause;
             PauseManager.Resume += OnResume;
+            if(PauseManager.IsPaused) OnPause();
+            else OnResume();
         }
 
         private void OnPause()

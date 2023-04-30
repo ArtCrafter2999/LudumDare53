@@ -23,6 +23,11 @@ namespace LudumDare53.Leveling
             if(_timer <= 0) timePassed.Invoke();
             _timer -= Time.deltaTime;
         }
+
+        public void Reload()
+        {
+            _timer = maxTime;
+        }
     }
 }
 

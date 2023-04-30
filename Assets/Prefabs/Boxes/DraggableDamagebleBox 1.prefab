@@ -112,7 +112,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!61 &2319382874704237992
 BoxCollider2D:
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0376174a6c85c7d47b200022a56286d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _draggableLayerName: Draggable
   ObjectDraggingStarted:
     m_PersistentCalls:
       m_Calls:
@@ -240,7 +241,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-
+  ObjectDraggingStopped:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2019485377380374645}
+        m_TargetAssemblyTypeName: LudumDare53.Boxes.BoxOnConveyor, Assembly-CSharp
+        m_MethodName: OnDragEnded
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2019485377380374645
 MonoBehaviour:
   m_ObjectHideFlags: 0
