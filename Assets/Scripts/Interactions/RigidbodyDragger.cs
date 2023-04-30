@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using SimpleHeirs;
+using LudumDare53.Leveling;
 
 namespace LudumDare53.Interactions
 {
@@ -16,10 +17,15 @@ namespace LudumDare53.Interactions
         private Camera _camera;
         private IMouseDragEventsProvider _mouseDragEventsProviderValue;
         private IMousePressingEventsProvider _mousePressingEventsProviderValue;
-        private float _previousGravityScale;
-        private CollisionDetectionMode2D _previousCollisionDetectionMode;
         private Vector2 _initialOffset;
         private DraggableObject _draggableObject;
+
+        public bool IsDragging { get => _draggableObject != null; }
+
+        public void StopDragging()
+        {
+            MouseUp(Vector2.zero);
+        }
 
         protected void OnEnable()
         {
@@ -28,16 +34,37 @@ namespace LudumDare53.Interactions
             _mouseDragEventsProviderValue = _mouseDragEventsProvider.GetValue();
             _mousePressingEventsProviderValue = _mousePressingEventsProvider.GetValue();
 
-            _mousePressingEventsProviderValue.MouseDown += MouseDown;
             _mouseDragEventsProviderValue.Dragged += Drag;
+            _mouseDragEventsProviderValue.DraggingStarted += OnDraggingStarted;
+            _mousePressingEventsProviderValue.MouseDown += MouseDown;
             _mousePressingEventsProviderValue.MouseUp += MouseUp;
+            PauseManager.Pause += StopDragging;
         }
 
         protected void OnDisable()
         {
-            _mouseDragEventsProviderValue.DraggingStarted -= MouseDown;
             _mouseDragEventsProviderValue.Dragged -= Drag;
-            _mouseDragEventsProviderValue.DraggingStopped -= MouseUp;
+            _mouseDragEventsProviderValue.DraggingStarted -= OnDraggingStarted;
+            _mousePressingEventsProviderValue.MouseDown -= MouseDown;
+            _mousePressingEventsProviderValue.MouseUp -= MouseUp;
+            PauseManager.Pause -= StopDragging;
+        }
+
+        private void MouseUp(Vector2 point)
+        {
+            if (IsDragging)
+            {
+                _draggableObject.OnDraggingStoped();
+                ResetTarget();
+            }
+        }
+
+        private void OnDraggingStarted(Vector2 obj)
+        {
+            if(IsDragging)
+            {
+                _draggableObject.OnDraggingStarted();
+            }
         }
 
         private void MouseDown(Vector2 point)
@@ -57,31 +84,36 @@ namespace LudumDare53.Interactions
             Rigidbody2D rigidbody = _draggableObject?.Rigidbody2D;
             if (rigidbody != null)
             {
-                _draggableObject.StartDragging();
-                Vector2 targetPosition = _draggableObject.transform
-                    .TransformPoint(_initialOffset);
+                Vector2 targetDirection = GetTargetDirection(point);
 
-                Vector2 targetDirection = point - targetPosition;
-                
-                rigidbody.velocity = targetDirection.normalized * Mathf.Min(
-                    _moveSpeed / (rigidbody.mass * _massFactor), 
-                    targetDirection.magnitude / Time.fixedDeltaTime);
+                rigidbody.velocity += targetDirection.normalized * GetSpeed(rigidbody);
 
+                float maxMagnitude 
+                    = Mathf.Min(targetDirection.magnitude / Time.fixedDeltaTime, _moveSpeed);
+                float currentMagnitude = Mathf.Min(rigidbody.velocity.magnitude, maxMagnitude);
+                rigidbody.velocity = targetDirection.normalized * currentMagnitude;
                 _pointer.transform.position = point;
             }
         }
 
-        private void MouseUp(Vector2 point)
+        private float GetSpeed(Rigidbody2D rigidbody)
         {
-            ResetTarget();
+            return (_moveSpeed / (rigidbody.mass * _massFactor)) * Time.deltaTime;
+        }
+
+        private Vector2 GetTargetDirection(Vector2 point)
+        {
+            Vector2 targetPosition = _draggableObject.transform
+                                .TransformPoint(_initialOffset);
+
+            Vector2 targetDirection = point - targetPosition;
+            return targetDirection;
         }
 
         private void SetTarget(DraggableObject draggableObject, Vector2 worldHitPoint)
         {
             _draggableObject = draggableObject;
             _pointer.transform.position = worldHitPoint;
-            _previousGravityScale = draggableObject.Rigidbody2D.gravityScale;
-            _previousCollisionDetectionMode = draggableObject.Rigidbody2D.collisionDetectionMode;
             _initialOffset = draggableObject.transform.InverseTransformPoint(worldHitPoint);
 
             draggableObject.Rigidbody2D.gravityScale = 0;
@@ -93,8 +125,8 @@ namespace LudumDare53.Interactions
         {
             if (_draggableObject != null)
             {
-                _draggableObject.Rigidbody2D.gravityScale = _previousGravityScale;
-                _draggableObject.Rigidbody2D.collisionDetectionMode = _previousCollisionDetectionMode;
+                _draggableObject.Rigidbody2D.gravityScale = _draggableObject.StartGravityScale;
+                _draggableObject.Rigidbody2D.collisionDetectionMode = _draggableObject.StartCollisionDetectionMode;
             }
             _draggableObject = null;
         }

@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
+using LudumDare53.Interactions;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -13,10 +15,23 @@ namespace LudumDare53.Boxes
         [SerializeField] private List<DamageSprite> damageSprites;
 
         private BoxDamage _boxDamage;
+        public UnityEvent disappeared;
         private float Health => _boxDamage.InterpolatedHealth;
         private void Start()
         {
             _boxDamage = GetComponent<BoxDamage>();
+            _boxDamage.crushed.AddListener(Disappearing);
+        }
+        
+        private void Disappearing()
+        {
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<DraggableObject>().enabled = false;
+            GetComponent<Rigidbody2D>().isKinematic = true;
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            GetComponent<Rigidbody2D>().angularVelocity = 0;
+            disappeared.AddListener(() => Destroy(gameObject));
+            GetComponent<SpriteRenderer>().DOFade(0, 5).OnComplete(disappeared.Invoke);
         }
 
         private void Update()

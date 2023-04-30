@@ -24,7 +24,7 @@ namespace DanPie.Framework.Randomnicity
         {
             if (selectableItems == null)
             {
-                throw new ArgumentException($"{nameof(selectableItems)} list can't be null!");
+                throw new ArgumentException($"{nameof(selectableItems)} _progressObjects can't be null!");
             }
 
             _selectableItems = new List<T>(selectableItems);

@@ -48,13 +48,9 @@ namespace LudumDare53.Interactions
                     Dragged?.Invoke(dragPos);
                     _lastDragPos = GetWorldPos();
                 }
-                else if (Input.GetMouseButtonUp(0) && !_isDragging)
+                else if (Input.GetMouseButtonUp(0) && _isDragging)
                 {
-                    _lastActionScreenPoint = Input.mousePosition;
                     DraggingStopped?.Invoke(GetWorldPos());
-                }
-                else if (Input.GetMouseButtonUp(0))
-                {
                     _isDragging = false;
                 }
             }

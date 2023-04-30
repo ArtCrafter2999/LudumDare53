@@ -12,7 +12,7 @@ namespace LudumDare53.Leveling
 
         public UnityEvent timePassed;
 
-        private float _timer;
+        public float _timer;
         private void Start()
         {
             _timer = maxTime;
@@ -22,6 +22,11 @@ namespace LudumDare53.Leveling
             if(PauseManager.IsPaused) return;
             if(_timer <= 0) timePassed.Invoke();
             _timer -= Time.deltaTime;
+        }
+
+        public void Reload()
+        {
+            _timer = maxTime;
         }
     }
 }
