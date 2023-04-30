@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 463401557774807407}
   - component: {fileID: -4953074515186879165}
   - component: {fileID: -638091779382140714}
+
   m_Layer: 0
   m_Name: DraggableDamagebleBox 2
   m_TagString: Box
@@ -240,7 +241,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+
 --- !u!114 &-638091779382140714
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
