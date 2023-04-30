@@ -28,7 +28,7 @@ namespace LudumDare53.Boxes
             {
                 default:
                 case 0:
-                    coloredBoxChance = 0.1f;
+                    coloredBoxChance = 0f;
                     speed = 1;
                     period = 10;
                     break;
