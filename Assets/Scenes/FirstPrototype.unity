@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 128510099}
   - component: {fileID: 128510098}
   - component: {fileID: 128510097}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Cargo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -780,6 +780,7 @@ MonoBehaviour:
     _targetObject: {fileID: 661788197}
     _isFolded: 0
   _moveSpeed: 17
+  _massFactor: 1
   _pointer: {fileID: 158771734}
   references:
     version: 2
@@ -1196,6 +1197,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   boxesPool:
   - {fileID: 2319382874704237987, guid: 500f96d42343dac458476323217cbc7b, type: 3}
+  - {fileID: 2319382874704237987, guid: 618395c2f1959964d8acd4c7b2073910, type: 3}
+  - {fileID: 2319382874704237987, guid: ee80be4d674831047a2f12a547167242, type: 3}
   startPoint: {fileID: 1365833137}
   endPoint: {fileID: 1213625142}
   speed: 2

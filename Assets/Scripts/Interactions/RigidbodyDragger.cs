@@ -9,6 +9,8 @@ namespace LudumDare53.Interactions
         [SerializeField] private HeirsProvider<IMousePressingEventsProvider> _mousePressingEventsProvider;
         [Min(0)]
         [SerializeField] private float _moveSpeed;
+        [Tooltip("Determines the degree to which the mass will affect the move speed of the object.")]
+        [SerializeField] private float _massFactor = 1f;
         [SerializeField] private Rigidbody2D _pointer;
 
         private Camera _camera;
@@ -62,7 +64,7 @@ namespace LudumDare53.Interactions
                 Vector2 targetDirection = point - targetPosition;
                 
                 rigidbody.velocity = targetDirection.normalized * Mathf.Min(
-                    _moveSpeed, 
+                    _moveSpeed / (rigidbody.mass * _massFactor), 
                     targetDirection.magnitude / Time.fixedDeltaTime);
 
                 _pointer.transform.position = point;
