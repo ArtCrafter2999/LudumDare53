@@ -1,4 +1,5 @@
 using LudumDare53.Leveling;
+using LudumDare53.UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
