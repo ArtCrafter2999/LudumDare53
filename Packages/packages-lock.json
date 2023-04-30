@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.qplaze.simple-heirs": {
+      "version": "https://github.com/DanyloSih/SimpleHeirs.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "2550a9820a54e68904f3c50e92f1553e436d0765"
+    },
     "com.unity.2d.animation": {
       "version": "7.0.9",
       "depth": 1,
