@@ -19,10 +19,10 @@ namespace LudumDare53.Truck
 
         public void RemoveTruck(Truck truck)
         {
-            StartCoroutine(CoroutineUtilities.WaitForSeconds(.5f, () =>
+            StartCoroutine(CoroutineUtilities.WaitForSeconds(2f, () =>
             truck.MoveTo(truck.transform.position.x - _moveDistance * 2)));
 
-            StartCoroutine(CoroutineUtilities.WaitForSeconds(1f, () =>
+            StartCoroutine(CoroutineUtilities.WaitForSeconds(10f, () =>
                 Destroy(truck.gameObject)));
         }
     }
