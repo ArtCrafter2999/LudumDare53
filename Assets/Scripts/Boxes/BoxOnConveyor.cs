@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using LudumDare53.Leveling;
@@ -8,13 +9,16 @@ namespace LudumDare53.Boxes
     public class BoxOnConveyor : MonoBehaviour
     {
         private Rigidbody2D _rb2d;
-        private Transform _endPoint;
+        private Vector2 _startPoint;
+        private Vector2 _endPoint ;
         private float _speed;
         private Vector2 _inertia;
         private bool _toDetach;
+        private Vector2 _offset;
 
         public void Start()
         {
+            _offset = Vector2.up * gameObject.GetComponent<Collider2D>().bounds.size.y / 2;
             _rb2d = GetComponentInChildren<Rigidbody2D>();
             _rb2d.bodyType = RigidbodyType2D.Kinematic;
         }
@@ -25,38 +29,48 @@ namespace LudumDare53.Boxes
             if (_toDetach)
             {
                 _rb2d.AddForce(_inertia * _speed, ForceMode2D.Impulse);
-                Destroy(gameObject);
+                enabled = false;
                 return;
             }
 
-            var torwardPosition =
-                Vector3.MoveTowards(
-                    transform.position,
-                    _endPoint.position,
-                    _speed * Time.fixedDeltaTime
-                );
-            transform.position = torwardPosition;
-            if (Vector3.MoveTowards(
-                    torwardPosition,
-                    _endPoint.position,
-                    _speed * Time.fixedDeltaTime
-                )
-                == _endPoint.position) DetachFromConveyor();
+            var currentPos = transform.position.x * Vector2.right + // current position
+                             Vector2.up * (_startPoint.y + _offset.y); //offset depending of box size;
+            var destinationPos = _endPoint + _offset;
+
+            var towardPosition = Vector2.MoveTowards(
+                currentPos,
+                destinationPos,
+                _speed * Time.fixedDeltaTime);
+            transform.position = towardPosition;
+            var futurePosition = Vector2.MoveTowards(
+                towardPosition,
+                destinationPos,
+                _speed * Time.fixedDeltaTime);
+            Debug.Log($"{futurePosition}, {_endPoint + _offset}");
+            if (futurePosition == _endPoint + _offset) DetachFromConveyor();
         }
 
-        private void DetachFromConveyor()
+        public void DetachFromConveyor()
         {
             if (PauseManager.IsPaused) return;
             _rb2d.bodyType = RigidbodyType2D.Dynamic;
             _toDetach = true;
-            _rb2d.transform.parent = transform.parent;
         }
 
-        public void Init(Transform endPoint, float speed)
+        public void Init(Vector2 startPoint, Vector2 endPoint, float speed)
         {
+            _startPoint = startPoint;
             _endPoint = endPoint;
             _speed = speed;
-            _inertia = (_endPoint.position - transform.position).normalized;
+            _inertia = (_endPoint - (Vector2)transform.position).normalized;
         }
+
+        // private void OnDrawGizmos()
+        // {
+        //     Gizmos.color = Color.red;
+        //     Gizmos.DrawWireSphere(transform.position, 1);
+        //     Gizmos.color = Color.green;
+        //     Gizmos.DrawWireSphere(_endPoint + _offset, 1);
+        // }
     }
 }
