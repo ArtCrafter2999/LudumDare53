@@ -11,30 +11,15 @@ namespace LudumDare53.Truck
         {
             Truck truck = Instantiate(_truckPrefab, position.position, Quaternion.identity);
             truck.transform.SetParent(position);
-            AddButtons(truck);
+
+
+            Canvas canvas = truck.GetComponentInChildren<Canvas>();
+            canvas.enabled = false;
+            truck.TruckFull.AddListener((truck, boxes) => canvas.enabled = true);
+            truck.TruckNotFull.AddListener((truck, boxes) => canvas.enabled = false);
 
             truck.MoveTo(truck.transform.position.x - _moveDistance);
             return truck;
-        }
-
-        private void AddButtons(Truck truck)
-        {
-            Canvas canvas = truck.GetComponentInChildren<Canvas>();
-
-            RectTransform buttonRectTransform = truck.GoButton.gameObject.GetComponent<RectTransform>();
-
-            Vector3 worldButtonPosition = truck.transform.TransformPoint(new Vector3(-40f, 3.97f, 0));
-            Vector2 screenPosition = RectTransformUtility.WorldToScreenPoint(Camera.main, worldButtonPosition);
-
-            RectTransform canvasRect = canvas.gameObject.GetComponent<RectTransform>();
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect, screenPosition,
-                canvas.worldCamera, out Vector2 localButtonPosition);
-
-            buttonRectTransform.localPosition = localButtonPosition;
-            buttonRectTransform.localScale = Vector3.one;
-
-            canvas.enabled = false;
-            truck.TruckFull.AddListener((truck, boxes) => canvas.enabled = true);
         }
 
         public void RemoveTruck(Truck truck)
