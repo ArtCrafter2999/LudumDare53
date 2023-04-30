@@ -18,7 +18,6 @@ namespace LudumDare53.UI
     
         private void Start()
         {
-            
             timer.timePassed.AddListener(DayIsOver);
         }
 
@@ -59,17 +58,17 @@ namespace LudumDare53.UI
     
         public void NextDay()
         {
-            
+            LevelManager.NextLevel();
         }
     
         public void TryAgain()
         {
-            
+            LevelManager.ContinueGame();
         }
     
         public void Menu()
         {
-            
+            LevelManager.BackToMenu();
         }
     }
 }

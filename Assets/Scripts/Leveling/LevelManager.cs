@@ -8,22 +8,26 @@ namespace LudumDare53.Leveling
         {
             DifficultyManager.SetDifficulty(0);
             SceneManager.LoadScene("Level"); //TODO: Змінити на назву сцени гри
+            PauseManager.SetResume();
         }
 
         public static void ContinueGame()
         {
             SceneManager.LoadScene("Level"); //TODO: Змінити на назву сцени гри
+            PauseManager.SetResume();
         }
 
         public static void NextLevel()
         {
             DifficultyManager.SetDifficulty(DifficultyManager.Difficulty+1);
             SceneManager.LoadScene("Level"); //TODO: Змінити на назву сцени гри
+            PauseManager.SetResume();
         }
 
         public static void BackToMenu()
         {
             SceneManager.LoadScene("MainMenu"); //TODO: Замінити на назву сцени головного меню
+            PauseManager.SetResume();
         }
     }
 }
