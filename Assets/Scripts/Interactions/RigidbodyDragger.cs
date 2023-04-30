@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using SimpleHeirs;
 using LudumDare53.Leveling;
+using System;
 
 namespace LudumDare53.Interactions
 {
@@ -19,6 +20,7 @@ namespace LudumDare53.Interactions
         private IMousePressingEventsProvider _mousePressingEventsProviderValue;
         private Vector2 _initialOffset;
         private DraggableObject _draggableObject;
+        private bool _isPaused;
 
         public bool IsDragging { get => _draggableObject != null; }
 
@@ -29,6 +31,7 @@ namespace LudumDare53.Interactions
 
         protected void OnEnable()
         {
+            _isPaused = PauseManager.IsPaused;
             ResetTarget();
             _camera = Camera.main;
             _mouseDragEventsProviderValue = _mouseDragEventsProvider.GetValue();
@@ -38,17 +41,32 @@ namespace LudumDare53.Interactions
             _mouseDragEventsProviderValue.DraggingStarted += OnDraggingStarted;
             _mousePressingEventsProviderValue.MouseDown += MouseDown;
             _mousePressingEventsProviderValue.MouseUp += MouseUp;
-            PauseManager.Pause += StopDragging;
+            PauseManager.Pause.AddListener(OnPause);
+            PauseManager.Resume.AddListener(OnResume);
         }
 
+        
         protected void OnDisable()
         {
             _mouseDragEventsProviderValue.Dragged -= Drag;
             _mouseDragEventsProviderValue.DraggingStarted -= OnDraggingStarted;
             _mousePressingEventsProviderValue.MouseDown -= MouseDown;
             _mousePressingEventsProviderValue.MouseUp -= MouseUp;
-            PauseManager.Pause -= StopDragging;
+            PauseManager.Pause.RemoveListener(OnPause);
+            PauseManager.Resume.RemoveListener(OnResume);
         }
+
+        private void OnPause()
+        {
+            _isPaused = true;
+            ResetTarget();
+        }
+
+        private void OnResume()
+        {
+            _isPaused = false;
+        }
+
 
         private void MouseUp(Vector2 point)
         {
@@ -69,6 +87,12 @@ namespace LudumDare53.Interactions
 
         private void MouseDown(Vector2 point)
         {
+
+            if(_isPaused)
+            {
+                return;
+            }
+
             Ray ray = _camera.ScreenPointToRay(_camera.WorldToScreenPoint(point));
             RaycastHit2D hit = Physics2D.Raycast(ray.origin, Vector2.zero);
             var draggableObject = hit.collider?.GetComponent<DraggableObject>();
