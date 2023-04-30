@@ -48,7 +48,7 @@ namespace LudumDare53.Boxes
                     .bounds.size.y / 2;
                 obj.transform.localPosition = Vector3.up * halfOfHeight;
                 var boxOnConveyor = wrap.AddComponent<BoxOnConveyor>();
-                boxOnConveyor.Init(endPoint, speed);
+                boxOnConveyor.Init(wrap.transform, endPoint, speed);
             }
         }
 

@@ -1,7 +1,21 @@
-﻿namespace LudumDare53.Leveling
+﻿using System.Collections.Generic;
+using JetBrains.Annotations;
+using UnityEngine;
+
+namespace LudumDare53.Leveling
 {
-    public static class DifficultyManager
+    public class DifficultyManager : MonoBehaviour
     {
-        public static int Difficulty { get; set; } = 1;
+        [CanBeNull] private static DifficultyManager _instance;
+        [SerializeField] private List<DifficultyParams> paramsLevels;
+        public static DifficultyManager Instance {
+            get
+            {
+                if (_instance != null) return _instance;
+                var o = new GameObject("DifficultyManager");
+                var component = o.AddComponent<DifficultyManager>();
+                return component;
+            }
+        }
     }
 }

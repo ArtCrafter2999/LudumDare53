@@ -7,6 +7,7 @@ namespace LudumDare53.Boxes
 {
     public class BoxOnConveyor : MonoBehaviour
     {
+        private Transform _wrapObject;
         private Rigidbody2D _rb2d;
         private Transform _endPoint;
         private float _speed;
@@ -25,13 +26,13 @@ namespace LudumDare53.Boxes
             if (_toDetach)
             {
                 _rb2d.AddForce(_inertia * _speed, ForceMode2D.Impulse);
-                Destroy(gameObject);
+                Destroy(_wrapObject.gameObject);
                 return;
             }
 
             var towardPosition =
                 Vector3.MoveTowards(
-                    transform.position,
+                    _wrapObject.position,
                     _endPoint.position,
                     _speed * Time.fixedDeltaTime
                 );
@@ -49,11 +50,12 @@ namespace LudumDare53.Boxes
             if (PauseManager.IsPaused) return;
             _rb2d.bodyType = RigidbodyType2D.Dynamic;
             _toDetach = true;
-            _rb2d.transform.parent = transform.parent;
+            _rb2d.transform.parent = _wrapObject.parent;
         }
 
-        public void Init(Transform endPoint, float speed)
+        public void Init(Transform wrapObject,Transform endPoint, float speed)
         {
+            _wrapObject = wrapObject;
             _endPoint = endPoint;
             _speed = speed;
             _inertia = (_endPoint.position - transform.position).normalized;
