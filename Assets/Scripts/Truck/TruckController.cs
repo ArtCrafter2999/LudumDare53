@@ -46,7 +46,7 @@ namespace LudumDare53.Truck
             Truck truck = _truckFactory.CreateTruck(position);
             _trucks.Add(truck);
 
-            truck.TruckFull.AddListener((truck) =>
+            truck.TruckFull.AddListener((truck, boxes) =>
             {
                 RemoveTruck(truck);
                 StartCoroutine(CoroutineUtilities.WaitForSeconds(_truckSpawnDelay, CreateTruck));
