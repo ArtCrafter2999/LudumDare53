@@ -1,9 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using LudumDare53.Leveling;
 using UnityEngine;
 
-namespace LudumDare53.Leveling
+namespace LudumDare53.UI
 {
     public class UIManager : MonoBehaviour
     {
@@ -17,9 +18,21 @@ namespace LudumDare53.Leveling
     
         private void Start()
         {
+            
             timer.timePassed.AddListener(DayIsOver);
         }
-    
+
+        private bool _prevEscape = false;
+        public void Update()
+        {
+            if (Input.GetKey(KeyCode.Escape) && !_prevEscape)
+            {
+                if(!PauseManager.IsPaused)Pause();
+                else Resume();
+            }
+            _prevEscape = Input.GetKey(KeyCode.Escape);
+        }
+
         public void Pause()
         {
             pauseScreen.SetActive(true);

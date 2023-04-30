@@ -23,10 +23,17 @@ namespace LudumDare53.Boxes
 
         private IEnumerator BoxGeneration()
         {
+            float seconds = 0;
             while (gameObject.activeSelf)
             {
-                yield return new WaitForSeconds(period);
-                if (PauseManager.IsPaused) yield return new WaitWhile(() => PauseManager.IsPaused);
+                yield return new WaitForFixedUpdate();
+                if (seconds > 0)
+                {
+                    if(!PauseManager.IsPaused) seconds -= Time.deltaTime;
+                    continue;
+                }
+                seconds = period;
+                
                 if (boxesPool.Count == 0) continue;
                 var wrap = new GameObject { transform = { position = startPoint.position } };
                 var randomIndex = Random.Range(0, boxesPool.Count);
