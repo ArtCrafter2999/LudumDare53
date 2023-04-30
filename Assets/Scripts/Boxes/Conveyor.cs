@@ -1,30 +1,71 @@
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using LudumDare53.Leveling;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 namespace LudumDare53.Boxes
 {
+    [RequireComponent(typeof(SurfaceEffector2D))]
     public class Conveyor : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> boxesPool;
-        [SerializeField] private float width;
-        [SerializeField] private Transform endPoint;
-        private Vector2 StartPos => endPoint.position + Vector3.right * width;
-        [SerializeField] private float speed;
-        [SerializeField] private float period;
+        private SurfaceEffector2D _surfaceEffector2D;
+        
+        [Header("BoxesGeneration")]
+        [SerializeField] private Transform generatePoint;
+        [SerializeField] private List<GameObject> ordinaryBoxes;
+        [SerializeField] private List<GameObject> coloredBoxes;
+
+        private float speed
+        {
+            get => -_surfaceEffector2D.speed;
+            set => _surfaceEffector2D.speed = -value;
+        }
+        private float period;
+        private float coloredBoxChance;
 
         private void Start()
         {
+            _surfaceEffector2D = GetComponent<SurfaceEffector2D>();
+            switch (DifficultyManager.Difficulty) //TODO: Прописати значення для різних рівнів складності
+            {
+                default:
+                case 0:
+                    coloredBoxChance = 0f;
+                    speed = 2;
+                    period = 10;
+                    break;
+                case 1:
+                    coloredBoxChance = 0.1f;
+                    speed = 2;
+                    period = 10;
+                    break;
+                case 2:
+                    coloredBoxChance = 0.1f;
+                    speed = 2;
+                    period = 10;
+                    break;
+                case 3:
+                    coloredBoxChance = 0.1f;
+                    speed = 2;
+                    period = 10;
+                    break;
+                case 4:
+                    coloredBoxChance = 0.1f;
+                    speed = 2;
+                    period = 10;
+                    break;
+                case 5: 
+                    coloredBoxChance = 0.1f;
+                    speed = 2;
+                    period = 10;
+                    break;
+            }
             StartCoroutine(BoxGeneration());
         }
 
         private IEnumerator BoxGeneration()
         {
-            float seconds = 0;
+            var seconds = period;
             while (gameObject.activeSelf)
             {
                 yield return new WaitForFixedUpdate();
@@ -35,21 +76,20 @@ namespace LudumDare53.Boxes
                 }
                 seconds = period;
                 
-                if (boxesPool.Count == 0) continue;
-                var randomIndex = Random.Range(0, boxesPool.Count);
+                if (ordinaryBoxes.Count == 0 && coloredBoxes.Count == 0) continue;
                 var obj = Instantiate(
-                    boxesPool[randomIndex],
-                    StartPos,
+                    RandomizeBox(),
+                    generatePoint.position,
                     Quaternion.identity
                 );
-                obj.GetComponent<BoxOnConveyor>().Init(StartPos, endPoint.position, speed);
             }
         }
 
-        private void OnDrawGizmos()
+        private GameObject RandomizeBox()
         {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(StartPos, endPoint.position);
+            return Random.value > coloredBoxChance ?
+                ordinaryBoxes[Random.Range(0, ordinaryBoxes.Count)] :
+                coloredBoxes[Random.Range(0, coloredBoxes.Count)];
         }
     }
 }
