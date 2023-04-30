@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 2319382874704237996}
   - component: {fileID: -658342998617269885}
   - component: {fileID: -4953074515186879165}
-  - component: {fileID: -6869676110199128554}
   m_Layer: 0
   m_Name: MiddleBoxGreen
   m_TagString: Box
@@ -155,6 +154,9 @@ MonoBehaviour:
   damaged:
     m_PersistentCalls:
       m_Calls: []
+  crushed:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2319382874704237996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,6 +179,9 @@ MonoBehaviour:
     sprite: {fileID: 1844386866, guid: 36b3e5ff7bfacfa4dbca4559155d7f0b, type: 3}
   - minDamage: 0.25
     sprite: {fileID: 782886689, guid: 36b3e5ff7bfacfa4dbca4559155d7f0b, type: 3}
+  disappeared:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-658342998617269885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,31 +209,7 @@ MonoBehaviour:
   _draggableLayerName: Draggable
   ObjectDraggingStarted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6869676110199128554}
-        m_TargetAssemblyTypeName: LudumDare53.Boxes.BoxOnConveyor, Assembly-CSharp
-        m_MethodName: OnDragStarted
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   ObjectDraggingStopped:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &-6869676110199128554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319382874704237987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 038c4b6e1f568954ba3b24bdab2f13cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
