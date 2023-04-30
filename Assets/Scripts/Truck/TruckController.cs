@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace LudumDare53.Truck
 {
@@ -48,8 +49,16 @@ namespace LudumDare53.Truck
 
             truck.TruckFull.AddListener((truck, boxes) =>
             {
-                RemoveTruck(truck);
-                StartCoroutine(CoroutineUtilities.WaitForSeconds(_truckSpawnDelay, CreateTruck));
+                Button button = truck.GetComponentInChildren<Button>();
+                if (button != null)
+                {
+                    button.onClick.AddListener(() =>
+                    {
+                        RemoveTruck(truck);
+                        button.gameObject.SetActive(false);
+                        StartCoroutine(CoroutineUtilities.WaitForSeconds(_truckSpawnDelay, CreateTruck));
+                    });
+                }
             });
         }
 
