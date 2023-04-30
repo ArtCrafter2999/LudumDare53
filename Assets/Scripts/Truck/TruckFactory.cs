@@ -22,7 +22,7 @@ namespace LudumDare53.Truck
             StartCoroutine(CoroutineUtilities.WaitForSeconds(2f, () =>
             truck.MoveTo(truck.transform.position.x - _moveDistance * 2)));
 
-            StartCoroutine(CoroutineUtilities.WaitForSeconds(10f, () =>
+            StartCoroutine(CoroutineUtilities.WaitForSeconds(3f, () =>
                 Destroy(truck.gameObject)));
         }
     }
