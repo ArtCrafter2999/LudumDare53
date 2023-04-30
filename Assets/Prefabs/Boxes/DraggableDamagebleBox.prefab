@@ -230,7 +230,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -6869676110199128554}
         m_TargetAssemblyTypeName: LudumDare53.Boxes.BoxOnConveyor, Assembly-CSharp
-        m_MethodName: DetachFromConveyor
+        m_MethodName: OnDragStarted
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
