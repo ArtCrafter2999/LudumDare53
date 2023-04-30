@@ -52,8 +52,11 @@ namespace LudumDare53.Truck
         {
             foreach (GameObject box in _boxes)
             {
-                Destroy(box.GetComponent<Rigidbody2D>());
-                Destroy(box.GetComponent<Collider2D>());
+                var rb = box.GetComponent<Rigidbody2D>();
+                var bc = box.GetComponent<Collider2D>();
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                bc.enabled = false;
+
                 box.transform.SetParent(transform);
             }
         }

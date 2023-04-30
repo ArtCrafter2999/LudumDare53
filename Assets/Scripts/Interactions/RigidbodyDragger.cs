@@ -55,6 +55,7 @@ namespace LudumDare53.Interactions
             Rigidbody2D rigidbody = _draggableObject?.Rigidbody2D;
             if (rigidbody != null)
             {
+                _draggableObject.StartDragging();
                 Vector2 targetPosition = _draggableObject.transform
                     .TransformPoint(_initialOffset);
 
