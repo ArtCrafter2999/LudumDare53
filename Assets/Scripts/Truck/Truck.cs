@@ -3,6 +3,7 @@ using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace LudumDare53.Truck
 {
@@ -16,6 +17,7 @@ namespace LudumDare53.Truck
         private float _occupiedArea = 0f;
         private List<GameObject> _boxes = new();
         private float _maxArea => _cargoCollider.bounds.size.x * _cargoCollider.bounds.size.y;
+        public Button GoButton => GetComponentInChildren<Button>();
 
         /// <summary>
         /// Event that is triggered when the truck is full.
