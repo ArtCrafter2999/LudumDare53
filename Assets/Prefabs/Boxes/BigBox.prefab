@@ -221,9 +221,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ObjectDraggingStopped:
-    m_PersistentCalls:
-      m_Calls: []
+
 --- !u!114 &2019485377380374645
 MonoBehaviour:
   m_ObjectHideFlags: 0
