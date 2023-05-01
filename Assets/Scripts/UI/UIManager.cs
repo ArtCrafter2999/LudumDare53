@@ -88,6 +88,7 @@ namespace LudumDare53.UI
             mainMenuScreen.SetActive(false);
             PauseManager.SetResume(PauseManager.PauseCause.Player);
             PauseManager.SetResume(PauseManager.PauseCause.GameMenu);
+            PauseManager.SetResume(PauseManager.PauseCause.Tutorial); //TODO: можливо доведеться видалити
         }
 
         public void YouAreFired()
@@ -108,6 +109,8 @@ namespace LudumDare53.UI
         {
             DifficultyManager.SetDifficulty(DifficultyManager.Difficulty + 1);
             timer.Reload();
+            SmoothFadeOut();
+            dayIsOverScreen.SetActive(false);
             nodePlayer.StartSequence();
         }
 

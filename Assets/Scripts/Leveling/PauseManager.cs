@@ -17,7 +17,7 @@ namespace LudumDare53.Leveling
             Tutorial,
         }
 
-        public static PauseCause Cause { get; private set; }
+        public static PauseCause Cause { get; set; }
         private static readonly Dictionary<Type, bool> Include = new();
         public static bool IsPaused { get; private set; } = true;
         public static readonly UnityEvent Pause = new();
@@ -52,15 +52,15 @@ namespace LudumDare53.Leveling
         public static void SetPause(PauseCause cause)
         {
             Cause = cause;
-            Pause.Invoke();
             IsPaused = true;
+            Pause.Invoke();
         }
         public static void SetResume()
         {
             Resume?.Invoke();
             IsPaused = false;
         }
-        public static void SetResume(PauseManager.PauseCause ifCause)
+        public static void SetResume(PauseCause ifCause)
         {
             if(Cause!=ifCause) return;
             Resume?.Invoke();

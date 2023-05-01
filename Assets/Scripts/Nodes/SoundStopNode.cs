@@ -7,6 +7,7 @@ namespace LudumDare53.Nodes
     {
         public override bool Invoke()
         {
+            if (NodePlayer.source == null) return true;
             NodePlayer.source.Stop();
             return true;
         }

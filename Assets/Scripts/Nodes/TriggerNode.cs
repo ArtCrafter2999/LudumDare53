@@ -5,7 +5,12 @@ namespace LudumDare53.Nodes
     [CreateAssetMenu(menuName = "Nodes/TriggerNode")]
     public class TriggerNode : NodeBase
     {
-        private bool isTriggered = false;
+        private bool isTriggered;
+
+        public override void Init()
+        {
+            isTriggered = true;//TODO: Замінити на False коли з'являться евенти 
+        }
         public override bool Invoke()
         {
             return isTriggered;

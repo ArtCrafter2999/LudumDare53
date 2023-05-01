@@ -26,7 +26,7 @@ namespace LudumDare53.Nodes
 
         private void Start()
         {
-            PauseManager.Resume.AddListener(() => {if (PauseManager.Cause == PauseManager.PauseCause.Tutorial) PauseManager.SetPause(PauseManager.PauseCause.Tutorial);});
+            PauseManager.Resume.AddListener(() => {if (PauseManager.Cause == PauseManager.PauseCause.Tutorial) PauseManager.Cause = PauseManager.PauseCause.Tutorial;});
             nodes.ForEach(n => n.NodePlayer = this);
             if (playOnAwake) StartSequence();
         }
@@ -43,13 +43,14 @@ namespace LudumDare53.Nodes
 
         public void SkipNode()
         {
-            _isSkipped = nodes[_currentIndex].Skip();
+            if(_currentIndex>=0 && _currentIndex<nodes.Count) _isSkipped = nodes[_currentIndex].Skip();
         }
 
         private IEnumerator StartSequenceWork()
         {
-            if (PauseManager.IsPaused) PauseManager.SetPause(PauseManager.PauseCause.Tutorial);
+            if (PauseManager.IsPaused) PauseManager.Cause = PauseManager.PauseCause.Tutorial;
             IsPlaying = true;
+            
             for (_currentIndex = 0; _currentIndex < nodes.Count; _currentIndex++)
             {
                 var node = nodes[_currentIndex];
