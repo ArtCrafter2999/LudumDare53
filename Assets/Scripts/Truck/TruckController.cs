@@ -16,6 +16,7 @@ namespace LudumDare53.Truck
 
         private Queue<Transform> _freePositions = new();
         private int _truckCount = 3;
+        public List<Truck> ActiveTrucks => _trucks;
         /// <summary>
         /// Event that is triggered when the truck count changes.
         /// </summary>
