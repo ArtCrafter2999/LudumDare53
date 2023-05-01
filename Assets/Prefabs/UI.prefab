@@ -287,6 +287,7 @@ MonoBehaviour:
   period: 0.05
   delay: 0
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &498320112778110297
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +440,7 @@ MonoBehaviour:
   period: 0.05
   delay: 0
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &574992811182943142
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,6 +728,7 @@ MonoBehaviour:
   period: 0.05
   delay: 0
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &1936208113231710671
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,10 +878,7 @@ GameObject:
   - component: {fileID: 5138494441270329746}
   - component: {fileID: 7965150272440990225}
   - component: {fileID: 2248246939645258513}
-  - component: {fileID: 7668652396109151361}
-  - component: {fileID: 7829984907439707961}
-  - component: {fileID: 8870107050102426823}
-  - component: {fileID: 2576268434145207334}
+  - component: {fileID: 7982845205764005735}
   m_Layer: 5
   m_Name: UI
   m_TagString: Untagged
@@ -1082,8 +1082,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48d8d9a3a57b0b449cb683b735b821b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes: []
-  source: {fileID: 5138494441270329746}
+  source: {fileID: 7982845205764005735}
   playOnAwake: 0
 --- !u!114 &2248246939645258513
 MonoBehaviour:
@@ -1102,6 +1101,10 @@ MonoBehaviour:
   youAreFiredScreen: {fileID: 6062546035451856177}
   dayIsOverScreen: {fileID: 3087186506510723473}
   mainMenuScreen: {fileID: 5921989572643077266}
+  pauseText: {fileID: 6604938746924941750}
+  youAreFiredText: {fileID: 7891997855664152396}
+  dayIsOverText: {fileID: 5173213689879644945}
+  mainMenuText: {fileID: 1927069295113320090}
   nodePlayer: {fileID: 7965150272440990225}
   nodeSequences:
   - sequence:
@@ -1145,64 +1148,105 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 583124f7e63429c4aa090cba4b02df10, type: 2}
     - {fileID: 11400000, guid: e54aa5d0a1e29bc4d9479e9a895890ee, type: 2}
     - {fileID: 11400000, guid: c01107f7d1b57834781e5caf0a11e195, type: 2}
+  universalResumeNode: {fileID: 11400000, guid: 6836fb35749340741a7500cece6049ee, type: 2}
   continueButton: {fileID: 8299303795213568614}
   timer: {fileID: 5798554182552835389}
---- !u!114 &7668652396109151361
-MonoBehaviour:
+--- !u!82 &7982845205764005735
+AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2248246939645258506}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7b26b01c1a4a58935f4315956e5a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: 0
-  node: {fileID: 11400000, guid: 22158075d2d0b5f408aadc6d78016a3b, type: 2}
---- !u!114 &7829984907439707961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2248246939645258506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7b26b01c1a4a58935f4315956e5a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: 1
-  node: {fileID: 11400000, guid: f0d20f2c51740d24da43f9aaf020f8b6, type: 2}
---- !u!114 &8870107050102426823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2248246939645258506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7b26b01c1a4a58935f4315956e5a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: 1
-  node: {fileID: 11400000, guid: 320f862afa3625e4a85b37992879bc82, type: 2}
---- !u!114 &2576268434145207334
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2248246939645258506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb7b26b01c1a4a58935f4315956e5a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  action: 1
-  node: {fileID: 11400000, guid: c01107f7d1b57834781e5caf0a11e195, type: 2}
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2248246939867815574
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,10 +1395,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c594454d7b564fd8bf4083ead8e3c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
+  text: Paused
   period: 0.1
   delay: 0
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &2248246940206926070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2222,10 +2267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c594454d7b564fd8bf4083ead8e3c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
+  text: You are FIRED
   period: 0.2
   delay: 0.5
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &3087186506510723473
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,10 +2603,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c594454d7b564fd8bf4083ead8e3c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: 
+  text: The day is over
   period: 0.15
   delay: 0.5
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &4809328519174883804
 GameObject:
   m_ObjectHideFlags: 0
@@ -2713,6 +2760,7 @@ MonoBehaviour:
   period: 0.05
   delay: 0
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &5380236403255775357
 GameObject:
   m_ObjectHideFlags: 0
@@ -4033,6 +4081,7 @@ MonoBehaviour:
   period: 0.1
   delay: 0.1
   activateOnEnabled: 1
+  isEnd: 1
 --- !u!1 &8709903372606061809
 GameObject:
   m_ObjectHideFlags: 0
@@ -4212,7 +4261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddca7fd2f7b7b9844b33d8bd8753fce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 60
+  maxTime: 20
   timePassed:
     m_PersistentCalls:
       m_Calls: []

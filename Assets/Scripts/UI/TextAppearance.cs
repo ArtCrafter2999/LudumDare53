@@ -34,14 +34,15 @@ namespace LudumDare53.UI
         }
 
         public bool isEnd = true;
+        private Coroutine _animationWork;
         public void Activate()
         {
-            if(!isEnd) return;
+            if (_animationWork != null) StopCoroutine(_animationWork);
             if (text == "") text = _mesh.text;
             _mesh.text = "";
             isEnd = false;
             _forceEnd = false;
-            StartCoroutine(Work());
+            _animationWork = StartCoroutine(Work());
         }
 
         private IEnumerator Work()
@@ -63,6 +64,8 @@ namespace LudumDare53.UI
         public void ForceEnd()
         {
             _forceEnd = true;
+            _mesh.text = text;
+            isEnd = true;
         }
     }
 }
