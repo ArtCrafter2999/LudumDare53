@@ -20,15 +20,13 @@ namespace LudumDare53.Nodes
 
         public bool playOnAwake;
         public bool IsPlaying { get; private set; }
-
-        [NonSerialized] public bool PausedByNode;
-        private bool IsPaused => PauseManager.IsPaused && !PausedByNode;
+        private bool IsPaused => PauseManager.IsPaused && PauseManager.Cause != PauseManager.PauseCause.Tutorial;
 
         private bool AnySkipCause => _isSkipped  || IsPaused || !IsPlaying;
 
         private void Start()
         {
-            PauseManager.Resume.AddListener(() => {if (PausedByNode) PauseManager.SetPause();});
+            PauseManager.Resume.AddListener(() => {if (PauseManager.Cause == PauseManager.PauseCause.Tutorial) PauseManager.SetPause(PauseManager.PauseCause.Tutorial);});
             nodes.ForEach(n => n.NodeSequence = this);
             if (playOnAwake) StartSequence();
         }

@@ -78,7 +78,7 @@ namespace LudumDare53.Boxes
                 if (Physics2D.OverlapPointAll(generatePoint.position).Length > 0) continue;
                 if (seconds > 0)
                 {
-                    if(!PauseManager.IsPaused) seconds -= Time.deltaTime;
+                    if(this.IsOnPause()) seconds -= Time.deltaTime;
                     continue;
                 }
                 seconds = _period;
