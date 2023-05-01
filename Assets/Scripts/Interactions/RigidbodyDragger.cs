@@ -108,6 +108,12 @@ namespace LudumDare53.Interactions
             Rigidbody2D rigidbody = _draggableObject?.Rigidbody2D;
             if (rigidbody != null)
             {
+                if (!_draggableObject.enabled)
+                {
+                    MouseUp(point);
+                    return;
+                }
+
                 Vector2 targetDirection = GetTargetDirection(point);
 
                 rigidbody.velocity += targetDirection.normalized * GetSpeed(rigidbody);
