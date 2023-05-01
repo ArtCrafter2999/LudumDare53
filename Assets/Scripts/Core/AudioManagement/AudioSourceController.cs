@@ -26,7 +26,7 @@ namespace DanPie.Framework.AudioManagement
         public string PoolName { get; private set; }
         public AudioSource AudioSource { get; private set; }
         public AudioClipData PlayingAudioClipData { get; private set; }
-        public bool IsBusy { get => AudioSource.enabled; }
+        public bool IsBusy { get => AudioSource != null ? AudioSource.enabled : false; }
         public bool IsPaused { get; private set; }
 
         public void InitPoolableObject(string poolName)
@@ -61,7 +61,7 @@ namespace DanPie.Framework.AudioManagement
             AudioClipData clipData,
             bool isLooped = false,
             bool returnToPoolAfterPlay = true,
-            bool isPausable = false)
+            bool isPausable = true)
         {
             if (IsBusy)
             {
