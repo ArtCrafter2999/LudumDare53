@@ -13,6 +13,7 @@ namespace LudumDare53.Nodes
     public class EventNode : NodeBase
     {
         public bool waitForSkip;
+        public bool canSkip;
         public UnityEvent invoked;
         public UnityEvent skipped;
         public UnityEvent broken;
@@ -43,8 +44,9 @@ namespace LudumDare53.Nodes
 
         public override bool Skip()
         {
+            var doskip = canSkip && waitForSkip;
             skipped.Invoke();
-            return waitForSkip;
+            return doskip;
         }
 
         public override void Break()

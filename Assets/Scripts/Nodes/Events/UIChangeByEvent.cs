@@ -18,7 +18,8 @@ namespace LudumDare53.Nodes.Events
 
         private void Start()
         {
-            node.invoked.AddListener(Invoke);
+            uiManager = GetComponent<UIManager>();
+            node.initialized.AddListener(Invoke);
         }
 
         public void Invoke()

@@ -11,7 +11,9 @@ namespace LudumDare53.Nodes.Events
 
         public void Start()
         {
-            node.invoked.AddListener(Invoke);
+            node.initialized.AddListener(Invoke);
+            node.invoked.AddListener(() => node.canSkip = textAppearance.isEnd);
+            node.skipped.AddListener(Skip);
             node.broken.AddListener(Break);
         }
 
@@ -20,6 +22,12 @@ namespace LudumDare53.Nodes.Events
             textAppearance.text = text;
             textAppearance.Activate();
         }
+        private void Skip()
+        {
+            textAppearance.ForceEnd();
+            node.canSkip = true;
+        }
+        
         private void Break()
         {
             textAppearance.ForceEnd();

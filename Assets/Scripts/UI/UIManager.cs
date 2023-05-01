@@ -37,11 +37,13 @@ namespace LudumDare53.UI
             timer.timePassed.AddListener(DayIsOver);
             DifficultyManager.DifficultyChanged.AddListener(() =>
             {
-                nodePlayer.nodes = nodeSequences[DifficultyManager.Difficulty].sequence;
+                if(DifficultyManager.Difficulty < nodeSequences.Count)
+                    nodePlayer.nodes = nodeSequences[DifficultyManager.Difficulty]?.sequence;
             });
         }
 
         private bool _prevEscape = false;
+        private bool _prevEnter = false;
 
         public void Update()
         {
@@ -50,8 +52,12 @@ namespace LudumDare53.UI
                 if (!PauseManager.IsPaused) Pause();
                 else if (PauseManager.Cause == PauseManager.PauseCause.Player) Resume();
             }
-
             _prevEscape = Input.GetKey(KeyCode.Escape);
+            if (Input.GetKey(KeyCode.Return) && !_prevEnter)
+            {
+                nodePlayer.SkipNode();
+            }
+            _prevEnter = Input.GetKey(KeyCode.Return);
             continueButton.interactable = PlayerPrefs.HasKey("DifficultyLevel");
         }
 
@@ -127,6 +133,7 @@ namespace LudumDare53.UI
 
         public void Continue()
         {
+            DifficultyManager.SetDifficulty(DifficultyManager.Difficulty);
             timer.Reload();
             Resume();
         }

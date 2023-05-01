@@ -10,19 +10,19 @@ using UnityEngine.Serialization;
 namespace LudumDare53.Nodes
 {
     public class NodePlayer : MonoBehaviour
-    {
-        [ReadOnly] public int _currentIndex;
+    { 
+        private int _currentIndex;
 
         public List<NodeBase> nodes;
         public AudioSource source;
 
-        private bool _isSkipped = false;
+        private bool _isSkipped { get; set; }
 
         public bool playOnAwake;
         public bool IsPlaying { get; private set; }
         private bool IsPaused => PauseManager.IsPaused && PauseManager.Cause != PauseManager.PauseCause.Tutorial;
 
-        private bool AnySkipCause => _isSkipped  || IsPaused || !IsPlaying;
+        private bool AnySkipCause => _isSkipped || IsPaused || !IsPlaying;
 
         private void Start()
         {
@@ -48,11 +48,11 @@ namespace LudumDare53.Nodes
 
         private IEnumerator StartSequenceWork()
         {
+            if (PauseManager.IsPaused) PauseManager.SetPause(PauseManager.PauseCause.Tutorial);
             IsPlaying = true;
-            for (var i = 0; i < nodes.Count; i++)
+            for (_currentIndex = 0; _currentIndex < nodes.Count; _currentIndex++)
             {
-                _currentIndex = i;
-                var node = nodes[i];
+                var node = nodes[_currentIndex];
                 node.Init();
                 yield return new WaitUntil(() => node.Invoke() || AnySkipCause);
                 
@@ -64,11 +64,11 @@ namespace LudumDare53.Nodes
                 if (IsPaused)
                 {
                     node.Pause();
-                    i--;
+                    _currentIndex--;
                     yield return new WaitWhile(() => IsPaused);
                 }
 
-                if (AnySkipCause) nodes[i].Break();
+                if (AnySkipCause) node.Break();
                 _isSkipped = false;
             }
             StopSequence();

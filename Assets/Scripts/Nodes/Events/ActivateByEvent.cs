@@ -19,7 +19,7 @@ namespace LudumDare53.Nodes.Events
 
         public void Start()
         {
-            _node.invoked.AddListener(Invoke);
+            _node.initialized.AddListener(Invoke);
             _node.broken.AddListener(Break);
         }
 

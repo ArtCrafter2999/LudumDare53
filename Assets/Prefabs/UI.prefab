@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
-  period: 0.1
+  period: 0.05
   delay: 0
   activateOnEnabled: 1
 --- !u!1 &498320112778110297
@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
-  period: 0.1
+  period: 0.05
   delay: 0
   activateOnEnabled: 1
 --- !u!1 &574992811182943142
@@ -723,7 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
-  period: 0.1
+  period: 0.05
   delay: 0
   activateOnEnabled: 1
 --- !u!1 &1936208113231710671
@@ -872,6 +872,8 @@ GameObject:
   - component: {fileID: 2248246939645258511}
   - component: {fileID: 2248246939645258508}
   - component: {fileID: 2248246939645258509}
+  - component: {fileID: 5138494441270329746}
+  - component: {fileID: 7965150272440990225}
   - component: {fileID: 2248246939645258513}
   - component: {fileID: 7668652396109151361}
   - component: {fileID: 7829984907439707961}
@@ -972,6 +974,117 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!82 &5138494441270329746
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248246939645258506}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &7965150272440990225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248246939645258506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48d8d9a3a57b0b449cb683b735b821b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes: []
+  source: {fileID: 5138494441270329746}
+  playOnAwake: 0
 --- !u!114 &2248246939645258513
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -989,9 +1102,49 @@ MonoBehaviour:
   youAreFiredScreen: {fileID: 6062546035451856177}
   dayIsOverScreen: {fileID: 3087186506510723473}
   mainMenuScreen: {fileID: 5921989572643077266}
-  nodePlayer: {fileID: 0}
+  nodePlayer: {fileID: 7965150272440990225}
   nodeSequences:
-  - sequence: []
+  - sequence:
+    - {fileID: 11400000, guid: 485c67bf89405034ebdc4994b49ccd19, type: 2}
+    - {fileID: 11400000, guid: ed6e288f1e76e7e46b2b1111575a1582, type: 2}
+    - {fileID: 11400000, guid: dece15246c51345448b888d101bce894, type: 2}
+    - {fileID: 11400000, guid: ccd09d5a34d8f614b83b23f2fa2d7887, type: 2}
+    - {fileID: 11400000, guid: 22158075d2d0b5f408aadc6d78016a3b, type: 2}
+    - {fileID: 11400000, guid: a99913a4f8c867947bb96abf904f5ccd, type: 2}
+    - {fileID: 11400000, guid: 0c9552e8ebde20143b1d181eebe09504, type: 2}
+    - {fileID: 11400000, guid: 3378ce784129e2d429514bf46db09df1, type: 2}
+    - {fileID: 11400000, guid: 8e787632deeaef948abea5993edd5be5, type: 2}
+    - {fileID: 11400000, guid: 20c0618495d17a644bb52abac1c2ffb9, type: 2}
+    - {fileID: 11400000, guid: 33eeebbbab546f848b040d908dc041ba, type: 2}
+    - {fileID: 11400000, guid: 7eac5b83e67d15b4eb9a243e80edd986, type: 2}
+    - {fileID: 11400000, guid: b577a64f22241e4419e7b056b1d2a3b4, type: 2}
+    - {fileID: 11400000, guid: 09b7ab1c98287bc4a83e05f0ff4a0247, type: 2}
+    - {fileID: 11400000, guid: 4b4d6fba1138fa4408b9b20be007bc11, type: 2}
+    - {fileID: 11400000, guid: b76384cdd288aaf4d842a217b3ec16f0, type: 2}
+    - {fileID: 11400000, guid: f0d20f2c51740d24da43f9aaf020f8b6, type: 2}
+  - sequence:
+    - {fileID: 11400000, guid: 615dbe4af00210844898bdb61f8a148a, type: 2}
+    - {fileID: 11400000, guid: a61e35061b5b76f46ae59370b484a4b3, type: 2}
+    - {fileID: 11400000, guid: 4e070f0541d4a6b42b04b7220acaa640, type: 2}
+    - {fileID: 11400000, guid: 6e49437a64957ce44ae953732d475230, type: 2}
+    - {fileID: 11400000, guid: 8ea459602ef553e4d9b0cba9df3396bc, type: 2}
+    - {fileID: 11400000, guid: b28edd5aa25b7534393526d9e53e16ec, type: 2}
+    - {fileID: 11400000, guid: f93602ba3289f0841bfd8af0d07c4826, type: 2}
+    - {fileID: 11400000, guid: ab2348161e2facf4a881a5669e15336a, type: 2}
+    - {fileID: 11400000, guid: 20b9c823d68bd104da149156e3a2b756, type: 2}
+    - {fileID: 11400000, guid: 320f862afa3625e4a85b37992879bc82, type: 2}
+  - sequence:
+    - {fileID: 11400000, guid: 0fbce118d28df704ea9b1dec4d9b1ccb, type: 2}
+    - {fileID: 11400000, guid: 767f92fca7614824a9bfe0d00286201c, type: 2}
+    - {fileID: 11400000, guid: b3529b47fe613224e958865382e803c8, type: 2}
+    - {fileID: 11400000, guid: 49f57d7e2780f154789b48bf025c8164, type: 2}
+    - {fileID: 11400000, guid: c063d9953f998e548818168f2a88bd7e, type: 2}
+    - {fileID: 11400000, guid: f2de6f7d025a3eb4bbb65e04b3276411, type: 2}
+    - {fileID: 11400000, guid: a7a98d6c4c4220f42a7f9206c80b5489, type: 2}
+    - {fileID: 11400000, guid: fdf7c8fc7763fa24eb626bec0d0fee94, type: 2}
+    - {fileID: 11400000, guid: 583124f7e63429c4aa090cba4b02df10, type: 2}
+    - {fileID: 11400000, guid: e54aa5d0a1e29bc4d9479e9a895890ee, type: 2}
+    - {fileID: 11400000, guid: c01107f7d1b57834781e5caf0a11e195, type: 2}
   continueButton: {fileID: 8299303795213568614}
   timer: {fileID: 5798554182552835389}
 --- !u!114 &7668652396109151361
@@ -2557,7 +2710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
-  period: 0.1
+  period: 0.05
   delay: 0
   activateOnEnabled: 1
 --- !u!1 &5380236403255775357
@@ -3136,7 +3289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a67cfcceb69a41d3b4b24e28c4deb4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  node: {fileID: 11400000, guid: dece15246c51345448b888d101bce894, type: 2}
+  node: {fileID: 11400000, guid: ed6e288f1e76e7e46b2b1111575a1582, type: 2}
   target: {fileID: 389534716560292763}
   textAppearance: {fileID: 1583324728197706659}
   make: 0

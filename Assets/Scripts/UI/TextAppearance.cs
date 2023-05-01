@@ -33,24 +33,31 @@ namespace LudumDare53.UI
             if(activateOnEnabled)Activate();
         }
 
+        public bool isEnd = true;
         public void Activate()
         {
+            if(!isEnd) return;
             if (text == "") text = _mesh.text;
             _mesh.text = "";
+            isEnd = false;
+            _forceEnd = false;
             StartCoroutine(Work());
         }
 
         private IEnumerator Work()
         {
             yield return new WaitForSeconds(delay);
+            _forceEnd = false;
             foreach (var t in text)
             {
                 _mesh.text += t;
                 yield return new WaitForSeconds(period);
                 if (!_forceEnd) continue;
+                _forceEnd = false;
                 _mesh.text = text;
                 break;
             }
+            isEnd = true;
         }
 
         public void ForceEnd()

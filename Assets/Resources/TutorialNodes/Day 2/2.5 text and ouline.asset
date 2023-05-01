@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2d6dfefb7e0734dbf9457bca6c80a8, type: 3}
   m_Name: 2.5 text and ouline
   m_EditorClassIdentifier: 
-  waitForSkip: 0
+  waitForSkip: 1
   invoked:
     m_PersistentCalls:
       m_Calls: []
