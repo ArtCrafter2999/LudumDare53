@@ -25,7 +25,6 @@ namespace LudumDare53.Nodes.Events
         private void Skip()
         {
             textAppearance.ForceEnd();
-            node.canSkip = true;
         }
         
         private void Break()

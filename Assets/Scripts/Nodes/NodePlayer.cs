@@ -43,6 +43,7 @@ namespace LudumDare53.Nodes
 
         public void SkipNode()
         {
+            Debug.Log("SkipNode, index: " + _currentIndex);
             if(_currentIndex>=0 && _currentIndex<nodes.Count) _isSkipped = nodes[_currentIndex].Skip();
         }
 
