@@ -22,10 +22,17 @@ namespace LudumDare53.UI
         [SerializeField] private GameObject youAreFiredScreen;
         [SerializeField] private GameObject dayIsOverScreen;
         [SerializeField] private GameObject mainMenuScreen;
+        
+        [Header("Text")]
+        [SerializeField] private TextAppearance pauseText;
+        [SerializeField] private TextAppearance youAreFiredText;
+        [SerializeField] private TextAppearance dayIsOverText;
+        [SerializeField] private TextAppearance mainMenuText;
 
         [Header("Tutorial")] 
         [SerializeField] private NodePlayer nodePlayer;
         [SerializeField] private List<NodeSequence> nodeSequences;
+        [SerializeField] private NodeBase universalResumeNode;
 
         [Header("Buttons")] [SerializeField] private Button continueButton;
 
@@ -37,8 +44,12 @@ namespace LudumDare53.UI
             timer.timePassed.AddListener(DayIsOver);
             DifficultyManager.DifficultyChanged.AddListener(() =>
             {
-                if(DifficultyManager.Difficulty < nodeSequences.Count)
-                    nodePlayer.nodes = nodeSequences[DifficultyManager.Difficulty]?.sequence;
+                if (DifficultyManager.Difficulty < nodeSequences.Count)
+                    nodePlayer.SetNodes(nodeSequences[DifficultyManager.Difficulty]?.sequence);
+                else
+                {
+                    nodePlayer.SetNodes(new List<NodeBase>{universalResumeNode});
+                }
             });
         }
 
@@ -58,7 +69,7 @@ namespace LudumDare53.UI
                 nodePlayer.SkipNode();
             }
             _prevEnter = Input.GetKey(KeyCode.Return);
-            continueButton.interactable = PlayerPrefs.HasKey("DifficultyLevel");
+            continueButton.interactable = PlayerPrefs.HasKey("DifficultyLevel") && DifficultyManager.Difficulty > 0;
         }
 
         private void SmoothFadeIn(float duration = 0.5f)
@@ -76,12 +87,14 @@ namespace LudumDare53.UI
         {
             SmoothFadeIn();
             pauseScreen.SetActive(true);
+            pauseText.Activate();
             PauseManager.SetPause(PauseManager.PauseCause.Player);
         }
 
         public void Resume()
         {
             SmoothFadeOut();
+            if(pauseText.isActiveAndEnabled) pauseText.ForceEnd();
             pauseScreen.SetActive(false);
             youAreFiredScreen.SetActive(false);
             dayIsOverScreen.SetActive(false);
@@ -95,27 +108,40 @@ namespace LudumDare53.UI
         {
             SmoothFadeIn();
             youAreFiredScreen.SetActive(true);
+            youAreFiredText.Activate();
             PauseManager.SetPause(PauseManager.PauseCause.GameMenu);
         }
 
         public void DayIsOver()
         {
             SmoothFadeIn();
-            dayIsOverScreen.SetActive(true);
+            if (DifficultyManager.Difficulty >= 4)
+            {
+                DifficultyManager.SetDifficulty(0);
+                mainMenuScreen.SetActive(true);
+                mainMenuText.Activate();
+            }
+            else
+            {
+                DifficultyManager.SetDifficulty(DifficultyManager.Difficulty + 1);
+                dayIsOverScreen.SetActive(true);
+                dayIsOverText.Activate();
+            }
             PauseManager.SetPause(PauseManager.PauseCause.GameMenu);
         }
 
         public void NextDay()
         {
-            DifficultyManager.SetDifficulty(DifficultyManager.Difficulty + 1);
             timer.Reload();
             SmoothFadeOut();
+            dayIsOverText.ForceEnd();
             dayIsOverScreen.SetActive(false);
             nodePlayer.StartSequence();
         }
 
         public void TryAgain()
         {
+            youAreFiredText.ForceEnd();
             timer.Reload();
             Resume();
         }
@@ -138,7 +164,9 @@ namespace LudumDare53.UI
         {
             DifficultyManager.SetDifficulty(DifficultyManager.Difficulty);
             timer.Reload();
-            Resume();
+            SmoothFadeOut();
+            mainMenuScreen.SetActive(false);
+            nodePlayer.StartSequence();
         }
     }
 }

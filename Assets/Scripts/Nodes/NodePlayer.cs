@@ -13,7 +13,7 @@ namespace LudumDare53.Nodes
     { 
         private int _currentIndex;
 
-        public List<NodeBase> nodes;
+        private List<NodeBase> nodes;
         public AudioSource source;
 
         private bool _isSkipped { get; set; }
@@ -27,8 +27,14 @@ namespace LudumDare53.Nodes
         private void Start()
         {
             PauseManager.Resume.AddListener(() => {if (PauseManager.Cause == PauseManager.PauseCause.Tutorial) PauseManager.Cause = PauseManager.PauseCause.Tutorial;});
-            nodes.ForEach(n => n.NodePlayer = this);
+            nodes?.ForEach(n => n.NodePlayer = this);
             if (playOnAwake) StartSequence();
+        }
+
+        public void SetNodes(List<NodeBase> nodeBases)
+        {
+            nodes = nodeBases;
+            nodes.ForEach(n => n.NodePlayer = this);
         }
 
         public void StartSequence()
@@ -43,7 +49,7 @@ namespace LudumDare53.Nodes
 
         public void SkipNode()
         {
-            Debug.Log("SkipNode, index: " + _currentIndex);
+            //Debug.Log("SkipNode, index: " + _currentIndex);
             if(_currentIndex>=0 && _currentIndex<nodes.Count) _isSkipped = nodes[_currentIndex].Skip();
         }
 
