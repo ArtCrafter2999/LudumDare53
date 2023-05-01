@@ -1,5 +1,6 @@
 using DanPie.Framework.Coroutines;
 using DG.Tweening;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -17,7 +18,21 @@ namespace LudumDare53.Truck
         private float _occupiedArea = 0f;
         private List<GameObject> _boxes = new();
         private float _maxArea => _cargoCollider.bounds.size.x * _cargoCollider.bounds.size.y;
+        private string _marker = "green";
         public Button GoButton => GetComponentInChildren<Button>();
+
+        public string Marker
+        {
+            get => _marker; set
+            {
+                string lowerValue = value.ToLower();
+                if (lowerValue != "green" || lowerValue != "red" || lowerValue != "blue")
+                {
+                    throw new ArgumentException($"Invalid marker '{lowerValue}'. Allowed markers: 'red', 'green', 'blue'");
+                }
+                _marker = lowerValue;
+            }
+        }
 
         /// <summary>
         /// Event that is triggered when the truck is full.
