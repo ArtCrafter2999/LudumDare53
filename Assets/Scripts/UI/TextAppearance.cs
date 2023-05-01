@@ -5,17 +5,23 @@ using UnityEngine;
 
 namespace LudumDare53.UI
 {
+    [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextAppearance : MonoBehaviour
     {
         [Header("Text")]
         [Tooltip("Could be empty for leaving existing text")]
         [SerializeField] private string text;
-        [SerializeField] private TextMeshProUGUI mesh;
+        private TextMeshProUGUI _mesh;
         [Header("Time")]
-        [SerializeField] private float period;
+        [SerializeField] private float period = 0.1f;
         [SerializeField] private float delay;
         [Header("Other")]
         [SerializeField] private bool activateOnEnabled;
+
+        public void Start()
+        {
+            _mesh = GetComponent<TextMeshProUGUI>();
+        }
 
         public void OnEnable()
         {
@@ -24,8 +30,8 @@ namespace LudumDare53.UI
 
         public void Activate()
         {
-            if (text == "") text = mesh.text;
-            mesh.text = "";
+            if (text == "") text = _mesh.text;
+            _mesh.text = "";
             StartCoroutine(Work());
         }
 
@@ -34,7 +40,7 @@ namespace LudumDare53.UI
             yield return new WaitForSeconds(delay);
             foreach (var t in text)
             {
-                mesh.text += t;
+                _mesh.text += t;
                 yield return new WaitForSeconds(period);
             }
         }
