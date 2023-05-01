@@ -129,7 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ebcf50266c5b64097bc68aed95ed52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _truckPrefab: {fileID: 1729008157314971701, guid: 440bd23befe41014b8fd0a3d768f5128, type: 3}
+  _truckPrefabs:
+  - {fileID: 1729008157314971701, guid: 9cbfc8dea3f08ca42bd82fd037b5721d, type: 3}
+  - {fileID: 1729008157314971701, guid: 440bd23befe41014b8fd0a3d768f5128, type: 3}
+  - {fileID: 1729008157314971701, guid: e366d6a60a344da4a8fc421b147a2972, type: 3}
   _moveDistance: 30
 --- !u!1 &6571534844713254033
 GameObject:

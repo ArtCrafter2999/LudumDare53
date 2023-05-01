@@ -485,6 +485,8 @@ GameObject:
   - component: {fileID: 1283066732}
   - component: {fileID: 1283066731}
   - component: {fileID: 1283066730}
+  - component: {fileID: 1283066735}
+  - component: {fileID: 1283066734}
   m_Layer: 0
   m_Name: Box 2 (1)
   m_TagString: Box
@@ -606,6 +608,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1283066734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283066729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356fe4981b2f489d80892d7967dd19d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: green
+--- !u!114 &1283066735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283066729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 827a1e6fefee184468889bdc846ab983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _outlineSprite: {fileID: 21300000, guid: 11b20ba31b1d6634786dc863d1df6187, type: 3}
+  _outlineSpriteRenderer: {fileID: 258912817}
 --- !u!1001 &6571534843952053821
 PrefabInstance:
   m_ObjectHideFlags: 0

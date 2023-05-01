@@ -3,6 +3,7 @@ using DG.Tweening;
 using LudumDare53.Boxes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -13,27 +14,29 @@ namespace LudumDare53.Truck
     {
         [SerializeField] private Collider2D _cargoCollider;
         [SerializeField] protected float _moveDuration = 5f;
+        [SerializeField] private string _marker = "green";
 
         private bool _isFull = false;
         private bool _isMoving = false;
         private float _occupiedArea = 0f;
         private List<GameObject> _boxes = new();
         private float _maxArea => _cargoCollider.bounds.size.x * _cargoCollider.bounds.size.y;
-        private string _marker = "green";
         public Button GoButton => GetComponentInChildren<Button>();
+        public string[] AvailableTruckColors => new string[] { "green", "blue", "red" };
 
         public string Marker
         {
             get => _marker; set
             {
                 string lowerValue = value.ToLower();
-                if (lowerValue != "green" || lowerValue != "red" || lowerValue != "blue")
+                if (!AvailableTruckColors.Contains(lowerValue))
                 {
-                    throw new ArgumentException($"Invalid marker '{lowerValue}'. Allowed markers: 'red', 'green', 'blue'");
+                    throw new ArgumentException($"Invalid marker '{lowerValue}'. Allowed markers: {string.Join(", ", AvailableTruckColors)}");
                 }
                 _marker = lowerValue;
             }
         }
+
 
         /// <summary>
         /// Event that is triggered when the truck is full.

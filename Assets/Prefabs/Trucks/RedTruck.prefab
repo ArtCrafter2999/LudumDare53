@@ -260,7 +260,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
+  m_Color: {r: 0.94509804, g: 0.15175706, b: 0.11764705, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 1729008157314971700}
   - component: {fileID: 1729008157314971699}
   m_Layer: 0
-  m_Name: Truck
+  m_Name: RedTruck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -350,7 +350,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cargoCollider: {fileID: 1729008158705666485}
   _moveDuration: 2
+  _marker: red
   TruckFull:
+    m_PersistentCalls:
+      m_Calls: []
+  TruckNotFull:
     m_PersistentCalls:
       m_Calls: []
 --- !u!61 &1729008157314971700
