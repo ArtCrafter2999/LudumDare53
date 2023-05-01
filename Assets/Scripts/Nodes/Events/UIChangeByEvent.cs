@@ -9,6 +9,7 @@ namespace LudumDare53.Nodes.Events
     {
         public enum Action
         {
+            FadeOut,
             Resume
         }
         [SerializeField] private Action action;
@@ -27,7 +28,11 @@ namespace LudumDare53.Nodes.Events
                 case Action.Resume:
                     uiManager.Resume();
                     break;
+                case Action.FadeOut:
+                    uiManager.SmoothFadeOut();
+                    break;
             }
         }
+        
     }
 }

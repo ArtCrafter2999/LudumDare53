@@ -22,11 +22,14 @@ namespace LudumDare53.UI
 
         public void Start()
         {
-            _mesh = GetComponent<TextMeshProUGUI>();
+            if(_mesh == null)
+                _mesh = GetComponent<TextMeshProUGUI>();
         }
 
         public void OnEnable()
         {
+            if(_mesh == null)
+                _mesh = GetComponent<TextMeshProUGUI>();
             if(activateOnEnabled)Activate();
         }
 

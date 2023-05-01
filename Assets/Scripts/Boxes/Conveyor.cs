@@ -39,7 +39,7 @@ namespace LudumDare53.Boxes
                 case 0:
                     _coloredBoxChance = 0f;
                     Speed = 2;
-                    _period = 10;
+                    _period = 6;
                     break;
                 case 1:
                     _coloredBoxChance = 0.1f;
@@ -78,13 +78,13 @@ namespace LudumDare53.Boxes
                 if (Physics2D.OverlapPointAll(generatePoint.position).Length > 0) continue;
                 if (seconds > 0)
                 {
-                    if(this.IsOnPause()) seconds -= Time.deltaTime;
+                    if(!this.IsOnPause()) seconds -= Time.deltaTime;
                     continue;
                 }
                 seconds = _period;
                 
                 if (ordinaryBoxes.Count == 0 && coloredBoxes.Count == 0) continue;
-                var obj = Instantiate(
+                Instantiate(
                     RandomizeBox(),
                     generatePoint.position,
                     Quaternion.identity

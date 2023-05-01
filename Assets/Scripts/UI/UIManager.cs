@@ -61,7 +61,7 @@ namespace LudumDare53.UI
             darkScreen.DOFade(0.40f, duration);
         }
 
-        private void SmoothFadeOut(float duration = 0.5f)
+        public void SmoothFadeOut(float duration = 0.5f)
         {
             darkScreen.DOFade(0, duration).OnComplete(() => darkScreen.gameObject.SetActive(false));
         }
