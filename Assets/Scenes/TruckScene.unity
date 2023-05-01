@@ -642,9 +642,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6571534844503832012, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: _truckPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 958241077439834698, guid: 1e1cb07ddf6008d49ab0c53b96f8a355, type: 3}
+    - target: {fileID: 6571534844503832012, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: _truckPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 4559191140426253123, guid: 782a1d6fcec37d24285a21cee1f8e2d2, type: 3}
+    - target: {fileID: 6571534844503832012, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: _truckPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 5582228143101200917, guid: 5cfea557d78cd5145902396c72d3e71a, type: 3}
     - target: {fileID: 6571534845793293704, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: m_Name
       value: TruckSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571534845793293704, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6571534845793293707, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: m_RootOrder
