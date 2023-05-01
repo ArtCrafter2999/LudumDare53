@@ -1,5 +1,6 @@
 using DanPie.Framework.Coroutines;
 using DG.Tweening;
+using LudumDare53.Boxes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -58,8 +59,14 @@ namespace LudumDare53.Truck
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+
             if (other.CompareTag("Box") && !_isMoving)
             {
+                if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
+                {
+                    ToggleBoxOutlineIfMarkerMatches(boxOuntine, true);
+                }
+
                 if (other.TryGetComponent(out BoxCollider2D boxCollider))
                 {
                     Vector2 boxSize = boxCollider.size;
@@ -86,6 +93,11 @@ namespace LudumDare53.Truck
         {
             if (other.CompareTag("Box") && !_isMoving)
             {
+                if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
+                {
+                    ToggleBoxOutlineIfMarkerMatches(boxOuntine, false);
+                }
+
                 if (other.TryGetComponent(out BoxCollider2D boxCollider))
                 {
                     Vector2 boxSize = boxCollider.size;
@@ -103,6 +115,21 @@ namespace LudumDare53.Truck
                     Debug.Log($"Box exited. Area: {boxArea}");
                     if (!_isFull && oldIsFull != _isFull)
                         TruckNotFull.Invoke(this, _boxes);
+                }
+            }
+        }
+
+        private void ToggleBoxOutlineIfMarkerMatches(Tutorial.Outline outline, bool enabled)
+        {
+            if (outline.TryGetComponent(out BoxMarker marker) && !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
+            {
+                if (enabled)
+                {
+                    outline.Activate();
+                }
+                else
+                {
+                    outline.Deactivate();
                 }
             }
         }
