@@ -10,13 +10,15 @@ namespace LudumDare53.UI
     {
         [Header("Text")]
         [Tooltip("Could be empty for leaving existing text")]
-        [SerializeField] private string text;
+        public string text;
         private TextMeshProUGUI _mesh;
         [Header("Time")]
         [SerializeField] private float period = 0.1f;
         [SerializeField] private float delay;
         [Header("Other")]
         [SerializeField] private bool activateOnEnabled;
+
+        private bool _forceEnd = false; 
 
         public void Start()
         {
@@ -42,7 +44,15 @@ namespace LudumDare53.UI
             {
                 _mesh.text += t;
                 yield return new WaitForSeconds(period);
+                if (!_forceEnd) continue;
+                _mesh.text = text;
+                break;
             }
+        }
+
+        public void ForceEnd()
+        {
+            _forceEnd = true;
         }
     }
 }

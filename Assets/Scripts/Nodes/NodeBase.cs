@@ -10,7 +10,7 @@ namespace LudumDare53.Nodes
 {
     public abstract class NodeBase : ScriptableObject, INode
     {
-        public NodeSequence NodeSequence { get; set; }
+        public NodePlayer NodePlayer { get; set; }
 
         public virtual void Break() { }
         public virtual void Stop() { }

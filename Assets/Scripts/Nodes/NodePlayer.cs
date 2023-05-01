@@ -9,7 +9,7 @@ using UnityEngine.Serialization;
 
 namespace LudumDare53.Nodes
 {
-    public class NodeSequence : MonoBehaviour
+    public class NodePlayer : MonoBehaviour
     {
         [ReadOnly] public int _currentIndex;
 
@@ -27,7 +27,7 @@ namespace LudumDare53.Nodes
         private void Start()
         {
             PauseManager.Resume.AddListener(() => {if (PauseManager.Cause == PauseManager.PauseCause.Tutorial) PauseManager.SetPause(PauseManager.PauseCause.Tutorial);});
-            nodes.ForEach(n => n.NodeSequence = this);
+            nodes.ForEach(n => n.NodePlayer = this);
             if (playOnAwake) StartSequence();
         }
 

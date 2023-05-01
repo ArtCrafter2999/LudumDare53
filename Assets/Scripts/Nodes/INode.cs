@@ -9,7 +9,7 @@ namespace LudumDare53.Nodes
 {
     public interface INode
     {
-        NodeSequence NodeSequence { get; set; }
+        NodePlayer NodePlayer { get; set; }
 
 
         void Init();

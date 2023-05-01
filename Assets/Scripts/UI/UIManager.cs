@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using LudumDare53.Leveling;
+using LudumDare53.Nodes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,11 +11,21 @@ namespace LudumDare53.UI
 {
     public class UIManager : MonoBehaviour
     {
+        [Serializable]
+        public class NodeSequence
+        {
+            public List<NodeBase> sequence;
+        }
+        
         [Header("Screens")] [SerializeField] private Image darkScreen;
         [SerializeField] private GameObject pauseScreen;
         [SerializeField] private GameObject youAreFiredScreen;
         [SerializeField] private GameObject dayIsOverScreen;
         [SerializeField] private GameObject mainMenuScreen;
+
+        [Header("Tutorial")] 
+        [SerializeField] private NodePlayer nodePlayer;
+        [SerializeField] private List<NodeSequence> nodeSequences;
 
         [Header("Buttons")] [SerializeField] private Button continueButton;
 
@@ -24,6 +35,10 @@ namespace LudumDare53.UI
         private void Start()
         {
             timer.timePassed.AddListener(DayIsOver);
+            DifficultyManager.DifficultyChanged.AddListener(() =>
+            {
+                nodePlayer.nodes = nodeSequences[DifficultyManager.Difficulty].sequence;
+            });
         }
 
         private bool _prevEscape = false;
@@ -87,7 +102,7 @@ namespace LudumDare53.UI
         {
             DifficultyManager.SetDifficulty(DifficultyManager.Difficulty + 1);
             timer.Reload();
-            Resume();
+            nodePlayer.StartSequence();
         }
 
         public void TryAgain()
@@ -106,7 +121,8 @@ namespace LudumDare53.UI
         {
             DifficultyManager.SetDifficulty(0);
             timer.Reload();
-            Resume();
+            mainMenuScreen.SetActive(false);
+            nodePlayer.StartSequence();
         }
 
         public void Continue()
