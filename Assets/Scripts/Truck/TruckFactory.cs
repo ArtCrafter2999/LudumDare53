@@ -14,21 +14,12 @@ namespace LudumDare53.Truck
             Truck truck = Instantiate(truckPrefab, position.position, Quaternion.identity);
             truck.transform.SetParent(position);
 
-
-            Canvas canvas = truck.GetComponentInChildren<Canvas>();
-            canvas.enabled = false;
-            truck.TruckFull.AddListener((truck, boxes) => canvas.enabled = true);
-            truck.TruckNotFull.AddListener((truck, boxes) => canvas.enabled = false);
-
             truck.MoveTo(truck.transform.position.x - _moveDistance);
             return truck;
         }
 
         public void RemoveTruck(Truck truck)
         {
-            StartCoroutine(CoroutineUtilities.WaitForSeconds(2f, () =>
-            truck.MoveTo(truck.transform.position.x - _moveDistance * 2)));
-
             StartCoroutine(CoroutineUtilities.WaitForSeconds(3f, () =>
                 Destroy(truck.gameObject)));
         }

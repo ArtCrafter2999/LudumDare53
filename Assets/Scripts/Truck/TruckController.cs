@@ -47,7 +47,7 @@ namespace LudumDare53.Truck
             Truck truck = _truckFactory.CreateTruck(position);
             _trucks.Add(truck);
 
-            truck.GoButton.onClick.AddListener(() =>
+            truck.TruckLeft.AddListener((truck, _) =>
               {
                   RemoveTruck(truck);
                   truck.GetComponentInChildren<Canvas>().enabled = false;

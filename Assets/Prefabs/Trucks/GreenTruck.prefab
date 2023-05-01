@@ -261,7 +261,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: -444354575, guid: 992f453431be2d540b54f34fdfd14084, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -488,7 +488,7 @@ RectTransform:
   m_GameObject: {fileID: 5009792749290547932}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.02103594, y: 0.02103594, z: 0.031035945}
+  m_LocalScale: {x: 0.03, y: 0.04, z: 0.03}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2016091771466884815}
@@ -849,11 +849,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cargoCollider: {fileID: 1776192182980864462}
   _moveDuration: 2
+  _timeBeforeLeft: 2
+  _moveDistance: 50
   _marker: green
   TruckFull:
     m_PersistentCalls:
       m_Calls: []
   TruckNotFull:
+    m_PersistentCalls:
+      m_Calls: []
+  TruckLeft:
     m_PersistentCalls:
       m_Calls: []
 --- !u!61 &7858620049576099373

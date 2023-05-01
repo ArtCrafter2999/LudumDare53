@@ -14,6 +14,8 @@ namespace LudumDare53.Truck
     {
         [SerializeField] private Collider2D _cargoCollider;
         [SerializeField] protected float _moveDuration = 5f;
+        [SerializeField] protected float _timeBeforeLeft = 2f;
+        [SerializeField] private float _moveDistance;
         [SerializeField] private string _marker = "green";
 
         private bool _isFull = false;
@@ -38,6 +40,7 @@ namespace LudumDare53.Truck
         }
 
 
+
         /// <summary>
         /// Event that is triggered when the truck is full.
         /// </summary>
@@ -46,6 +49,22 @@ namespace LudumDare53.Truck
         /// Event that is triggered when a box is removed from a full truck
         /// </summary>
         public UnityEvent<Truck, List<GameObject>> TruckNotFull;
+        public UnityEvent<Truck, List<GameObject>> TruckLeft;
+        public UnityEvent WrongBoxComes;
+        private void Start()
+        {
+            Canvas canvas = GetComponentInChildren<Canvas>();
+            canvas.enabled = false;
+            TruckFull.AddListener((truck, boxes) => canvas.enabled = true);
+            TruckNotFull.AddListener((truck, boxes) => canvas.enabled = false);
+
+            GoButton.onClick.AddListener(() => StartCoroutine(CoroutineUtilities.WaitForSeconds(_timeBeforeLeft, () =>
+            {
+                MoveTo(transform.position.x - _moveDistance);
+                StartCoroutine(CoroutineUtilities.WaitForSeconds(_moveDuration, () => TruckLeft.Invoke(this, _boxes)));
+            })));
+            WrongBoxComes.AddListener(() => canvas.enabled = false);
+        }
 
         public void MoveTo(float distance)
         {
@@ -68,6 +87,9 @@ namespace LudumDare53.Truck
                 if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
                 {
                     ToggleBoxOutlineIfMarkerMatches(boxOuntine, true);
+                    if (boxOuntine.TryGetComponent(out BoxMarker marker) &&
+                        !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
+                        return;
                 }
 
                 if (other.TryGetComponent(out BoxCollider2D boxCollider))
@@ -99,6 +121,9 @@ namespace LudumDare53.Truck
                 if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
                 {
                     ToggleBoxOutlineIfMarkerMatches(boxOuntine, false);
+                    if (boxOuntine.TryGetComponent(out BoxMarker marker) &&
+                       !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
+                        return;
                 }
 
                 if (other.TryGetComponent(out BoxCollider2D boxCollider))
@@ -124,8 +149,10 @@ namespace LudumDare53.Truck
 
         private void ToggleBoxOutlineIfMarkerMatches(Tutorial.Outline outline, bool enabled)
         {
-            if (outline.TryGetComponent(out BoxMarker marker) && !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
+            if (outline.TryGetComponent(out BoxMarker marker) &&
+                !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
             {
+                WrongBoxComes.Invoke();
                 if (enabled)
                 {
                     outline.Activate();
