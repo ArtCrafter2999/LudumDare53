@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e0abcaf79be3f0d41bd54e9b0e0a5942
+guid: 90911e99e4857cb41b5d37bbdc296508
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Car_Blue_Idle_0
+      name: Trash_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 126
-        height: 49
+        width: 16
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,20 +143,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 05d0d4d6563da284dab3a3856ab3f5ed
-      internalID: 701695626
+      spriteID: 14ad68f0022da3c44b675c93c48591b7
+      internalID: -444311595
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Car_Blue_Idle_1
+      name: Trash_1
       rect:
         serializedVersion: 2
-        x: 126
+        x: 32
         y: 0
-        width: 126
-        height: 49
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e8176e026c1d5b45996012918d3fdb6
-      internalID: 786003409
+      spriteID: 44972cf3cc54b3c4da4126846baaff56
+      internalID: -1340589753
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Car_Blue_Idle_2
+      name: Trash_2
       rect:
         serializedVersion: 2
-        x: 252
+        x: 64
         y: 0
-        width: 126
-        height: 49
+        width: 32
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,50 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 294d59eb51d6a614581024df899bcfa7
-      internalID: 2076481894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Car_Blue_Idle_3
-      rect:
-        serializedVersion: 2
-        x: 378
-        y: 0
-        width: 126
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99eb59e73bf473845b386c45273f12a7
-      internalID: 1739894717
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Car_Blue_Idle_4
-      rect:
-        serializedVersion: 2
-        x: 504
-        y: 0
-        width: 126
-        height: 49
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e67525044d1d4ef48bb9bc9d2e3b919e
-      internalID: -1774544744
+      spriteID: f5a7dfa210b1e144cb8ad3fa20110dc5
+      internalID: -1059921764
       vertices: []
       indices: 
       edges: []
@@ -244,11 +202,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Car_Blue_Idle_0: 701695626
-      Car_Blue_Idle_1: 786003409
-      Car_Blue_Idle_2: 2076481894
-      Car_Blue_Idle_3: 1739894717
-      Car_Blue_Idle_4: -1774544744
+      Trash_0: -444311595
+      Trash_1: -1340589753
+      Trash_2: -1059921764
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
