@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DanPie.Framework.Coroutines;
 using DanPie.Framework.Pooling;
+using LudumDare53.Leveling;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -23,12 +24,57 @@ namespace DanPie.Framework.AudioManagement
 
         public AudioSourceController GetAudioSourceController()
         {
-            var instance = _audioSourceControllerPool.TakeInstance();
+            var instance = (_audioSourceControllerPool ?? InitializePool()).TakeInstance();
             _activeSources.Add(instance);
             return instance;
         }
 
         protected void Awake()
+        {
+            _ = _audioSourceControllerPool ?? InitializePool();
+        }
+
+        protected void Start()
+        {
+            if (PauseManager.IsPaused)
+            {
+                Pause();
+            }
+            else
+            {
+                Resume();
+            }
+        }
+
+        protected void OnEnable()
+        {
+            PauseManager.Pause.AddListener(Pause);
+            PauseManager.Resume.AddListener(Resume);
+        }
+
+        protected void OnDisable()
+        {
+            PauseManager.Pause.RemoveListener(Pause);
+            PauseManager.Resume.RemoveListener(Resume);
+        }
+
+        private void Resume()
+        {
+            foreach (var item in _activeSources)
+            {
+                item.Resume();
+            }
+        }
+
+        private void Pause()
+        {
+            foreach (var item in _activeSources)
+            {
+                item.Pause();
+            }
+        }
+
+        private PoolOfType<AudioSourceController> InitializePool()
         {
             if (_sourcesInitialCount < 0)
             {
@@ -39,7 +85,8 @@ namespace DanPie.Framework.AudioManagement
             {
                 OnCreatedAction = (x) => x.AudioSource.enabled = false,
 
-                OnDisposedAction = (x) => {
+                OnDisposedAction = (x) =>
+                {
                     MonoBehaviour.Destroy(x.AudioSource);
                 },
 
@@ -50,6 +97,7 @@ namespace DanPie.Framework.AudioManagement
                 = new PoolOfType<AudioSourceController>("AudioSourceUsers", NewAudioSourceUser, poolBehaviour);
 
             _audioSourceControllerPool.SetInstancesCount(_sourcesInitialCount);
+            return _audioSourceControllerPool;
         }
 
         private AudioSourceController NewAudioSourceUser()
