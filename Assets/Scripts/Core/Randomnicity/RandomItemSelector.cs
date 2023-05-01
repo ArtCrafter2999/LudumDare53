@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using Random = System.Random;
+using Random = UnityEngine.Random;
 
 namespace DanPie.Framework.Randomnicity
 {
     public class RandomItemSelector<T>
         where T : IRandomSelectableItem
     {
-        private readonly Random _random = new Random();   
         private List<T> _selectableItems;
 
         public RandomItemSelector()
@@ -34,18 +33,15 @@ namespace DanPie.Framework.Randomnicity
         {
             int sum = 0;
             _selectableItems.ForEach((x) => sum += x.SelectionChance);
-            int pointer = (int)Math.Round((double)sum * _random.NextDouble());
-
-            while (pointer > 0)
+            int pointer = Random.Range(0, sum);
+            
+            foreach (var item in _selectableItems)
             {
-                foreach (var item in _selectableItems)
+                pointer -= item.SelectionChance;
+                if (pointer <= 0)
                 {
-                    pointer -= item.SelectionChance;
-                    if (pointer <= 0)
-                    {
-                        return item;
-                    }
-                } 
+                    return item;
+                }
             }
 
             if (_selectableItems.Count == 0)

@@ -15,6 +15,7 @@ namespace LudumDare53.Truck
         [SerializeField] private Collider2D _cargoCollider;
         [SerializeField] protected float _moveDuration = 5f;
         [SerializeField] protected float _timeBeforeLeft = 2f;
+        [SerializeField] protected int _spriteRendererOrderOffset = 5;
         [SerializeField] private float _moveDistance;
         [SerializeField] private string _marker = "green";
 
@@ -69,6 +70,7 @@ namespace LudumDare53.Truck
         public void MoveTo(float distance)
         {
             DissableBoxesRigidbody();
+            GoToBackground();
             _cargoCollider.isTrigger = false;
             transform.DOMoveX(distance, _moveDuration);
             StartCoroutine(CoroutineUtilities.WaitForSeconds(_moveDuration, () =>
@@ -77,6 +79,14 @@ namespace LudumDare53.Truck
                _isMoving = false;
                ChangeTruckColliders(true);
            }));
+        }
+
+        private void GoToBackground()
+        {
+            foreach (var item in GetComponentsInChildren<SpriteRenderer>())
+            {
+                item.sortingOrder -= _spriteRendererOrderOffset;
+            }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -100,7 +110,7 @@ namespace LudumDare53.Truck
                     boxSize.y *= other.transform.lossyScale.y;
 
                     float boxArea = Mathf.Abs(boxSize.x * boxSize.y);
-                    Debug.Log($"Box entered. Area: {boxArea}");
+                    //Debug.Log($"Box entered. Area: {boxArea}");
 
                     _boxes.Add(other.gameObject);
                     _occupiedArea += boxArea;
@@ -108,7 +118,7 @@ namespace LudumDare53.Truck
                     if (_isFull)
                     {
                         TruckFull.Invoke(this, _boxes);
-                        Debug.Log("Cargo is full");
+                        //Debug.Log("Cargo is full");
                     }
                 }
             }
@@ -140,7 +150,7 @@ namespace LudumDare53.Truck
 
                     bool oldIsFull = _isFull;
                     _isFull = _occupiedArea >= _maxArea - 1;
-                    Debug.Log($"Box exited. Area: {boxArea}");
+                    //Debug.Log($"Box exited. Area: {boxArea}");
                     if (!_isFull && oldIsFull != _isFull)
                         TruckNotFull.Invoke(this, _boxes);
                 }

@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdec049d4d382d74d9692c780d1e1ca5, type: 3}
+  m_Name: Level4ConveyorDifficultyPresset
+  m_EditorClassIdentifier: 
+  _firstBoxSpawnDelay: 2
+  _speed: 7
+  _period: 2.5
+  _spawnableObjects:
+  - _spawnChanse: 6
+    _prefab: {fileID: 2319382874704237987, guid: 9e0ef73a145dcfa49bd01d23c7c5c02f, type: 3}
+  - _spawnChanse: 12
+    _prefab: {fileID: 2319382874704237987, guid: 4623006227751934081452dbfe69cc91, type: 3}
+  - _spawnChanse: 18
+    _prefab: {fileID: 2319382874704237987, guid: 32665f4c7047bbd48aee58ead3fdbf7e, type: 3}
+  - _spawnChanse: 2
+    _prefab: {fileID: 2319382874704237987, guid: 996f1e4f806900f4d90e9ba615f3c4e5, type: 3}
+  - _spawnChanse: 4
+    _prefab: {fileID: 2319382874704237987, guid: e14da27b3031a4242832a0c95e434a68, type: 3}
+  - _spawnChanse: 6
+    _prefab: {fileID: 2319382874704237987, guid: a55b51c0fe1dd524988ab43209b5bcde, type: 3}
+  - _spawnChanse: 2
+    _prefab: {fileID: 2319382874704237987, guid: 6b54ef6afe6af8c4c8f122a9c55db87a, type: 3}
+  - _spawnChanse: 4
+    _prefab: {fileID: 2319382874704237987, guid: bac1317669b455546b67c155883fddc1, type: 3}
+  - _spawnChanse: 6
+    _prefab: {fileID: 2319382874704237987, guid: b5bfc6fa72e1e5b4aa2e20ada801f62d, type: 3}
+  - _spawnChanse: 2
+    _prefab: {fileID: 2319382874704237987, guid: 44ac5907168006240bec3f9a532880fc, type: 3}
+  - _spawnChanse: 4
+    _prefab: {fileID: 2319382874704237987, guid: c77a642ec7b910f43a0a5a43b875439f, type: 3}
+  - _spawnChanse: 6
+    _prefab: {fileID: 2319382874704237987, guid: 5d2bad5c1f2a60d4d9aed5832b060db0, type: 3}
+  - _spawnChanse: 2
+    _prefab: {fileID: 2319382874704237987, guid: d2d8d88c2c77015489aeda149f7db1c4, type: 3}
+  - _spawnChanse: 4
+    _prefab: {fileID: 2319382874704237987, guid: 2605aabcdce3d514f955bc0b1faae94a, type: 3}
+  - _spawnChanse: 6
+    _prefab: {fileID: 2319382874704237987, guid: cf6b363cd7dec2e478bb8650d7d93dc0, type: 3}

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdec049d4d382d74d9692c780d1e1ca5, type: 3}
+  m_Name: Level1ConveyorDifficultyPresset
+  m_EditorClassIdentifier: 
+  _firstBoxSpawnDelay: 2
+  _speed: 5
+  _period: 2.5
+  _spawnableObjects:
+  - _spawnChanse: 3
+    _prefab: {fileID: 2319382874704237987, guid: 9e0ef73a145dcfa49bd01d23c7c5c02f, type: 3}
+  - _spawnChanse: 6
+    _prefab: {fileID: 2319382874704237987, guid: 4623006227751934081452dbfe69cc91, type: 3}
+  - _spawnChanse: 9
+    _prefab: {fileID: 2319382874704237987, guid: 32665f4c7047bbd48aee58ead3fdbf7e, type: 3}
