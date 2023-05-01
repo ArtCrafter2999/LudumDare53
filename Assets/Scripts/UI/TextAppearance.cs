@@ -5,38 +5,64 @@ using UnityEngine;
 
 namespace LudumDare53.UI
 {
+    [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextAppearance : MonoBehaviour
     {
         [Header("Text")]
         [Tooltip("Could be empty for leaving existing text")]
-        [SerializeField] private string text;
-        [SerializeField] private TextMeshProUGUI mesh;
+        public string text;
+        private TextMeshProUGUI _mesh;
         [Header("Time")]
-        [SerializeField] private float period;
+        [SerializeField] private float period = 0.1f;
         [SerializeField] private float delay;
         [Header("Other")]
         [SerializeField] private bool activateOnEnabled;
 
+        private bool _forceEnd = false; 
+
+        public void Start()
+        {
+            if(_mesh == null)
+                _mesh = GetComponent<TextMeshProUGUI>();
+        }
+
         public void OnEnable()
         {
+            if(_mesh == null)
+                _mesh = GetComponent<TextMeshProUGUI>();
             if(activateOnEnabled)Activate();
         }
 
+        public bool isEnd = true;
         public void Activate()
         {
-            if (text == "") text = mesh.text;
-            mesh.text = "";
+            if(!isEnd) return;
+            if (text == "") text = _mesh.text;
+            _mesh.text = "";
+            isEnd = false;
+            _forceEnd = false;
             StartCoroutine(Work());
         }
 
         private IEnumerator Work()
         {
             yield return new WaitForSeconds(delay);
+            _forceEnd = false;
             foreach (var t in text)
             {
-                mesh.text += t;
+                _mesh.text += t;
                 yield return new WaitForSeconds(period);
+                if (!_forceEnd) continue;
+                _forceEnd = false;
+                _mesh.text = text;
+                break;
             }
+            isEnd = true;
+        }
+
+        public void ForceEnd()
+        {
+            _forceEnd = true;
         }
     }
 }

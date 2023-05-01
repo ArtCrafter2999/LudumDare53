@@ -10,7 +10,7 @@ namespace LudumDare53.Leveling
         {
             if (_isPause)
             {
-                PauseManager.SetPause();
+                PauseManager.SetPause(PauseManager.PauseCause.Player);
             }
             else
             {

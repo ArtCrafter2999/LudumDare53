@@ -7,7 +7,7 @@ namespace LudumDare53.Leveling
     {
         public void SetPause()
         {
-            PauseManager.SetPause();
+            PauseManager.SetPause(PauseManager.PauseCause.Player);
         }
 
         public void SetResume()

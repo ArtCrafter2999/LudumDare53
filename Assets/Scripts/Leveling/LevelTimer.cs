@@ -19,7 +19,7 @@ namespace LudumDare53.Leveling
         }
         private void Update()
         {
-            if(PauseManager.IsPaused) return;
+            if(this.IsOnPause()) return;
             if(_timer <= 0) timePassed.Invoke();
             _timer -= Time.deltaTime;
         }

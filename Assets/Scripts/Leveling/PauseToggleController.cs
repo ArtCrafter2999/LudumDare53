@@ -49,7 +49,7 @@ namespace LudumDare53.Leveling
             _isMySet = true;
             if (value)
             {
-                PauseManager.SetPause();
+                PauseManager.SetPause(PauseManager.PauseCause.GameMenu);
             }
             else
             {

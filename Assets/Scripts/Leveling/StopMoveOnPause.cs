@@ -27,6 +27,7 @@ namespace LudumDare53.Leveling
 
         private void OnPause()
         {
+            if (!this.IsOnPause()) return;
             (_savedBodyType, _rb2d.bodyType) = (_rb2d.bodyType, RigidbodyType2D.Kinematic);
             (_savedVelocity, _rb2d.velocity) = (_rb2d.velocity,Vector2.zero);
             (_savedAngularVelocity, _rb2d.angularVelocity) = (_rb2d.angularVelocity, 0);

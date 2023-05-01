@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Serialization;
+using Object = UnityEngine.Object;
 
 namespace LudumDare53.Tutorial
 {
-    public class PrefabSpawner : MonoBehaviour
+    [Serializable]
+    public class PrefabSpawner
     {
-        [SerializeField] private GameObject _prefab;
-        [SerializeField] private Transform _spawnPoint;
+        [SerializeField] private GameObject prefab;
+        [SerializeField] private Transform spawnPoint;
 
         public GameObject Spawn()
         {
-            var result = Instantiate(_prefab, _spawnPoint);
+            var result = Object.Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
             result.transform.parent = null;
             return result;
         }
