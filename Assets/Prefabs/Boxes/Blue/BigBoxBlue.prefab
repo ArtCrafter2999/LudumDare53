@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2319382874704237996}
   - component: {fileID: -658342998617269885}
   - component: {fileID: -4953074515186879165}
+  - component: {fileID: -2829329763627917698}
   m_Layer: 0
   m_Name: BigBoxBlue
   m_TagString: Box
@@ -213,3 +214,16 @@ MonoBehaviour:
   ObjectDraggingStopped:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &-2829329763627917698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356fe4981b2f489d80892d7967dd19d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: blue
