@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: -4953074515186879165}
   - component: {fileID: -247129310007163907}
   - component: {fileID: 9206410412584601609}
+  - component: {fileID: 274858880113808580}
   m_Layer: 0
   m_Name: MiddleBoxGreen
   m_TagString: Box
@@ -327,3 +328,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineSprite: {fileID: 1409272579, guid: 3fc29882c0bc72a43a7c7b9ce60fe171, type: 3}
   _outlineSpriteRenderer: {fileID: 6621418046951375534}
+--- !u!114 &274858880113808580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268267fd65395b4c92ec2a953905ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

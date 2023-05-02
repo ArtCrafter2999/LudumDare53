@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace LudumDare53.Sounds
 {
+
     public class MusicController : MonoBehaviour
     {
-        [SerializeField] private bool _playMusicOnStart;
         [SerializeField] private bool _isPausable = true;
         [SerializeField] private AudioSourcesManager _sourcesManager;
         [SerializeField] private List<AudioClipDataProvider> _musicProviders;
@@ -38,17 +38,22 @@ namespace LudumDare53.Sounds
             MusicSource?.Stop();
         }
 
-        protected void Start()
+
+        private void OnDifficultyChanged()
         {
-            if (_playMusicOnStart)
-            {
-                PlayMusic(GetMusicData());
-            }
+            PlayMusic(GetMusicData());
+        }
+
+        protected void OnEnable()
+        {
+            OnDifficultyChanged();
+            DifficultyManager.DifficultyChanged.AddListener(OnDifficultyChanged);
         }
 
         protected void OnDisable()
         {
             StopMusic();
+            DifficultyManager.DifficultyChanged.RemoveListener(OnDifficultyChanged);
         }
     }
 }

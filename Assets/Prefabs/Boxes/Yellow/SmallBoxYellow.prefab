@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: -658342998617269885}
   - component: {fileID: -4953074515186879165}
   - component: {fileID: 3036027546364574447}
+  - component: {fileID: -1692084674417327706}
   m_Layer: 0
   m_Name: SmallBoxYellow
   m_TagString: Box
@@ -229,6 +230,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineSprite: {fileID: -1982637715, guid: 3fc29882c0bc72a43a7c7b9ce60fe171, type: 3}
   _outlineSpriteRenderer: {fileID: 1221170455730473745}
+--- !u!114 &-1692084674417327706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268267fd65395b4c92ec2a953905ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8142288608433637247
 GameObject:
   m_ObjectHideFlags: 0

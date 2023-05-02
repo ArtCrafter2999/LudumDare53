@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: -658342998617269885}
   - component: {fileID: -4953074515186879165}
   - component: {fileID: -6869676110199128554}
+  - component: {fileID: -7742642183317830686}
+  - component: {fileID: -7219180695655634624}
   m_Layer: 0
   m_Name: MiddleBox
   m_TagString: Box
@@ -35,7 +37,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1472876461285806447}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -199,11 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 269e579f0d34456cabe9a0a08109a5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  markersSprites:
-  - {fileID: 21300000, guid: 3ab759b1bc07258438887e9703254800, type: 3}
-  - {fileID: 21300000, guid: 47a1ed74564fc24429624a5ced984fea, type: 3}
-  - {fileID: 21300000, guid: 5794c7591d70c2a4d92019e59cf4887c, type: 3}
-  - {fileID: 21300000, guid: c215e240c85cc7d42ac6c527308f2ec2, type: 3}
 --- !u!114 &-4953074515186879165
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +230,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  ObjectDraggingStopped:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &-6869676110199128554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +255,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 038c4b6e1f568954ba3b24bdab2f13cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-7219180695655634624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268267fd65395b4c92ec2a953905ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7582143458124886857

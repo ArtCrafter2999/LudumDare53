@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using DanPie.Framework.Randomnicity;
 using LudumDare53.Leveling;
+using LudumDare53.Truck;
 using UnityEngine;
 
 namespace LudumDare53.Boxes
@@ -9,96 +12,93 @@ namespace LudumDare53.Boxes
     public class Conveyor : MonoBehaviour
     {
         private SurfaceEffector2D _surfaceEffector2D;
-        
-        [Header("BoxesGeneration")]
-        [SerializeField] private Transform generatePoint;
-        [SerializeField] private List<GameObject> ordinaryBoxes;
-        [SerializeField] private List<GameObject> coloredBoxes;
+
+        [SerializeField] private TruckController _truckController;
+        [SerializeField] private Transform _generatePoint;
+        [SerializeField] private List<ConveyorDifficultyPresset> _difficultyPressets;
+
+        private ConveyorDifficultyPresset _currentDifficultyPresset;
+        private RandomItemSelector<SpawnableObject> _randomItemSelector;
+        private Coroutine _generationCoroutine;
+        private float _seconds;
 
         private float Speed
         {
             get => -_surfaceEffector2D.speed;
             set => _surfaceEffector2D.speed = -value;
         }
-        private float _period;
-        private float _coloredBoxChance;
 
-        private void Start()
+        private void OnEnable()
         {
             _surfaceEffector2D = GetComponent<SurfaceEffector2D>();
-            DifficultyManager.DifficultyChanged.AddListener(OnDifficultyChanged);
+            _truckController.TruckCountChanged.AddListener(UpdateSelector);
             OnDifficultyChanged();
-            StartCoroutine(BoxGeneration());
+            DifficultyManager.DifficultyChanged.AddListener(OnDifficultyChanged);
+            _generationCoroutine = StartCoroutine(BoxGeneration());
+        }
+
+        private void OnDisable()
+        {
+            _truckController.TruckCountChanged.RemoveListener(UpdateSelector);
+            DifficultyManager.DifficultyChanged.RemoveListener(OnDifficultyChanged);
+            StopCoroutine(_generationCoroutine);
         }
 
         private void OnDifficultyChanged()
         {
-            switch (DifficultyManager.Difficulty) //TODO: Прописати значення для різних рівнів складності
-            {
-                default:
-                case 0:
-                    _coloredBoxChance = 0f;
-                    Speed = 2;
-                    _period = 6;
-                    break;
-                case 1:
-                    _coloredBoxChance = 0.1f;
-                    Speed = 2;
-                    _period = 10;
-                    break;
-                case 2:
-                    _coloredBoxChance = 0.1f;
-                    Speed = 2;
-                    _period = 10;
-                    break;
-                case 3:
-                    _coloredBoxChance = 0.1f;
-                    Speed = 2;
-                    _period = 10;
-                    break;
-                case 4:
-                    _coloredBoxChance = 0.1f;
-                    Speed = 2;
-                    _period = 10;
-                    break;
-                case 5: 
-                    _coloredBoxChance = 0.1f;
-                    Speed = 2;
-                    _period = 10;
-                    break;
-            }
+            _currentDifficultyPresset = GetConveyorDifficultyPresset();
+            _truckController.RecreateTrucks();       
+            Speed = _currentDifficultyPresset.Speed;
+            _seconds = _currentDifficultyPresset.FirstBoxSpawnDelay;
+        }
+
+        private void UpdateSelector(int a, int b)
+        {
+            _randomItemSelector
+                = new RandomItemSelector<SpawnableObject>(_currentDifficultyPresset.SpawnableObjects
+                .Where(x => _truckController.ActiveTrucks
+                .Any(b =>
+                {
+                    bool gg = x.Prefab.TryGetComponent<BoxMarker>(out var mark);
+                    if (!gg || mark.type == "trash") return true;
+                    return mark.type.Equals(b.Marker);
+                })).ToList());
+        }
+
+        private ConveyorDifficultyPresset GetConveyorDifficultyPresset()
+        {
+            return _difficultyPressets[Mathf.Clamp(DifficultyManager.Difficulty, 0, _difficultyPressets.Count - 1)];
         }
 
         private IEnumerator BoxGeneration()
         {
-            var seconds = _period;
             while (gameObject.activeSelf)
             {
                 yield return new WaitForFixedUpdate();
-                if (Physics2D.OverlapPointAll(generatePoint.position).Length > 0) continue;
-                if (seconds > 0)
+
+                if (_seconds > 0)
                 {
-                    if(!this.IsOnPause()) seconds -= Time.deltaTime;
+                    if(!this.IsOnPause()) _seconds -= Time.deltaTime;
                     continue;
                 }
-                seconds = _period;
-                
-                if (ordinaryBoxes.Count == 0 && coloredBoxes.Count == 0) continue;
-                Instantiate(
-                    RandomizeBox(),
-                    generatePoint.position,
-                    Quaternion.identity
-                );
+                _seconds = _currentDifficultyPresset.Period;
+
+
+                try
+                {
+                    Instantiate(
+                                _randomItemSelector.GetRandomItem().Prefab,
+                                _generatePoint.position,
+                                Quaternion.identity
+                            );
+                }
+                catch 
+                {
+
+                    throw;
+                }
             }
         }
 
-        private GameObject RandomizeBox()
-        {
-            if(ordinaryBoxes.Count == 0) return coloredBoxes[Random.Range(0, coloredBoxes.Count)];
-            if(coloredBoxes.Count == 0) return ordinaryBoxes[Random.Range(0, ordinaryBoxes.Count)];
-            return Random.value > _coloredBoxChance ?
-                ordinaryBoxes[Random.Range(0, ordinaryBoxes.Count)] :
-                coloredBoxes[Random.Range(0, coloredBoxes.Count)];
-        }
     }
 }

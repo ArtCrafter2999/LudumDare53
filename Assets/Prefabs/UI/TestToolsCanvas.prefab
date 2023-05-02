@@ -211,18 +211,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 734082512074528893}
-        m_TargetAssemblyTypeName: LudumDare53.Leveling.LevelReloader, Assembly-CSharp
-        m_MethodName: ReloadThisLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &734082511375161146
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,18 +336,6 @@ MonoBehaviour:
       - m_Target: {fileID: 734082512650899674}
         m_TargetAssemblyTypeName: LudumDare53.Leveling.DifficultyUser, Assembly-CSharp
         m_MethodName: IncreaseDifficulty
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 734082512074528893}
-        m_TargetAssemblyTypeName: LudumDare53.Leveling.LevelReloader, Assembly-CSharp
-        m_MethodName: ReloadThisLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -739,50 +715,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda6117b3bd68b74eb74139b4757d144, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &734082512074528895
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 734082512074528894}
-  - component: {fileID: 734082512074528893}
-  m_Layer: 0
-  m_Name: LevelReloader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &734082512074528894
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734082512074528895}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 85.57727, y: -7.046631, z: -6.185755}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 734082512553412577}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &734082512074528893
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734082512074528895}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05225ce4d02fcc248ba561303c69153e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &734082512158561330
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,7 +747,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 734082512553412577}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -852,8 +784,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Day: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b27cf331d59efd143b4e88479e5135f3, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 7f6ba2fe2ab79ca4fb9fa9889c93655a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -969,7 +901,6 @@ RectTransform:
   - {fileID: 734082511375161145}
   - {fileID: 734082511243558208}
   - {fileID: 734082512650899675}
-  - {fileID: 734082512074528894}
   - {fileID: 734082512158561329}
   m_Father: {fileID: 0}
   m_RootOrder: 0

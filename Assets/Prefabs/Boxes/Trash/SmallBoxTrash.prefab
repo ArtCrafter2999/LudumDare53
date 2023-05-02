@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 2319382874704237993}
   - component: {fileID: 2319382874704237992}
   - component: {fileID: 2319382874704237997}
-  - component: {fileID: 2319382874704237996}
   - component: {fileID: -658342998617269885}
   - component: {fileID: -4953074515186879165}
   - component: {fileID: -3157747702362821327}
   - component: {fileID: 5283964824300557635}
+  - component: {fileID: -4003514047236648578}
   m_Layer: 0
   m_Name: SmallBoxTrash
   m_TagString: Box
@@ -153,36 +153,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 40
-  durabilityLevel: 9
+  durabilityLevel: 5
   damaged:
     m_PersistentCalls:
       m_Calls: []
   crushed:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!114 &2319382874704237996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319382874704237987}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18724bed79baa9d4b92934baa34fab7b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 2319382874704237998}
-  damageSprites:
-  - minDamage: 1
-    sprite: {fileID: -1189072338, guid: 36b3e5ff7bfacfa4dbca4559155d7f0b, type: 3}
-  - minDamage: 0.75
-    sprite: {fileID: -1889525196, guid: 36b3e5ff7bfacfa4dbca4559155d7f0b, type: 3}
-  - minDamage: 0.5
-    sprite: {fileID: 950945574, guid: 36b3e5ff7bfacfa4dbca4559155d7f0b, type: 3}
-  - minDamage: 0.25
-    sprite: {fileID: -708477162, guid: 36b3e5ff7bfacfa4dbca4559155d7f0b, type: 3}
-  disappeared:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &-658342998617269885
@@ -243,6 +218,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineSprite: {fileID: -1982637715, guid: 3fc29882c0bc72a43a7c7b9ce60fe171, type: 3}
   _outlineSpriteRenderer: {fileID: 4901127501248665666}
+--- !u!114 &-4003514047236648578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268267fd65395b4c92ec2a953905ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9049118623610376396
 GameObject:
   m_ObjectHideFlags: 0

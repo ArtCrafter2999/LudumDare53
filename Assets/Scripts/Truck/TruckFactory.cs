@@ -13,7 +13,7 @@ namespace LudumDare53.Truck
 
             Truck truck = Instantiate(truckPrefab, position.position, Quaternion.identity);
             truck.transform.SetParent(position);
-
+            truck.GoToFront();
             truck.MoveTo(truck.transform.position.x - _moveDistance);
             return truck;
         }

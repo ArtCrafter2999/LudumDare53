@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04c984936a085e44ac092e79315be1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstLayerRendererOrder: -100
+  _firstLayerRendererOrder: -200
   _layers:
   - CloudsOnLayer:
     - {fileID: 8977750731570817765, guid: 66c209a791b406b41a0504978de42711, type: 3}

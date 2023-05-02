@@ -11,6 +11,17 @@ namespace LudumDare53.Leveling
 
         protected void OnEnable()
         {
+            OnDifficultyChanged();
+            DifficultyManager.DifficultyChanged.AddListener(OnDifficultyChanged);
+        }
+
+        protected void OnDisable()
+        {
+            DifficultyManager.DifficultyChanged.RemoveListener(OnDifficultyChanged);
+        }
+
+        private void OnDifficultyChanged()
+        {
             _text.text = string.Format(_formatingText, DifficultyManager.Difficulty + _difficultyValueOffset);
         }
     }

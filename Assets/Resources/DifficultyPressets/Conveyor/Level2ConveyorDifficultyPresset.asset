@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdec049d4d382d74d9692c780d1e1ca5, type: 3}
+  m_Name: Level2ConveyorDifficultyPresset
+  m_EditorClassIdentifier: 
+  _firstBoxSpawnDelay: 4
+  _speed: 5
+  _period: 1
+  _spawnableObjects:
+  - _spawnChanse: 9
+    _prefab: {fileID: 2319382874704237987, guid: 9e0ef73a145dcfa49bd01d23c7c5c02f, type: 3}
+  - _spawnChanse: 18
+    _prefab: {fileID: 2319382874704237987, guid: 4623006227751934081452dbfe69cc91, type: 3}
+  - _spawnChanse: 27
+    _prefab: {fileID: 2319382874704237987, guid: 32665f4c7047bbd48aee58ead3fdbf7e, type: 3}
+  - _spawnChanse: 10
+    _prefab: {fileID: 2319382874704237987, guid: d2d8d88c2c77015489aeda149f7db1c4, type: 3}
+  - _spawnChanse: 10
+    _prefab: {fileID: 2319382874704237987, guid: 2605aabcdce3d514f955bc0b1faae94a, type: 3}
+  - _spawnChanse: 10
+    _prefab: {fileID: 2319382874704237987, guid: cf6b363cd7dec2e478bb8650d7d93dc0, type: 3}
