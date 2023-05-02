@@ -156,13 +156,6 @@ namespace LudumDare53.UI
             nodePlayer.StartSequence();
         }
 
-        public void TryAgain()
-        {
-            youAreFiredText.ForceEnd();
-            timer.Reload();
-            Resume();
-        }
-
         public void Quit()
         {
             Debug.Log("Quit the game");

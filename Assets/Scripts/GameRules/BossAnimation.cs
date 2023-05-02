@@ -20,8 +20,7 @@ namespace LudumDare53.GameRules
             points.PointsChanged.AddListener(OnChanged);
         }
 
-
-        private void OnChanged(float curPoints, float value)
+        private void OnChanged(float value)
         {
             if (value < -points.decreaseRate * 2)
             {
