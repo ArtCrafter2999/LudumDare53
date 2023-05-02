@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: -4953074515186879165}
   - component: {fileID: 1019085528133084151}
   - component: {fileID: -7680735758588920931}
+  - component: {fileID: -180799981184276787}
   m_Layer: 0
   m_Name: MiddleBoxYellow
   m_TagString: Box
@@ -236,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c45a87055d21a4984576fc27490389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
   maxHealth: 65
   durabilityLevel: 9
   damaged:
@@ -326,3 +328,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0268267fd65395b4c92ec2a953905ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-180799981184276787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3554febfc86d0c94e9610ec909fbcd28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _forceThreshold: 3
+  _hitSoundProvider: {fileID: 11400000, guid: 60be60c19519a3141b0f7fd4299f929e, type: 2}

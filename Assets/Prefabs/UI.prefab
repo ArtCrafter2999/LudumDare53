@@ -4267,7 +4267,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddca7fd2f7b7b9844b33d8bd8753fce8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTime: 20
+  _text: {fileID: 0}
+  maxTime: 180
   timePassed:
     m_PersistentCalls:
       m_Calls: []

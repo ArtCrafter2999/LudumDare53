@@ -15,6 +15,6 @@ MonoBehaviour:
   _clips:
   - _selectionChance: 0
     _clipData:
-      _audioClip: {fileID: 8300000, guid: a89c0a8dbb80b534f9da80d4f38f4d58, type: 3}
+      _audioClip: {fileID: 8300000, guid: e8ca1fb6de1a1f84cab2394c3c45fb30, type: 3}
       _mixerGroup: {fileID: 0}
       _volume: 1

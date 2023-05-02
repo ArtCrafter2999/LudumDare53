@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Level2ConveyorDifficultyPresset
   m_EditorClassIdentifier: 
   _firstBoxSpawnDelay: 4
-  _speed: 5
+  _speed: 4
   _period: 1
   _spawnableObjects:
   - _spawnChanse: 9

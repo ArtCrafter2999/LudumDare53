@@ -1,6 +1,7 @@
 using DanPie.Framework.Coroutines;
 using DG.Tweening;
 using LudumDare53.Boxes;
+using LudumDare53.GameRules;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,6 +15,7 @@ namespace LudumDare53.Truck
     public class Truck : MonoBehaviour
     {
         [SerializeField] private Collider2D _cargoCollider;
+        [SerializeField] protected float _reward = 30f;
         [SerializeField] protected float _moveDuration = 5f;
         [SerializeField] protected float _timeBeforeLeft = 2f;
         [SerializeField] protected int _spriteRendererOrderOffset = 5;
@@ -54,9 +56,11 @@ namespace LudumDare53.Truck
         public UnityEvent<Truck, List<GameObject>> TruckLeft;
         public UnityEvent WrongBoxComes;
         private int _orderChanges;
+        private ReduceablePoints _redusablePoints;
 
         private void Start()
         {
+            _redusablePoints = GameObject.FindAnyObjectByType<ReduceablePoints>().GetComponent<ReduceablePoints>();
             Canvas canvas = GetComponentInChildren<Canvas>();
             canvas.enabled = false;
             TruckFull.AddListener((truck, boxes) => canvas.enabled = true);
@@ -67,6 +71,7 @@ namespace LudumDare53.Truck
                 GoButton.GetComponent<Image>().enabled = false;
                 MoveTo(transform.position.x - _moveDistance);
                 GoToBackground();
+                _redusablePoints.RestoreHealth(_reward);
                 StartCoroutine(CoroutineUtilities.WaitForSeconds(_moveDuration, () => TruckLeft.Invoke(this, _boxes)));
             })));
             WrongBoxComes.AddListener(() => canvas.enabled = false);

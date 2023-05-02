@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace LudumDare53.Leveling
 {
     public class LevelTimer : MonoBehaviour
     {
+        [SerializeField]
+        private Text _text;
         [SerializeField]
         private float maxTime;
 
@@ -22,6 +27,9 @@ namespace LudumDare53.Leveling
             if(this.IsOnPause()) return;
             if(_timer <= 0) timePassed.Invoke();
             _timer -= Time.deltaTime;
+            var span = TimeSpan.FromSeconds(_timer);
+            var eblan = span.ToString("mm\\:ss");
+            _text.text = $"It remains to work: {eblan}";
         }
 
         public void Reload()

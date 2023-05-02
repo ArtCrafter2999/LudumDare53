@@ -19,11 +19,10 @@ namespace LudumDare53.Sounds
 
         protected void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.contacts.Where(x => x.relativeVelocity.magnitude < _forceThreshold).Count() > 0)
+            if (collision.contacts.Where(x => x.relativeVelocity.magnitude > _forceThreshold).Count() > 0)
             {
                 _manager.GetAudioSourceController().Play(_hitSoundProvider.GetClipData());
             }
-
         }
     }
 }

@@ -15,6 +15,31 @@ MonoBehaviour:
   _clips:
   - _selectionChance: 1
     _clipData:
-      _audioClip: {fileID: 8300000, guid: a89c0a8dbb80b534f9da80d4f38f4d58, type: 3}
+      _audioClip: {fileID: 8300000, guid: a4073896385e4804a932c185f40fe97f, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 1
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: a82baecc1e54c064fb644d21aec4cedc, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 1
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: fd2ce7e1d75e693439d1c0117b7d86f9, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 1
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: d6adb907babb4f84b8f41e2d14407c9b, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 1
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 70c5e9a448a879e4ea8eb19cdd1657bb, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 1
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 1666a4a7cdc82d044a35f70348d5e74e, type: 3}
       _mixerGroup: {fileID: 0}
       _volume: 1
