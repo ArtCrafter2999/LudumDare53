@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using LudumDare53.GameRules;
 using LudumDare53.Leveling;
 using LudumDare53.Nodes;
 using UnityEngine;
@@ -16,21 +17,19 @@ namespace LudumDare53.UI
         {
             public List<NodeBase> sequence;
         }
-        
+
         [Header("Screens")] [SerializeField] private Image darkScreen;
         [SerializeField] private GameObject pauseScreen;
         [SerializeField] private GameObject youAreFiredScreen;
         [SerializeField] private GameObject dayIsOverScreen;
         [SerializeField] private GameObject mainMenuScreen;
-        
-        [Header("Text")]
-        [SerializeField] private TextAppearance pauseText;
+
+        [Header("Text")] [SerializeField] private TextAppearance pauseText;
         [SerializeField] private TextAppearance youAreFiredText;
         [SerializeField] private TextAppearance dayIsOverText;
         [SerializeField] private TextAppearance mainMenuText;
 
-        [Header("Tutorial")] 
-        [SerializeField] private NodePlayer nodePlayer;
+        [Header("Tutorial")] [SerializeField] private NodePlayer nodePlayer;
         [SerializeField] private List<NodeSequence> nodeSequences;
         [SerializeField] private NodeBase universalResumeNode;
 
@@ -42,13 +41,19 @@ namespace LudumDare53.UI
         private void Start()
         {
             timer.timePassed.AddListener(DayIsOver);
+            GameObject.FindGameObjectWithTag("Points").GetComponent<ReduceablePoints>().PointsChanged.AddListener(
+                (c, v) =>
+                {
+                    if (c <= 0) YouAreFired();
+                }
+            );
             DifficultyManager.DifficultyChanged.AddListener(() =>
             {
                 if (DifficultyManager.Difficulty < nodeSequences.Count)
                     nodePlayer.SetNodes(nodeSequences[DifficultyManager.Difficulty]?.sequence);
                 else
                 {
-                    nodePlayer.SetNodes(new List<NodeBase>{universalResumeNode});
+                    nodePlayer.SetNodes(new List<NodeBase> { universalResumeNode });
                 }
             });
         }
@@ -63,11 +68,13 @@ namespace LudumDare53.UI
                 if (!PauseManager.IsPaused) Pause();
                 else if (PauseManager.Cause == PauseManager.PauseCause.Player) Resume();
             }
+
             _prevEscape = Input.GetKey(KeyCode.Escape);
             if (Input.GetKey(KeyCode.Return) && !_prevEnter)
             {
                 nodePlayer.SkipNode();
             }
+
             _prevEnter = Input.GetKey(KeyCode.Return);
             continueButton.interactable = PlayerPrefs.HasKey("DifficultyLevel") && DifficultyManager.Difficulty > 0;
         }
@@ -94,7 +101,7 @@ namespace LudumDare53.UI
         public void Resume()
         {
             SmoothFadeOut();
-            if(pauseText.isActiveAndEnabled) pauseText.ForceEnd();
+            if (pauseText.isActiveAndEnabled) pauseText.ForceEnd();
             pauseScreen.SetActive(false);
             youAreFiredScreen.SetActive(false);
             dayIsOverScreen.SetActive(false);
@@ -127,6 +134,7 @@ namespace LudumDare53.UI
                 dayIsOverScreen.SetActive(true);
                 dayIsOverText.Activate();
             }
+
             PauseManager.SetPause(PauseManager.PauseCause.GameMenu);
         }
 
@@ -141,6 +149,7 @@ namespace LudumDare53.UI
 
         public void TryAgain()
         {
+            DifficultyManager.SetDifficulty(DifficultyManager.Difficulty);
             youAreFiredText.ForceEnd();
             timer.Reload();
             Resume();

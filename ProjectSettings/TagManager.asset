@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - AudioManager
+  - Points
   layers:
   - Default
   - TransparentFX
