@@ -15,7 +15,7 @@ namespace LudumDare53.GameRules
 
         public UnityEvent<float> PointsChanged;
 
-        public float CurrentPoints { get; private set; }
+        public float CurrentPoints { get => _currentPoints; }
 
         private void Start()
         {
@@ -49,15 +49,15 @@ namespace LudumDare53.GameRules
 
         private void DecreaseHealth()
         {
-            CurrentPoints -= decreaseRate * Time.deltaTime;
-            CurrentPoints = Mathf.Max(0, CurrentPoints);
-            PointsChanged.Invoke(CurrentPoints * Time.deltaTime);
+            _currentPoints -= decreaseRate * Time.deltaTime;
+            _currentPoints = Mathf.Max(0, _currentPoints);
+            PointsChanged.Invoke(_currentPoints * Time.deltaTime);
         }
 
         public void RestoreHealth(float healthAmount)
         {
-            CurrentPoints += healthAmount;
-            CurrentPoints = Mathf.Clamp(CurrentPoints, 0, _maxPoints);
+            _currentPoints += healthAmount;
+            _currentPoints = Mathf.Clamp(_currentPoints, 0, _maxPoints);
             PointsChanged.Invoke(healthAmount);
             _cooldown = frequency;
         }
