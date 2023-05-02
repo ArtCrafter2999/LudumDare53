@@ -16,10 +16,6 @@ namespace LudumDare53.Tutorial
             SpawnOutlinedBox,
             SpawnOutlinedTrash,
             SpawnOutlinedTruck,
-            SetConveyorOutlineEnabled,
-            SetConveyorOutlineDisabled,
-            SetShredderOutlineEnabled,
-            SetShredderOutlineDisabled,
             SetConveyorActiveEnabled,
             SetConveyorActiveDisabled,
             SetShredderActiveEnabled,
@@ -53,8 +49,6 @@ namespace LudumDare53.Tutorial
         [SerializeField] private PrefabSpawner _outlinedTruckSpawner;
         [SerializeField] private PrefabSpawner _outlinedBoxSpawner;
         [SerializeField] private PrefabSpawner _outlinedTrashSpawner;
-        [SerializeField] private SpriteRenderer _conveyorOutline;
-        [SerializeField] private SpriteRenderer _shredderOutline;
         [SerializeField] private UIManager uiManager;
         [SerializeField] private List<EventAction> eventActions;
         [SerializeField] private List<ActionTrigger> actionTriggers;
@@ -77,18 +71,6 @@ namespace LudumDare53.Tutorial
                     break;
                 case Action.SpawnOutlinedTruck:
                     SpawnOutlinedTruck();
-                    break;
-                case Action.SetConveyorOutlineEnabled:
-                    SetConveyorOutlineState(true);
-                    break;
-                case Action.SetConveyorOutlineDisabled:
-                    SetConveyorOutlineState(false);
-                    break;
-                case Action.SetShredderOutlineEnabled:
-                    SetShredderOutlineState(true);
-                    break;
-                case Action.SetShredderOutlineDisabled:
-                    SetShredderOutlineState(false);
                     break;
                 case Action.SetConveyorActiveEnabled:
                     SetConveyorActiveState(true);
@@ -145,18 +127,6 @@ namespace LudumDare53.Tutorial
         private GameObject SpawnOutlinedTruck()
         {
             return _outlinedTruckSpawner.Spawn();
-        }
-
-        private void SetConveyorOutlineState(bool value)
-        {
-            if(_conveyorOutline == null) return;
-            _conveyorOutline.enabled = value;
-        }
-
-        private void SetShredderOutlineState(bool value)
-        {
-            if(_shredderOutline == null) return;
-            _shredderOutline.enabled = value;
         }
 
         private void SetConveyorActiveState(bool value)

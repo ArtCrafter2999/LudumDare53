@@ -1,16 +1,22 @@
-﻿using UnityEngine;
+﻿using DanPie.Framework.AudioManagement;
+using UnityEngine;
 
 namespace LudumDare53.Nodes
 {
     [CreateAssetMenu(menuName = "Nodes/SoundPlayNode")]
     public class SoundPlayNode : NodeBase
     {
-        [SerializeField] private AudioClip sound; 
+        [SerializeField] private AudioClipDataProvider sound;
+        private AudioSourcesManager _manager;
+
+        public override void Init()
+        {
+            _manager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSourcesManager>();
+        }
         public override bool Invoke()
         {
-            if (sound == null ||NodePlayer.source == null) return true;
-            NodePlayer.source.clip = sound;
-            NodePlayer.source.Play();
+            if (sound == null ||_manager == null) return true;
+            _manager.GetAudioSourceController().Play(sound.GetClipData());
             return true;
         }
     }

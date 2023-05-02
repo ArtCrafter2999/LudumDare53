@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using DanPie.Framework.AudioManagement;
 using TMPro;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 namespace LudumDare53.UI
@@ -8,6 +10,8 @@ namespace LudumDare53.UI
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextAppearance : MonoBehaviour
     {
+        [SerializeField]private AudioClipDataProvider sound;
+        private AudioSourcesManager manager;
         [Header("Text")]
         [Tooltip("Could be empty for leaving existing text")]
         public string text;
@@ -22,6 +26,7 @@ namespace LudumDare53.UI
 
         public void Start()
         {
+            manager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSourcesManager>();
             if(_mesh == null)
                 _mesh = GetComponent<TextMeshProUGUI>();
         }
@@ -52,6 +57,7 @@ namespace LudumDare53.UI
             foreach (var t in text)
             {
                 _mesh.text += t;
+                manager.GetAudioSourceController().Play(sound.GetClipData());
                 yield return new WaitForSeconds(period);
                 if (!_forceEnd) continue;
                 _forceEnd = false;

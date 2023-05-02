@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using LudumDare53.Core;
+using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 
@@ -6,24 +10,25 @@ namespace LudumDare53.GameRules
 {
     public class ReduceablePointsView : MonoBehaviour
     {
-        [SerializeField] private Slider _progressBar;
-        [SerializeField] private ReduceablePoints _reduceablePoints;
+        [SerializeField] private SpriteRenderer spriteRenderer;
+        [SerializeField] private ReduceablePoints points;
+        [SerializeField] private List<Rate> rates;
 
-        protected void OnEnable()
+        private void Update()
         {
-            _progressBar.value = _reduceablePoints.CurrentPoints;
-            _reduceablePoints.PointsChanged.AddListener(OnPointsChanged);
+            rates.Sort((a, b) => a.from < b.from? 1: -1);
+            for (int i = 0; i < rates.Count; i++)
+            {
+                if ((i == 0 || rates[i - 1].from > points.CurrentPoints) && points.CurrentPoints >= rates[i].from)
+                    spriteRenderer.sprite = rates[i].sprite;
+            }
         }
-
-        protected void OnDisable()
+    
+        [Serializable]
+        public class Rate
         {
-            _reduceablePoints.PointsChanged.RemoveListener(OnPointsChanged);
-        }
-
-        private void OnPointsChanged(float newValue)
-        {
-            _progressBar.value = newValue;
+            public float from;
+            public Sprite sprite;
         }
     }
-
 }

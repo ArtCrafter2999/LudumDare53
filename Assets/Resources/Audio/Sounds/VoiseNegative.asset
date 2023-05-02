@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7b41e4a2500fa4e82aa3547ed92b3e, type: 3}
+  m_Name: VoiseNegative
+  m_EditorClassIdentifier: 
+  _clips:
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 2096cae0c7b0a584b8734fc1c6574dab, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: d38281f39eb2eb84da9590143a4d9d45, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 3832322e328c55c4aac451cab440cea8, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: c16e9b6e72c79e04eae7e539b6ac127e, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 528275a8cce989a49aeed23b8ca6bbc6, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: b8815a562595b0c4e857120184544c5c, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: aefbbc6e81c7b734fa4a19fcf493aec0, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 6faff737bc67c264fab1be2bc05f85fe, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 05b2323c68ca3264cbba3f7f0dc62199, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: ed37d08978b5baf48899e333ad9ca63e, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 69740999b6e08194cbfedb6b0d6692e3, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 8560aeb00e733e849afc97323c635962, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0
