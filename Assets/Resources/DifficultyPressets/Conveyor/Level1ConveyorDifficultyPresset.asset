@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdec049d4d382d74d9692c780d1e1ca5, type: 3}
   m_Name: Level1ConveyorDifficultyPresset
   m_EditorClassIdentifier: 
-  _firstBoxSpawnDelay: 2
+  _firstBoxSpawnDelay: 4
   _speed: 5
   _period: 2.5
   _spawnableObjects:

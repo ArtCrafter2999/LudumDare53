@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -4953074515186879165}
   - component: {fileID: 314395629346841521}
   - component: {fileID: 6239303382642968590}
+  - component: {fileID: -1373009570119228802}
   m_Layer: 0
   m_Name: BigBoxBlue
   m_TagString: Box
@@ -243,6 +244,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _outlineSprite: {fileID: 1477780198, guid: 3fc29882c0bc72a43a7c7b9ce60fe171, type: 3}
   _outlineSpriteRenderer: {fileID: 3921859311086340657}
+--- !u!114 &-1373009570119228802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0268267fd65395b4c92ec2a953905ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6243846517813284258
 GameObject:
   m_ObjectHideFlags: 0

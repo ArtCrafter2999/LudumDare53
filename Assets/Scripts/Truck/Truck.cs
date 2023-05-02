@@ -3,6 +3,7 @@ using DG.Tweening;
 using LudumDare53.Boxes;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
@@ -24,7 +25,7 @@ namespace LudumDare53.Truck
         private float _occupiedArea = 0f;
         private List<GameObject> _boxes = new();
         private float _maxArea => _cargoCollider.bounds.size.x * _cargoCollider.bounds.size.y;
-        public Button GoButton => GetComponentInChildren<Button>();
+        public UnityEngine.UI.Button GoButton => GetComponentInChildren<Button>();
         public string[] AvailableTruckColors => new string[] { "green", "blue", "red" };
 
         public string Marker
@@ -40,7 +41,7 @@ namespace LudumDare53.Truck
             }
         }
 
-
+        private List<BoxMarker> _markedList = new List<BoxMarker>();
 
         /// <summary>
         /// Event that is triggered when the truck is full.
@@ -52,6 +53,8 @@ namespace LudumDare53.Truck
         public UnityEvent<Truck, List<GameObject>> TruckNotFull;
         public UnityEvent<Truck, List<GameObject>> TruckLeft;
         public UnityEvent WrongBoxComes;
+        private int _orderChanges;
+
         private void Start()
         {
             Canvas canvas = GetComponentInChildren<Canvas>();
@@ -61,7 +64,9 @@ namespace LudumDare53.Truck
 
             GoButton.onClick.AddListener(() => StartCoroutine(CoroutineUtilities.WaitForSeconds(_timeBeforeLeft, () =>
             {
+                GoButton.GetComponent<Image>().enabled = false;
                 MoveTo(transform.position.x - _moveDistance);
+                GoToBackground();
                 StartCoroutine(CoroutineUtilities.WaitForSeconds(_moveDuration, () => TruckLeft.Invoke(this, _boxes)));
             })));
             WrongBoxComes.AddListener(() => canvas.enabled = false);
@@ -70,7 +75,7 @@ namespace LudumDare53.Truck
         public void MoveTo(float distance)
         {
             DissableBoxesRigidbody();
-            GoToBackground();
+            
             _cargoCollider.isTrigger = false;
             transform.DOMoveX(distance, _moveDuration);
             StartCoroutine(CoroutineUtilities.WaitForSeconds(_moveDuration, () =>
@@ -78,10 +83,13 @@ namespace LudumDare53.Truck
                _cargoCollider.isTrigger = true;
                _isMoving = false;
                ChangeTruckColliders(true);
+               GoToBackground();
            }));
         }
 
-        private void GoToBackground()
+
+
+        public void GoToBackground()
         {
             foreach (var item in GetComponentsInChildren<SpriteRenderer>())
             {
@@ -89,18 +97,47 @@ namespace LudumDare53.Truck
             }
         }
 
+        public void GoToFront()
+        {
+            foreach (var item in GetComponentsInChildren<SpriteRenderer>())
+            {
+                item.sortingOrder += _spriteRendererOrderOffset;
+            }
+        }
+
+        private void RemoveFromMarkeredList(BoxMarker marker)
+        {
+            if (_markedList.Contains(marker))
+            {
+                _markedList.Remove(marker);
+            }
+        }
+
+        private void AddToMarkeredList(BoxMarker marker)
+        {
+            if (!_markedList.Contains(marker))
+            {
+                _markedList.Add(marker);
+            }
+        }
+
+        private bool IsHaveBadMarker()
+        {
+            foreach (var item in _markedList)
+            {
+                if (item.type != Marker)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-
             if (other.CompareTag("Box") && !_isMoving)
             {
-                if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
-                {
-                    ToggleBoxOutlineIfMarkerMatches(boxOuntine, true);
-                    if (boxOuntine.TryGetComponent(out BoxMarker marker) &&
-                        !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
-                        return;
-                }
+                MarkerStuff(other, true);
 
                 if (other.TryGetComponent(out BoxCollider2D boxCollider))
                 {
@@ -115,6 +152,12 @@ namespace LudumDare53.Truck
                     _boxes.Add(other.gameObject);
                     _occupiedArea += boxArea;
                     _isFull = _occupiedArea >= _maxArea - 1;
+
+                    if (IsHaveBadMarker())
+                    {
+                        return;
+                    }
+
                     if (_isFull)
                     {
                         TruckFull.Invoke(this, _boxes);
@@ -124,17 +167,32 @@ namespace LudumDare53.Truck
             }
         }
 
+        private void MarkerStuff(Collider2D other, bool enabled)
+        {
+            if (other.TryGetComponent(out BoxMarker marker))
+            {
+                if (enabled)
+                {
+                    AddToMarkeredList(marker);
+                }
+                else
+                {
+                    RemoveFromMarkeredList(marker);
+                }
+            }
+
+            if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
+            {
+                ToggleBoxOutlineIfMarkerMatches(boxOuntine, enabled);
+            }
+        }
+
         private void OnTriggerExit2D(Collider2D other)
         {
             if (other.CompareTag("Box") && !_isMoving)
             {
-                if (other.TryGetComponent(out Tutorial.Outline boxOuntine))
-                {
-                    ToggleBoxOutlineIfMarkerMatches(boxOuntine, false);
-                    if (boxOuntine.TryGetComponent(out BoxMarker marker) &&
-                       !string.Equals(marker.type, Marker, StringComparison.OrdinalIgnoreCase))
-                        return;
-                }
+
+                MarkerStuff(other, false);
 
                 if (other.TryGetComponent(out BoxCollider2D boxCollider))
                 {
@@ -151,8 +209,20 @@ namespace LudumDare53.Truck
                     bool oldIsFull = _isFull;
                     _isFull = _occupiedArea >= _maxArea - 1;
                     //Debug.Log($"Box exited. Area: {boxArea}");
+                    if (IsHaveBadMarker())
+                    {
+                        return;
+                    }
+
                     if (!_isFull && oldIsFull != _isFull)
+                    {
                         TruckNotFull.Invoke(this, _boxes);
+                    }
+
+                    if (_isFull)
+                    {
+                        TruckFull.Invoke(this, _boxes);
+                    }
                 }
             }
         }
@@ -177,6 +247,7 @@ namespace LudumDare53.Truck
         private void DissableBoxesRigidbody()
         {
             _isMoving = true;
+            _boxes = _boxes.Where(x => x != null).ToList();
             foreach (GameObject box in _boxes)
             {
                 Rigidbody2D rb = box.GetComponent<Rigidbody2D>();

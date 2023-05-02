@@ -10,6 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c7b41e4a2500fa4e82aa3547ed92b3e, type: 3}
-  m_Name: BoxHitSound
+  m_Name: HitSoundsProvider
   m_EditorClassIdentifier: 
-  _clips: []
+  _clips:
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: a89c0a8dbb80b534f9da80d4f38f4d58, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 1
