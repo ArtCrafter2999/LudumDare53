@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 4891054}
   - component: {fileID: 4891056}
   - component: {fileID: 4891055}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1915,6 +1915,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &656886367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 656886369}
+  - component: {fileID: 656886368}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &656886368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656886367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fc905b0b833b1946b92b797a7a1214c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sourcesInitialCount: 5
+  _sourcesContainer: {fileID: 656886367}
+--- !u!4 &656886369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 656886367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.90008974, y: 0.14841068, z: -0.120603904}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &661788195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1993,7 +2039,7 @@ GameObject:
   - component: {fileID: 781156025}
   - component: {fileID: 781156027}
   - component: {fileID: 781156026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2484,7 +2530,7 @@ GameObject:
   - component: {fileID: 962459957}
   - component: {fileID: 962459959}
   - component: {fileID: 962459958}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2610,10 +2656,9 @@ GameObject:
   - component: {fileID: 1010922528}
   - component: {fileID: 1010922527}
   - component: {fileID: 1010922526}
-  - component: {fileID: 1010922529}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: AudioManager
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2684,20 +2729,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1010922529
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010922525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fc905b0b833b1946b92b797a7a1214c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sourcesInitialCount: 5
-  _sourcesContainer: {fileID: 1010922525}
 --- !u!114 &1032311134 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2248246939645258513, guid: a5d0669f59043744fa92c3f9da43a01c, type: 3}
@@ -3478,6 +3509,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bec14c2b76bf45d6ae166b4f93c6c594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  positiveSound: {fileID: 11400000, guid: 8c65a18cad23fbd408248bef28d259df, type: 2}
+  negativeSound: {fileID: 11400000, guid: de373b5162bf8724dae5b4d076e418ae, type: 2}
   animator: {fileID: 1339614531}
   points: {fileID: 1339614535}
 --- !u!114 &1339614535
@@ -3493,8 +3526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxPoints: 100
-  decreaseRate: 10
-  frequency: 3
+  decreaseRate: 20
+  frequency: 10
   PointsChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3614,7 +3647,7 @@ GameObject:
   - component: {fileID: 1432708515}
   - component: {fileID: 1432708517}
   - component: {fileID: 1432708516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3725,7 +3758,7 @@ GameObject:
   - component: {fileID: 1443395074}
   - component: {fileID: 1443395076}
   - component: {fileID: 1443395075}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4968,7 +5001,7 @@ GameObject:
   - component: {fileID: 1671834610}
   - component: {fileID: 1671834612}
   - component: {fileID: 1671834611}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5079,7 +5112,7 @@ GameObject:
   - component: {fileID: 1820017103}
   - component: {fileID: 1820017105}
   - component: {fileID: 1820017104}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5446,7 +5479,7 @@ GameObject:
   - component: {fileID: 1988882939}
   - component: {fileID: 1988882941}
   - component: {fileID: 1988882940}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ground_16x16
   m_TagString: Untagged
   m_Icon: {fileID: 0}

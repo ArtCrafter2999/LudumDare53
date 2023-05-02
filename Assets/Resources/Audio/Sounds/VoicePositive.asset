@@ -17,34 +17,34 @@ MonoBehaviour:
     _clipData:
       _audioClip: {fileID: 8300000, guid: feff62e69d5faf346814922838c1d2dd, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.635
+      _volume: 0.252
   - _selectionChance: 1
     _clipData:
       _audioClip: {fileID: 8300000, guid: 07f8d8424b8d32c41b95b4b0bcc51fca, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.612
+      _volume: 0.228
   - _selectionChance: 1
     _clipData:
       _audioClip: {fileID: 8300000, guid: c23ab4d5e30872a4b9d5b84ec670867e, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.607
+      _volume: 0.237
   - _selectionChance: 1
     _clipData:
       _audioClip: {fileID: 8300000, guid: 73350b0379bc9f44da0fbfb2cd36b8d4, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.64
+      _volume: 0.237
   - _selectionChance: 1
     _clipData:
       _audioClip: {fileID: 8300000, guid: fcd391c25ae4f3a49b77457f29cab778, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.626
+      _volume: 0.214
   - _selectionChance: 1
     _clipData:
       _audioClip: {fileID: 8300000, guid: 18428851eb16a7c4ca10d00761fef4b1, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.654
+      _volume: 0.252
   - _selectionChance: 1
     _clipData:
       _audioClip: {fileID: 8300000, guid: 392c759ea97369e40bbd44af9e1d5cc1, type: 3}
       _mixerGroup: {fileID: 0}
-      _volume: 0.668
+      _volume: 0.289
