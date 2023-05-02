@@ -237,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c45a87055d21a4984576fc27490389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reducingPointsFactor: -2
   damage: 1
   maxHealth: 65
   durabilityLevel: 9

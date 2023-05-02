@@ -12,6 +12,7 @@ namespace LudumDare53.Boxes
 {
     public class BoxDamage : MonoBehaviour
     {
+        public float reducingPointsFactor = -1f;
         public float damage;
         [SerializeField]
         public float maxHealth;
@@ -31,7 +32,7 @@ namespace LudumDare53.Boxes
 
         public void Damage(float count)
         {
-            _redusablePoints.RestoreHealth(-damage);
+            _redusablePoints.RestoreHealth(reducingPointsFactor);
             _health = Mathf.Clamp(_health - count, 0, maxHealth);
             damaged.Invoke(InterpolatedHealth);
             if(_health<=0)crushed.Invoke();

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Level4ConveyorDifficultyPresset
   m_EditorClassIdentifier: 
   _firstBoxSpawnDelay: 4
-  _speed: 7
-  _period: 2.5
+  _speed: 6
+  _period: 3
   _spawnableObjects:
   - _spawnChanse: 6
     _prefab: {fileID: 2319382874704237987, guid: 9e0ef73a145dcfa49bd01d23c7c5c02f, type: 3}

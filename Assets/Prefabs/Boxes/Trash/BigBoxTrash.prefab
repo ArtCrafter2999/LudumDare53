@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6239303382642968590}
   - component: {fileID: 5147809647014488803}
   - component: {fileID: 1949872995077082875}
+  - component: {fileID: 2469529380663979149}
   m_Layer: 0
   m_Name: BigBoxTrash
   m_TagString: Box
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1059921764, guid: 90911e99e4857cb41b5d37bbdc296508, type: 3}
+  m_Sprite: {fileID: -444311595, guid: 90911e99e4857cb41b5d37bbdc296508, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -132,7 +133,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
+    oldSize: {x: 1, y: 0.5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -153,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c45a87055d21a4984576fc27490389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reducingPointsFactor: 0.05
   damage: 1
   maxHealth: 40
   durabilityLevel: 5
@@ -246,6 +248,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _forceThreshold: 3
   _hitSoundProvider: {fileID: 11400000, guid: 60be60c19519a3141b0f7fd4299f929e, type: 2}
+--- !u!114 &2469529380663979149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319382874704237987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18724bed79baa9d4b92934baa34fab7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 2319382874704237998}
+  damageSprites:
+  - minDamage: 0
+    sprite: {fileID: -1059921764, guid: 90911e99e4857cb41b5d37bbdc296508, type: 3}
+  disappeared:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6243846517813284258
 GameObject:
   m_ObjectHideFlags: 0

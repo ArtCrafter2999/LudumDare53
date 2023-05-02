@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _firstBoxSpawnDelay: 4
   _speed: 3
-  _period: 2.5
+  _period: 3.5
   _spawnableObjects:
   - _spawnChanse: 3
     _prefab: {fileID: 2319382874704237987, guid: 9e0ef73a145dcfa49bd01d23c7c5c02f, type: 3}
