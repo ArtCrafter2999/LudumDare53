@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 5036796298929494862}
   - component: {fileID: 8419499753012079049}
   - component: {fileID: 5407609250813146738}
+  - component: {fileID: 8470892269075029099}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -866,6 +867,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &8470892269075029099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1936208113231710671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &2248246939645258506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,8 +1165,10 @@ MonoBehaviour:
     - {fileID: 11400000, guid: e54aa5d0a1e29bc4d9479e9a895890ee, type: 2}
     - {fileID: 11400000, guid: c01107f7d1b57834781e5caf0a11e195, type: 2}
   universalResumeNode: {fileID: 11400000, guid: 6836fb35749340741a7500cece6049ee, type: 2}
-  continueButton: {fileID: 8299303795213568614}
+  looseSound: {fileID: 11400000, guid: d3cfb1138a4543a4aba414a6d0c136e1, type: 2}
+  winSound: {fileID: 11400000, guid: 1fca0a5f1db42064ba5a364ed9a48adc, type: 2}
   timer: {fileID: 5798554182552835389}
+  continueButton: {fileID: 8299303795213568614}
 --- !u!82 &7982845205764005735
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1462,6 +1479,7 @@ GameObject:
   - component: {fileID: 2248246940452924177}
   - component: {fileID: 2248246940452924174}
   - component: {fileID: 2248246940452924175}
+  - component: {fileID: 7664078581290950578}
   m_Layer: 5
   m_Name: Resume Button
   m_TagString: Untagged
@@ -1584,6 +1602,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7664078581290950578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2248246940452924173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &2248246940472287636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,6 +1763,7 @@ GameObject:
   - component: {fileID: 4983973544019482585}
   - component: {fileID: 223196937670599385}
   - component: {fileID: 4105436407609556848}
+  - component: {fileID: 1663777785523570186}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -1853,6 +1886,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1663777785523570186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2257970921795769833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &2323199075900930396
 GameObject:
   m_ObjectHideFlags: 0
@@ -1865,6 +1912,7 @@ GameObject:
   - component: {fileID: 401397432490625249}
   - component: {fileID: 738653028311057005}
   - component: {fileID: 1287478160766502090}
+  - component: {fileID: 398346862411616259}
   m_Layer: 5
   m_Name: NewGame Button
   m_TagString: Untagged
@@ -1987,6 +2035,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &398346862411616259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2323199075900930396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &2828250551285996008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,6 +2061,7 @@ GameObject:
   - component: {fileID: 2133951988369568580}
   - component: {fileID: 2959819303439266602}
   - component: {fileID: 8299303795213568614}
+  - component: {fileID: 704865282957781734}
   m_Layer: 5
   m_Name: Continue Button
   m_TagString: Untagged
@@ -2121,6 +2184,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &704865282957781734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2828250551285996008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &2841538312170892729
 GameObject:
   m_ObjectHideFlags: 0
@@ -2272,7 +2349,7 @@ MonoBehaviour:
   sound: {fileID: 11400000, guid: 3a0dfb2311223dc45ba67f617de2e41f, type: 2}
   text: You are FIRED
   period: 0.2
-  delay: 0.5
+  delay: 1
   activateOnEnabled: 1
   isEnd: 1
 --- !u!1 &3087186506510723473
@@ -2609,7 +2686,7 @@ MonoBehaviour:
   sound: {fileID: 11400000, guid: 3a0dfb2311223dc45ba67f617de2e41f, type: 2}
   text: The day is over
   period: 0.15
-  delay: 0.5
+  delay: 1
   activateOnEnabled: 1
   isEnd: 1
 --- !u!1 &4809328519174883804
@@ -3544,6 +3621,7 @@ GameObject:
   - component: {fileID: 8847057327251642497}
   - component: {fileID: 5098210311301392285}
   - component: {fileID: 81558623221750871}
+  - component: {fileID: 30317871520338950}
   m_Layer: 5
   m_Name: TryAgain Button
   m_TagString: Untagged
@@ -3666,6 +3744,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &30317871520338950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7507828865379892804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &7578817930744545110
 GameObject:
   m_ObjectHideFlags: 0
@@ -3678,6 +3770,7 @@ GameObject:
   - component: {fileID: 4452172233686571758}
   - component: {fileID: 4187266152956112169}
   - component: {fileID: 9012149543187073700}
+  - component: {fileID: 7154652308171878696}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -3800,6 +3893,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7154652308171878696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578817930744545110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &7977867249524971015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3812,6 +3919,7 @@ GameObject:
   - component: {fileID: 8012896764038130792}
   - component: {fileID: 1077914659022131749}
   - component: {fileID: 3335755668016085078}
+  - component: {fileID: 63530175625990330}
   m_Layer: 5
   m_Name: NexDay Button
   m_TagString: Untagged
@@ -3934,6 +4042,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &63530175625990330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977867249524971015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &8660558137818823437
 GameObject:
   m_ObjectHideFlags: 0
@@ -4285,6 +4407,7 @@ GameObject:
   - component: {fileID: 7886625262920852018}
   - component: {fileID: 5309104743320314516}
   - component: {fileID: 7360314615704485025}
+  - component: {fileID: 2178655541610781554}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -4407,6 +4530,20 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &2178655541610781554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916124880488945246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}
 --- !u!1 &9100936294409148513
 GameObject:
   m_ObjectHideFlags: 0

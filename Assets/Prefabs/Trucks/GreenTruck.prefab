@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8196011804708716922}
   - component: {fileID: 1222019067878095263}
   - component: {fileID: 2320977279173056612}
+  - component: {fileID: 9099517177131199587}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -96,7 +97,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -111,6 +112,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!251 &9099517177131199587
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1031213561059441915}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: -90
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1369943341767361166
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,6 +602,7 @@ GameObject:
   - component: {fileID: 9058233819885046198}
   - component: {fileID: 1803014623888084955}
   - component: {fileID: 6258568830485062530}
+  - component: {fileID: 7563337194795743230}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -667,7 +688,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -682,6 +703,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!251 &7563337194795743230
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5810038354249347737}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 150
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &5909365775351458168
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,11 +985,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cargoCollider: {fileID: 1776192182980864462}
+  _reward: 30
   _moveDuration: 5
   _timeBeforeLeft: 0
   _spriteRendererOrderOffset: 40
   _moveDistance: 50
   _marker: green
+  arriveSound: {fileID: 11400000, guid: c34f4d1a5ed1dd74b9f672d313238a86, type: 2}
+  leaveSound: {fileID: 11400000, guid: ce94e67a8205baf4d8cf9ad9bc38c920, type: 2}
   TruckFull:
     m_PersistentCalls:
       m_Calls: []
@@ -1020,6 +1063,7 @@ GameObject:
   - component: {fileID: 4691579249720703431}
   - component: {fileID: 9180403367558180322}
   - component: {fileID: 949505047743937964}
+  - component: {fileID: 6846824861317004130}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -1105,7 +1149,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1120,6 +1164,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!251 &6846824861317004130
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7731662594142126749}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 90
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &8538667507910160383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1337,3 +1400,22 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3640623829460445062, guid: cbe43c43ed01f484892b6cf5230af6c4, type: 3}
   m_PrefabInstance: {fileID: 3944471982653592955}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5009792749290547932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8303458662664781735, guid: cbe43c43ed01f484892b6cf5230af6c4, type: 3}
+  m_PrefabInstance: {fileID: 3944471982653592955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7687412030364897412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5009792749290547932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d784c4a3f554b8a8c56e884e6e72472, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 11400000, guid: 88439fd4766f8b74e98cc31a8b1401ca, type: 2}
+  clickSound: {fileID: 11400000, guid: cf1edc465a4c9ad4d83627cdd79c6775, type: 2}

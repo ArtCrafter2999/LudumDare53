@@ -22,20 +22,20 @@ namespace LudumDare53.GameRules
 
         private void OnChanged(float value)
         {
-            if (value < -points.decreaseRate * 2)
+            if ((int)value == (int)points.decreaseRate)
+            {
+                animator.SetTrigger("Question");
+                _manager.GetAudioSourceController().Play(negativeSound.GetClipData());
+            }
+            else if (value < 0)
             {
                 animator.SetTrigger("Bad");
                 _manager.GetAudioSourceController().Play(negativeSound.GetClipData());
             }
-            else if (value >= points.decreaseRate)
+            else
             {
                 animator.SetTrigger("Good");
                 _manager.GetAudioSourceController().Play(positiveSound.GetClipData());
-            }
-            else if (value < 0)
-            {
-                animator.SetTrigger("Question");
-                _manager.GetAudioSourceController().Play(negativeSound.GetClipData());
             }
         }
     }

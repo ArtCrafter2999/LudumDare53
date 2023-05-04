@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7b41e4a2500fa4e82aa3547ed92b3e, type: 3}
+  m_Name: TruckLeave
+  m_EditorClassIdentifier: 
+  _clips:
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: dcc9dcd5e11cddc4095c36b402343435, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0.31
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 001827f067e140443a1f9b66bcc5125b, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0.301
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: ebb759e2fd8743d4690ca669cbbe779c, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0.31

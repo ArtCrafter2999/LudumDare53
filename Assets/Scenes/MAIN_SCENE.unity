@@ -2688,6 +2688,7 @@ MonoBehaviour:
   damage: 10
   workSound: {fileID: 11400000, guid: 64410b5bd3c022a4096e47c4986e6ac6, type: 2}
   bladeSound: {fileID: 11400000, guid: 6d3b0e714e982b44987ca6ebb0fe5207, type: 2}
+  animator: {fileID: 597258576}
 --- !u!4 &807663237
 Transform:
   m_ObjectHideFlags: 0
@@ -3118,6 +3119,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e6617d0eaaaf494fbe9d9066ff8731a, type: 2}
   - {fileID: 11400000, guid: 0c2eeb0babddf4b469132c9e460a6757, type: 2}
   - {fileID: 11400000, guid: 4e533567505f3584aa78a832e6063308, type: 2}
+  mainMenu: {fileID: 11400000, guid: 933dab7790c7f6e48894734ce30c3ed0, type: 2}
 --- !u!4 &974773358
 Transform:
   m_ObjectHideFlags: 0
@@ -3974,7 +3976,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxPoints: 100
-  decreaseRate: 100
+  decreaseRate: 20
   frequency: 25
   PointsChanged:
     m_PersistentCalls:
@@ -4117,7 +4119,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -80
   m_Sprite: {fileID: -1160375566, guid: 2bb9031e1a92d1647899e869036daae9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6432,6 +6434,18 @@ PrefabInstance:
       propertyPath: _truckSpawnDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6571534844503832012, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: _moveDistance
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571534844768598337, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -53.03347
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571534844768598337, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.956038
+      objectReference: {fileID: 0}
     - target: {fileID: 6571534845793293704, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: m_Name
       value: TruckSystem
@@ -7503,7 +7517,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press ENTER to skip.
+  m_text: Press ENTER to continue.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b27cf331d59efd143b4e88479e5135f3, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 7ab40835290fc0749b0ef17f67262e4e, type: 2}

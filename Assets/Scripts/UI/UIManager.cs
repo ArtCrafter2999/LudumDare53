@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DanPie.Framework.AudioManagement;
 using DG.Tweening;
 using LudumDare53.GameRules;
 using LudumDare53.Leveling;
@@ -33,14 +34,22 @@ namespace LudumDare53.UI
         [SerializeField] private List<NodeSequence> nodeSequences;
         [SerializeField] private NodeBase universalResumeNode;
 
-        [Header("Buttons")] [SerializeField] private Button continueButton;
+        [Header("Sounds")] 
+        [SerializeField] private AudioClipDataProvider looseSound;
+        [SerializeField] private AudioClipDataProvider winSound;
 
-        [Header("Other")] [SerializeField] private LevelTimer timer;
+        [Header("Other")] 
+        [SerializeField] private LevelTimer timer;
+        [SerializeField] private Button continueButton;
+        
+        [NonSerialized] public bool IsMainMenu = true;
 
+        private AudioSourcesManager _manager;
 
         private void Start()
         {
             timer.timePassed.AddListener(DayIsOver);
+            _manager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSourcesManager>();
             var rp = GameObject.FindGameObjectWithTag("ReduceablePoints").GetComponent<ReduceablePoints>();
             rp.PointsChanged.AddListener(
                 (c) =>
@@ -86,14 +95,6 @@ namespace LudumDare53.UI
             darkScreen.DOFade(0.40f, duration);
         }
 
-        public void TryAgain()
-        {
-            DifficultyManager.SetDifficulty(DifficultyManager.Difficulty);
-            youAreFiredText.ForceEnd();
-            timer.Reload();
-            Resume();
-        }
-
         public void SmoothFadeOut(float duration = 0.5f)
         {
             darkScreen.DOFade(0, duration).OnComplete(() => darkScreen.gameObject.SetActive(false));
@@ -126,10 +127,12 @@ namespace LudumDare53.UI
             youAreFiredScreen.SetActive(true);
             youAreFiredText.Activate();
             PauseManager.SetPause(PauseManager.PauseCause.GameMenu);
+            _manager.GetAudioSourceController().Play(looseSound.GetClipData());
         }
 
         public void DayIsOver()
         {
+            
             SmoothFadeIn();
             if (DifficultyManager.Difficulty >= 4)
             {
@@ -145,6 +148,7 @@ namespace LudumDare53.UI
             }
 
             PauseManager.SetPause(PauseManager.PauseCause.GameMenu);
+            _manager.GetAudioSourceController().Play(winSound.GetClipData());
         }
 
         public void NextDay()
@@ -154,6 +158,14 @@ namespace LudumDare53.UI
             dayIsOverText.ForceEnd();
             dayIsOverScreen.SetActive(false);
             nodePlayer.StartSequence();
+        }
+        
+        public void TryAgain()
+        {
+            DifficultyManager.SetDifficulty(DifficultyManager.Difficulty);
+            youAreFiredText.ForceEnd();
+            timer.Reload();
+            Resume();
         }
 
         public void Quit()

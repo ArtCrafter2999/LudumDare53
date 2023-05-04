@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using DanPie.Framework.AudioManagement;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -21,6 +22,12 @@ namespace LudumDare53.Truck
         [SerializeField] protected int _spriteRendererOrderOffset = 5;
         [SerializeField] private float _moveDistance;
         [SerializeField] private string _marker = "green";
+
+        [Header("Sounds")] 
+        [SerializeField] private AudioClipDataProvider arriveSound;
+        [SerializeField] private AudioClipDataProvider leaveSound;
+        
+        private AudioSourcesManager _manager;
 
         private bool _isFull = false;
         private bool _isMoving = false;
@@ -58,6 +65,11 @@ namespace LudumDare53.Truck
         private int _orderChanges;
         private ReduceablePoints _redusablePoints;
 
+        private void OnEnable()
+        {
+            _manager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSourcesManager>();
+        }
+
         private void Start()
         {
             _redusablePoints = GameObject.FindAnyObjectByType<ReduceablePoints>().GetComponent<ReduceablePoints>();
@@ -66,6 +78,7 @@ namespace LudumDare53.Truck
             TruckFull.AddListener((truck, boxes) => canvas.enabled = true);
             TruckNotFull.AddListener((truck, boxes) => canvas.enabled = false);
 
+            GoButton.onClick.AddListener(() => _manager.GetAudioSourceController().Play(leaveSound.GetClipData()));
             GoButton.onClick.AddListener(() => StartCoroutine(CoroutineUtilities.WaitForSeconds(_timeBeforeLeft, () =>
             {
                 GoButton.GetComponent<Image>().enabled = false;
@@ -104,6 +117,8 @@ namespace LudumDare53.Truck
 
         public void GoToFront()
         {
+            _manager.GetAudioSourceController().Play(arriveSound.GetClipData());
+
             foreach (var item in GetComponentsInChildren<SpriteRenderer>())
             {
                 item.sortingOrder += _spriteRendererOrderOffset;

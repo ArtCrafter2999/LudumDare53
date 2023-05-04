@@ -1,5 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using DanPie.Framework.AudioManagement;
+using DanPie.Framework.Coroutines;
 using LudumDare53.Leveling;
 using UnityEngine;
 
@@ -11,11 +14,12 @@ namespace LudumDare53.Sounds
         [SerializeField] private bool _isPausable = true;
         [SerializeField] private AudioSourcesManager _sourcesManager;
         [SerializeField] private List<AudioClipDataProvider> _musicProviders;
+        [SerializeField] private AudioClipDataProvider mainMenu;
 
         private AudioSourceController _musicSourceController;
 
         private AudioSourceController MusicSource
-            => _musicSourceController = _musicSourceController ?? _sourcesManager.GetAudioSourceController();
+            => _musicSourceController ??= _sourcesManager.GetAudioSourceController();
 
         public AudioClipData GetMusicData()
         {
@@ -38,15 +42,18 @@ namespace LudumDare53.Sounds
             MusicSource?.Stop();
         }
 
-
         private void OnDifficultyChanged()
         {
             PlayMusic(GetMusicData());
         }
 
+        private void Start()
+        {
+            StartCoroutine(CoroutineUtilities.WaitForSeconds(0.2f, () => {PlayMusic(mainMenu.GetClipData());}));
+        }
+
         protected void OnEnable()
         {
-            OnDifficultyChanged();
             DifficultyManager.DifficultyChanged.AddListener(OnDifficultyChanged);
         }
 

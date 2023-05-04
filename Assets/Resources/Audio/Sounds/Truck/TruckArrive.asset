@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7b41e4a2500fa4e82aa3547ed92b3e, type: 3}
+  m_Name: TruckArrive
+  m_EditorClassIdentifier: 
+  _clips:
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 484f245223869ea4a9d20f134a12b96d, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0.223
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: 351d51abbf1baa24fb6ffbbaedeec71a, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0.209
+  - _selectionChance: 1
+    _clipData:
+      _audioClip: {fileID: 8300000, guid: cd699fbed6dcb9648b8634708a59181a, type: 3}
+      _mixerGroup: {fileID: 0}
+      _volume: 0.228

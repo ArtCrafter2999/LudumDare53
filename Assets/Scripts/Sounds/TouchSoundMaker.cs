@@ -1,28 +1,27 @@
 ﻿using System.Linq;
 using DanPie.Framework.AudioManagement;
+using LudumDare53.Boxes;
 using UnityEngine;
 
 namespace LudumDare53.Sounds
 {
+    [RequireComponent(typeof(BoxDamage))]
     public class TouchSoundMaker : MonoBehaviour
     {
-        [SerializeField] private float _forceThreshold = 3f;
         [SerializeField] private AudioClipDataProvider _hitSoundProvider;
 
         private AudioSourcesManager _manager;
 
         protected void Start()
         {
-            _manager 
+            _manager
                 = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSourcesManager>();
+            GetComponent<BoxDamage>().damaged.AddListener(PlayHit);
         }
 
-        protected void OnCollisionEnter2D(Collision2D collision)
+        private void PlayHit(float _)
         {
-            if (collision.contacts.Where(x => x.relativeVelocity.magnitude > _forceThreshold).Count() > 0)
-            {
-                _manager.GetAudioSourceController().Play(_hitSoundProvider.GetClipData());
-            }
+            _manager.GetAudioSourceController().Play(_hitSoundProvider.GetClipData());
         }
     }
 }
