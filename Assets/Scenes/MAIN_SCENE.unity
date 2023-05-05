@@ -2745,7 +2745,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 40
+  m_SurfaceArc: 10
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -3963,6 +3963,8 @@ MonoBehaviour:
   negativeSound: {fileID: 11400000, guid: de373b5162bf8724dae5b4d076e418ae, type: 2}
   animator: {fileID: 1339614531}
   points: {fileID: 1339614535}
+  cooldown: 5
+  _cooldown: 0
 --- !u!114 &1339614535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3978,7 +3980,10 @@ MonoBehaviour:
   _maxPoints: 100
   decreaseRate: 20
   frequency: 25
-  PointsChanged:
+  pointsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  pointsNaturallyChanged:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &1352282675
@@ -6430,13 +6435,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 656225108}
     m_Modifications:
+    - target: {fileID: 6571534844057983049, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 49.5625
+      objectReference: {fileID: 0}
     - target: {fileID: 6571534844206949064, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: _truckSpawnDelay
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6571534844206949064, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: _pressets.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571534844503832012, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: moveDistance
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6571534844503832012, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: _moveDistance
-      value: 18
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571534844713254032, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 42.125
       objectReference: {fileID: 0}
     - target: {fileID: 6571534844768598337, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6445,6 +6466,10 @@ PrefabInstance:
     - target: {fileID: 6571534844768598337, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.956038
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571534845609401771, guid: ae2702c0df586ba47999351db0757580, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 34.75
       objectReference: {fileID: 0}
     - target: {fileID: 6571534845793293704, guid: ae2702c0df586ba47999351db0757580, type: 3}
       propertyPath: m_Name

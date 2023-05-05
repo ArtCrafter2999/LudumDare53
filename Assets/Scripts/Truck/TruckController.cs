@@ -2,6 +2,7 @@ using DanPie.Framework.Coroutines;
 using LudumDare53.Leveling;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -81,6 +82,15 @@ namespace LudumDare53.Truck
             _freePositions.Enqueue(truck.transform.parent);
             _truckFactory.RemoveTruck(truck);
             _trucks.Remove(truck);
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.magenta;
+            foreach (var point in _pressets.SelectMany(preset => preset.SpawnPoints))
+            {
+                Gizmos.DrawWireSphere(point.position + Vector3.left * _truckFactory.moveDistance, 1);
+            }
         }
     }
 }

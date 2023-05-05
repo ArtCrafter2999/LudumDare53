@@ -2,18 +2,22 @@ using System;
 using LudumDare53.Leveling;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace LudumDare53.GameRules
 {
     public class ReduceablePoints : MonoBehaviour
     {
         [SerializeField] private float _maxPoints = 100;
+
         [Tooltip("Determines how many points will decrease in one second.")]
         public float decreaseRate;
+
         public float frequency;
         private float _cooldown;
 
-        public UnityEvent<float> PointsChanged;
+        public UnityEvent<float> pointsChanged;
+        public UnityEvent<float> pointsNaturallyChanged;
 
         public float CurrentPoints { get; private set; }
 
@@ -44,21 +48,22 @@ namespace LudumDare53.GameRules
             if (_cooldown > 0)
                 _cooldown -= Time.deltaTime;
             else
-                RestoreHealth(-decreaseRate);
+            {
+                SilentChangeHealth(-decreaseRate);
+                pointsNaturallyChanged.Invoke(-decreaseRate);
+            }
+                
         }
 
-        private void DecreaseHealth()
+        public void ChangeHealth(float healthAmount)
         {
-            CurrentPoints -= decreaseRate * Time.deltaTime;
-            CurrentPoints = Mathf.Max(0, CurrentPoints);
-            PointsChanged.Invoke(CurrentPoints * Time.deltaTime);
+            SilentChangeHealth(healthAmount);
+            pointsChanged.Invoke(healthAmount);
         }
-
-        public void RestoreHealth(float healthAmount)
+        public void SilentChangeHealth(float healthAmount)
         {
             CurrentPoints += healthAmount;
             CurrentPoints = Mathf.Clamp(CurrentPoints, 0, _maxPoints);
-            PointsChanged.Invoke(healthAmount);
             _cooldown = frequency;
         }
     }

@@ -6,7 +6,7 @@ namespace LudumDare53.Truck
     public class TruckFactory : MonoBehaviour
     {
         [SerializeField] private Truck[] _truckPrefabs;
-        [SerializeField] private float _moveDistance;
+        [SerializeField] public float moveDistance;
         public Truck CreateTruck(Transform position)
         {
             Truck truckPrefab = _truckPrefabs[Random.Range(0, _truckPrefabs.Length)];
@@ -14,7 +14,7 @@ namespace LudumDare53.Truck
             Truck truck = Instantiate(truckPrefab, position.position, Quaternion.identity);
             truck.transform.SetParent(position);
             truck.GoToFront();
-            truck.MoveTo(truck.transform.position.x - _moveDistance);
+            truck.MoveTo(truck.transform.position.x - moveDistance);
             return truck;
         }
 

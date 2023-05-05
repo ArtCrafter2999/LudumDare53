@@ -79,6 +79,7 @@ MonoBehaviour:
   _pressets:
   - _spawnPoints:
     - {fileID: 6571534844057983049}
+    - {fileID: 6571534845609401771}
     _truckSpawnDelay: 1
   - _spawnPoints:
     - {fileID: 6571534844057983049}
@@ -140,7 +141,7 @@ MonoBehaviour:
   - {fileID: 5582228143101200917, guid: 5cfea557d78cd5145902396c72d3e71a, type: 3}
   - {fileID: 958241077439834698, guid: 1e1cb07ddf6008d49ab0c53b96f8a355, type: 3}
   - {fileID: 4559191140426253123, guid: 782a1d6fcec37d24285a21cee1f8e2d2, type: 3}
-  _moveDistance: 30
+  moveDistance: 30
 --- !u!1 &6571534844713254033
 GameObject:
   m_ObjectHideFlags: 0

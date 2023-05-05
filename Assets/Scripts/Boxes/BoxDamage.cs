@@ -32,7 +32,7 @@ namespace LudumDare53.Boxes
 
         public void Damage(float count)
         {
-            _redusablePoints.RestoreHealth(reducingPointsFactor);
+            _redusablePoints.ChangeHealth(reducingPointsFactor);
             _health = Mathf.Clamp(_health - count, 0, maxHealth);
             damaged.Invoke(InterpolatedHealth);
             if(_health<=0)crushed.Invoke();

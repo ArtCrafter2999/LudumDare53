@@ -84,7 +84,7 @@ namespace LudumDare53.Truck
                 GoButton.GetComponent<Image>().enabled = false;
                 MoveTo(transform.position.x - _moveDistance);
                 GoToBackground();
-                _redusablePoints.RestoreHealth(_reward);
+                _redusablePoints.ChangeHealth(_reward);
                 StartCoroutine(CoroutineUtilities.WaitForSeconds(_moveDuration, () => TruckLeft.Invoke(this, _boxes)));
             })));
             WrongBoxComes.AddListener(() => canvas.enabled = false);

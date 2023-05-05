@@ -51,7 +51,7 @@ namespace LudumDare53.UI
             timer.timePassed.AddListener(DayIsOver);
             _manager = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioSourcesManager>();
             var rp = GameObject.FindGameObjectWithTag("ReduceablePoints").GetComponent<ReduceablePoints>();
-            rp.PointsChanged.AddListener(
+            rp.pointsChanged.AddListener(
                 (c) =>
                 {
                     if (rp.CurrentPoints <= 0) YouAreFired();

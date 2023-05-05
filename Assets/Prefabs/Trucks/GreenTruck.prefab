@@ -127,7 +127,7 @@ PlatformEffector2D:
   m_RotationalOffset: -90
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 181
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -156,7 +156,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1369943341767361166}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.16, y: -1.09, z: 0.22736005}
+  m_LocalPosition: {x: -1.8624687, y: -1.09, z: 0.22736005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -240,7 +240,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1940421895153486270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85, y: -1.06, z: 0.22736005}
+  m_LocalPosition: {x: 3.4475312, y: -1.06, z: 0.22736005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -325,7 +325,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4168024664021062666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.22, y: 0.57, z: 0}
+  m_LocalPosition: {x: 0.07753134, y: 0.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -416,7 +416,7 @@ GameObject:
   - component: {fileID: 8205894511298583152}
   - component: {fileID: 4168024664651547051}
   - component: {fileID: 4168024664651547052}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cabine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -431,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4168024664651547050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.1021, y: 0.7926, z: 0.22736005}
+  m_LocalPosition: {x: -2.8045692, y: 0.7926, z: 0.22736005}
   m_LocalScale: {x: 2.4209225, y: 2.5736399, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -618,7 +618,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5810038354249347737}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6881, y: -0.0448, z: 0.22736005}
+  m_LocalPosition: {x: 0.60943127, y: -0.0448, z: 0.22736005}
   m_LocalScale: {x: 4.3389263, y: 0.90719736, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -718,7 +718,7 @@ PlatformEffector2D:
   m_RotationalOffset: 0
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 150
+  m_SurfaceArc: 120
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -748,7 +748,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5909365775351458168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.2028, y: 0.55, z: 0.22736005}
+  m_LocalPosition: {x: 0.09473133, y: 0.55, z: 0.22736005}
   m_LocalScale: {x: 0.9944, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -866,7 +866,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -8.74, y: 2.89}
+  m_AnchoredPosition: {x: -2.4424686, y: 2.89}
   m_SizeDelta: {x: 2.6204, y: 1.4907}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5344632778391167772
@@ -940,7 +940,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4168024664651547049}
   - component: {fileID: 958241077439834698}
-  - component: {fileID: 7858620049576099373}
   - component: {fileID: 6065917918538457191}
   m_Layer: 0
   m_Name: GreenTruck
@@ -957,7 +956,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7158439143088252242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.8100019, y: -2.0968454, z: -0.22736005}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1005,32 +1004,6 @@ MonoBehaviour:
   WrongBoxComes:
     m_PersistentCalls:
       m_Calls: []
---- !u!61 &7858620049576099373
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7158439143088252242}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &6065917918538457191
 Rigidbody2D:
   serializedVersion: 4
@@ -1179,7 +1152,7 @@ PlatformEffector2D:
   m_RotationalOffset: 90
   m_UseOneWay: 1
   m_UseOneWayGrouping: 0
-  m_SurfaceArc: 180
+  m_SurfaceArc: 181
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
@@ -1209,7 +1182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8538667507910160383}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.4535, y: 1.1295, z: 0.22736005}
+  m_LocalPosition: {x: 0.84403133, y: 1.1295, z: 0.22736005}
   m_LocalScale: {x: 4.109089, y: 1.6583405, z: 0.32825}
   m_ConstrainProportionsScale: 0
   m_Children: []
