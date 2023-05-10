@@ -85,6 +85,11 @@ namespace LudumDare53.UI
                 nodePlayer.SkipNode();
             }
 
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                nodePlayer.SkipNode();
+            }
+
             _prevEnter = Input.GetKey(KeyCode.Return);
             continueButton.interactable = PlayerPrefs.HasKey("DifficultyLevel") && DifficultyManager.Difficulty > 0;
         }

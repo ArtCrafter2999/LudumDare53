@@ -50,7 +50,15 @@ namespace LudumDare53.Nodes
         public void SkipNode()
         {
             //Debug.Log("SkipNode, index: " + _currentIndex);
-            if(_currentIndex>=0 && _currentIndex<nodes.Count) _isSkipped = nodes[_currentIndex].Skip();
+            try
+            {
+                if (_currentIndex>=0 && _currentIndex<nodes.Count) 
+                    _isSkipped = nodes[_currentIndex].Skip();
+            }
+            catch
+            {
+                Debug.Log("There are no node to skip!");
+            }
         }
 
         private IEnumerator StartSequenceWork()
